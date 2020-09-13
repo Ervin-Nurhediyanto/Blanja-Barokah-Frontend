@@ -4,10 +4,12 @@ import Home from '../views/Home/Home.vue'
 import Login from '../views/Auth/Login.vue'
 import Reset from '../views/Auth/ResetPassword.vue'
 import Chat from '../views/Chat/Chat.vue'
-import store from '../store/index'
+import ProfileCustomer from '../views/Profile/Customer.vue'
+import ProfileSeller from '../views/Profile/Seller.vue'
 import Product from '../views/Product/Product.vue'
 import MyBag from '../views/MyBag/MyBag.vue'
 import Checkout from '../views/Checkout/Checkout.vue'
+import store from '../store/index'
 
 Vue.use(VueRouter)
 
@@ -39,19 +41,31 @@ const routes = [{
   path: '/product',
   name: 'Product',
   component: Product,
-  meta: { requiresVisitor: true }
+  meta: { requiresAuth: true }
 },
 {
   path: '/mybag',
   name: 'MyBag',
   component: MyBag,
-  meta: { requiresVisitor: true }
+  meta: { requiresAuth: true }
 },
 {
   path: '/checkout',
   name: 'Checkout',
   component: Checkout,
-  meta: { requiresVisitor: true }
+  meta: { requiresAuth: true }
+},
+{
+  path: '/profileCustomer',
+  name: 'ProfileCustomer',
+  component: ProfileCustomer,
+  meta: { requiresAuth: true }
+},
+{
+  path: '/profileSeller',
+  name: 'ProfileSeller',
+  component: ProfileSeller,
+  meta: { requiresAuth: true }
 }
 ]
 

@@ -8,13 +8,17 @@
       <div class="row row-cols-2 row-cols-md-5">
         <!-- <card/> <card/> <card/> <card/> <card/>
         <card/> <card/> <card/> <card/> <card/> -->
-        <div v-for="product in allProduct" :key="product.id">
+        <div v-for="product in newProduct" :key="product.id">
           <card
           :name='product.name'
-          :image="product.image.split(', ')[0]"
+          :image="product.image"
           :price='product.price'
           :brand='product.brand'
           :id='product.id'
+          :rate='product.rate'
+          :color='product.color'
+          :condition='product.condition'
+          :description='product.description'
           />
         </div>
       </div>
@@ -24,13 +28,17 @@
       <div class="row row-cols-2 row-cols-md-5">
         <!-- <Card/> <Card/> <Card/> <Card/> <Card/>
         <Card/> <Card/> <Card/> <Card/> <Card/> -->
-        <div v-for="product in allProduct" :key="product.id">
+        <div v-for="product in popularProduct" :key="product.id">
           <card
           :name='product.name'
           :image="product.image.split(', ')[0]"
           :price='product.price'
           :brand='product.brand'
           :id='product.id'
+          :rate='product.rate'
+          :color='product.color'
+          :condition='product.condition'
+          :description='product.description'
           />
         </div>
       </div>
@@ -50,14 +58,22 @@ export default {
   },
   computed: {
     ...mapGetters({
-      allProduct: 'allProduct'
+      allProduct: 'allProduct',
+      newProduct: 'newProduct',
+      popularProduct: 'popularProduct',
+      selectProduct: 'selectProduct',
+      user: 'user'
     })
   },
   mounted () {
     this.getAllProduct()
+    this.getNewProduct()
+    this.getPopularProduct()
   },
   methods: {
-    ...mapActions(['getAllProduct'])
+    ...mapActions(['getAllProduct']),
+    ...mapActions(['getNewProduct']),
+    ...mapActions(['getPopularProduct'])
   }
 }
 </script>

@@ -2,7 +2,7 @@
     <div>
         <div class="card shadow m-3">
             <!-- <img src="../../assets/Cappucino.jpg" class="card-img-top" alt="Responsive image"> -->
-            <img :src="image" class="card-img-top" alt="Responsive image">
+            <img :src="image.split(',')[0]" class="card-img-top" alt="Responsive image" @click="select">
             <div class="card-body col">
                 <!-- <strong>Mens Formal suit- Black and White</strong><br> -->
                 <strong>{{name}}</strong><br>
@@ -16,9 +16,34 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Card',
-  props: ['name', 'image', 'price', 'brand', 'id']
+  props: ['name', 'image', 'price', 'brand', 'id', 'rate', 'color', 'condition', 'description'],
+  computed: {
+    ...mapGetters({
+      selectProduct: 'selectProduct'
+    })
+  },
+  methods: {
+    ...mapActions(['chooseProduct']),
+    select (e) {
+      e.preventDefault()
+      const data = {
+        name: this.name,
+        image: this.image.split(','),
+        price: this.price,
+        brand: this.brand,
+        id: this.id,
+        rate: this.rate,
+        color: this.color,
+        condition: this.condition,
+        description: this.description
+      }
+      this.chooseProduct(data)
+      this.$router.push('/product')
+    }
+  }
 }
 </script>
 

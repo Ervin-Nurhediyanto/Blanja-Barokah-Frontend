@@ -5,34 +5,41 @@
         <div class="product">
         <div class="headProduct">
             <div class="box-image">
-                <div class="img-view"></div>
+                <div class="img-view">
+                    <img class="" :src="selectProduct.image[0]" alt="">
+                </div>
                 <div class="img-select">
-                    <div class="image one"><img src="../../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png" alt=""></div>
+                    <div v-for="(image,index) in selectProduct.image" :key="index">
+                        <img class="image" :src="image" alt="">
+                    </div>
+                    <!-- <div class="image one"><img src="../../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png" alt=""></div>
                     <div class="image two"><img src="../../assets/image/4bcf6332-eea3-4278-8c75-9be1f59cbfa3 2.png" alt=""></div>
                     <div class="image three"><img src="../../assets/image/5f9d591f-54e0-4f48-99c8-33e5ab47c871 2.png" alt=""></div>
                     <div class="image four"><img src="../../assets/image/ef0755f4-97be-42d3-a1e9-e3c892b52706 2.png" alt=""></div>
-                    <div class="image five"><img src="../../assets/image/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png" alt=""></div>
+                    <div class="image five"><img src="../../assets/image/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png" alt=""></div> -->
                 </div>
             </div>
             <div class="box-detail">
                 <div class="title-product">
-                    <div class="name-product"><h4><b>Baju muslim pria</b></h4></div>
-                    <div class="brand"><h6>Zalora Cloth</h6></div>
+                    <div class="name-product">
+                        <h4><b>{{selectProduct.name}}</b></h4>
+                    </div>
+                    <div class="brand"><h6>{{selectProduct.brand}}</h6></div>
                     <div class="rate">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="reviewer"><h6>(10)</h6></div>
+                        <div class="star" v-show="selectProduct.rate > 1"></div>
+                        <div class="star" v-show="selectProduct.rate > 3"></div>
+                        <div class="star" v-show="selectProduct.rate > 5"></div>
+                        <div class="star" v-show="selectProduct.rate > 7"></div>
+                        <div class="star" v-show="selectProduct.rate > 9"></div>
+                        <div class="reviewer"><h6>({{selectProduct.rate}})</h6></div>
                     </div>
                 </div>
                 <div class="price">
                     <div class="priceName"><h6>Price</h6></div>
-                    <div class="priceMoney"><h3>$ 20.0 </h3></div>
+                    <div class="priceMoney"><h3>Rp {{selectProduct.price}} </h3></div>
                 </div>
                 <div class="color">
-                    <div class="colorName"><h6><b>Color</b></h6></div>
+                    <div class="colorName"><h6><b>color: {{selectProduct.color}}</b></h6></div>
                     <div class="setColor">
                         <div id="color">
                             <input type="radio" class="option-input radio shadow" name="example" style="background: black;" checked />
@@ -63,9 +70,10 @@
                     </div>
                 </div>
                 <div class="btn box-button">
-                    <button class="btn chat">Chat</button>
-                    <button class="btn addBag" @click="$emit('add-bag')">Add bag</button>
-                    <button class="btn buy">Buy Now</button>
+                    <button class="btn chat" @click="chat">Chat</button>
+                    <!-- <button class="btn addBag" @click="$emit('add-bag')">Add bag</button> -->
+                    <button class="btn addBag" @click="mybag">Add bag</button>
+                    <button class="btn buy" @click="checkout">Buy Now</button>
                 </div>
             </div>
         </div>
@@ -73,11 +81,11 @@
             <h4>Informasi Produk</h4>
             <div class="condition">
                 <h5>Condition</h5>
-                <div class="condition-stat"><h6>New</h6></div>
+                <div class="condition-stat"><h6>{{selectProduct.condition}}</h6></div>
             </div>
             <div class="description">
                 <h5>Description</h5>
-                <div class="content-desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur alias, repellat magni nobis reprehenderit, reiciendis deleniti aut itaque modi accusantium quod omnis dignissimos sequi saepe totam, doloremque numquam. Iure, excepturi.</div>
+                <div class="content-desc">{{selectProduct.description}}</div>
             </div>
         </div>
         </div>
@@ -86,11 +94,11 @@
             <div class="box-rate">
                 <div class="rateObt"><h1>5.0</h1><h6>/10</h6></div>
                 <div class="box-star">
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
+                    <div class="star" v-show="selectProduct.rate > 1"></div>
+                    <div class="star" v-show="selectProduct.rate > 3"></div>
+                    <div class="star" v-show="selectProduct.rate > 5"></div>
+                    <div class="star" v-show="selectProduct.rate > 7"></div>
+                    <div class="star" v-show="selectProduct.rate > 9"></div>
                 </div>
             </div>
             <div class="rate-reviewer">
@@ -141,7 +149,7 @@
 </template>
 
 <script>
-
+import { mapGetters } from 'vuex'
 export default {
   name: 'Product',
   components: {
@@ -151,6 +159,11 @@ export default {
       countSize: 0,
       count: 0
     }
+  },
+  computed: {
+    ...mapGetters({
+      selectProduct: 'selectProduct'
+    })
   },
   methods: {
     addCount () {
@@ -164,9 +177,16 @@ export default {
     },
     minSize () {
       this.countSize = this.countSize - 1
+    },
+    chat () {
+      this.$router.push('/chat')
+    },
+    mybag () {
+      this.$router.push('/mybag')
+    },
+    checkout () {
+      this.$router.push('/checkout')
     }
-  },
-  computed: {
   }
 }
 </script>
