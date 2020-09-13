@@ -26,6 +26,7 @@
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/bell.png"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/mail.png" @click="chat"></a>
                         <a class="nav-link mr-5" href="#"><img :src="userImg" class="rounded-circle" @click="profile"></a>
+                        <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/logout.png" class="logout" @click="handleLogout"></a>
                     </div>
                 </div>
             </nav>
@@ -152,6 +153,7 @@ export default {
       this.$router.push('/')
     },
     ...mapActions(['getSearchProduct']),
+    ...mapActions(['logout']),
     searchProduct () {
       this.getSearchProduct(this.search)
     },
@@ -161,6 +163,10 @@ export default {
       } else {
         this.$router.push('/profileCustomer')
       }
+    },
+    handleLogout () {
+      this.$router.go(0)
+      this.logout()
     }
   }
 }
@@ -201,6 +207,11 @@ label:focus,
         opacity: 0;
     }
 }
+
+.logout {
+    max-height: 30px;
+}
+
 .rounded-circle {
     max-height: 35px;
     /* max-width: 90px; */

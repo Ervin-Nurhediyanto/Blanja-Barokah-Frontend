@@ -86,7 +86,7 @@ export default new Vuex.Store({
     },
     getPopularProduct (setex, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.rate')
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.rate&order=DESC')
           .then((res) => {
             setex.commit('setPopularProduct', res.data.result)
             resolve(res.data.result)
@@ -103,7 +103,6 @@ export default new Vuex.Store({
             // setex.commit('setAllProduct', res.data.result)
             // resolve(res.data.result)
             setex.commit('setNewProduct', res.data.result)
-            resolve(res.data.result)
             setex.commit('setPopularProduct', res.data.result)
             resolve(res.data.result)
           })
@@ -270,6 +269,18 @@ export default new Vuex.Store({
             alert(err.response.data.result)
             reject(err)
           })
+      })
+    },
+
+    logout () {
+      return new Promise((resolve, reject) => {
+        if (this.state.token !== null) {
+          localStorage.removeItem('token')
+          localStorage.removeItem('userRoleId')
+          localStorage.removeItem('userName')
+          localStorage.removeItem('userId')
+          localStorage.removeItem('userImg')
+        }
       })
     },
 
