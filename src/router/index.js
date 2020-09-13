@@ -5,6 +5,9 @@ import Login from '../views/Auth/Login.vue'
 import Reset from '../views/Auth/ResetPassword.vue'
 import Chat from '../views/Chat/Chat.vue'
 import store from '../store/index'
+import Product from '../views/Product/Product.vue'
+import MyBag from '../views/MyBag/MyBag.vue'
+import Checkout from '../views/Checkout/Checkout.vue'
 
 Vue.use(VueRouter)
 
@@ -31,7 +34,26 @@ const routes = [{
   name: 'Chat',
   component: Chat,
   meta: { requiresAuth: true }
-}]
+},
+{
+  path: '/product',
+  name: 'Product',
+  component: Product,
+  meta: { requiresVisitor: true }
+},
+{
+  path: '/mybag',
+  name: 'MyBag',
+  component: MyBag,
+  meta: { requiresVisitor: true }
+},
+{
+  path: '/checkout',
+  name: 'Checkout',
+  component: Checkout,
+  meta: { requiresVisitor: true }
+}
+]
 
 const router = new VueRouter({
   mode: 'history',
