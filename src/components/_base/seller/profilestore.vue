@@ -52,15 +52,15 @@ export default {
   name: 'profilstore',
   computed: {
     ...mapGetters({
-      user: 'user',
-      userId: 'userId',
-      userName: 'userName',
-      userEmail: 'userEmail',
-      userGender: 'userGender',
-      userdateOfBirth: 'userdateOfBirth',
-      userphoneNumber: 'userphoneNumber',
-      userstoreName: 'userstoreName',
-      userstoreDescription: 'userstoreDescription'
+      user: 'user'
+    //   userId: 'userId',
+    //   userName: 'userName',
+    //   userEmail: 'userEmail',
+    //   userGender: 'userGender',
+    //   userdateOfBirth: 'userdateOfBirth',
+    //   userphoneNumber: 'userphoneNumber',
+    //   userstoreName: 'userstoreName',
+    //   userstoreDescription: 'userstoreDescription'
     })
   },
   mounted () {
@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     ...mapActions(['updateSeller']),
-    ...mapActions(['getDataUser']),
+    // ...mapActions(['getDataUser']),
     updateProfile () {
       const data = {
         name: this.user.name,
