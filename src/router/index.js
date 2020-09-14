@@ -40,18 +40,29 @@ const routes = [{
 {
   path: '/product',
   name: 'Product',
+<<<<<<< HEAD
   component: Product,
   meta: { requiresAuth: true }
+=======
+  component: Product
+  // meta: { requiresVisitor: true }
+>>>>>>> tes
 },
 {
   path: '/mybag',
   name: 'MyBag',
+<<<<<<< HEAD
   component: MyBag,
   meta: { requiresAuth: true }
+=======
+  component: MyBag
+  // meta: { requiresVisitor: true }
+>>>>>>> tes
 },
 {
   path: '/checkout',
   name: 'Checkout',
+<<<<<<< HEAD
   component: Checkout,
   meta: { requiresAuth: true }
 },
@@ -66,6 +77,10 @@ const routes = [{
   name: 'ProfileSeller',
   component: ProfileSeller,
   meta: { requiresAuth: true }
+=======
+  component: Checkout
+  // meta: { requiresVisitor: true }
+>>>>>>> tes
 }
 ]
 

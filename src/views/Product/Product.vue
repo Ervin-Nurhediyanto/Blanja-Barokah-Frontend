@@ -5,9 +5,13 @@
         <div class="product">
         <div class="headProduct">
             <div class="box-image">
+<<<<<<< HEAD
                 <div class="img-view">
                     <img class="" :src="selectProduct.image[0]" alt="">
                 </div>
+=======
+                <div class="img-view"><img src="../../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png"></div>
+>>>>>>> tes
                 <div class="img-select">
                     <div v-for="(image,index) in selectProduct.image" :key="index">
                         <img class="image" :src="image" alt="">
