@@ -6,6 +6,7 @@
         <div class="headProduct">
             <div class="box-image">
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="img-view">
                     <img class="" :src="selectProduct.image[0]" alt="">
                 </div>
@@ -21,6 +22,15 @@
                     <div class="image three"><img src="../../assets/image/5f9d591f-54e0-4f48-99c8-33e5ab47c871 2.png" alt=""></div>
                     <div class="image four"><img src="../../assets/image/ef0755f4-97be-42d3-a1e9-e3c892b52706 2.png" alt=""></div>
                     <div class="image five"><img src="../../assets/image/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png" alt=""></div> -->
+=======
+                <div class="img-view"></div>
+                <div class="img-select">
+                    <div class="image one"></div>
+                    <div class="image two"></div>
+                    <div class="image three"></div>
+                    <div class="image four"></div>
+                    <div class="image five"></div>
+>>>>>>> test
                 </div>
             </div>
             <div class="box-detail">
@@ -153,10 +163,17 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { mapGetters } from 'vuex'
+=======
+import { mapActions, mapGetters, mapMutations } from 'vuex'
+import navbar from '../components/nav'
+
+>>>>>>> test
 export default {
   name: 'Product',
   components: {
+    navbar
   },
   data () {
     return {
@@ -170,6 +187,8 @@ export default {
     })
   },
   methods: {
+    ...mapActions(['getProduct']),
+    ...mapMutations(['addCart']),
     addCount () {
       this.count = this.count + 1
     },
@@ -191,6 +210,17 @@ export default {
     checkout () {
       this.$router.push('/checkout')
     }
+<<<<<<< HEAD
+=======
+  },
+  computed: {
+    ...mapGetters({
+      productstate: 'getProducts'
+    })
+  },
+  mounted () {
+    this.getProduct()
+>>>>>>> test
   }
 }
 </script>
@@ -237,7 +267,7 @@ export default {
     display: flex;
     /* height: 250px; */
 
-    /* background-image: url('../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png'); */
+    background-image: url('../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png');
     background-size: 100%;
     background-repeat: no-repeat;
     border-radius: 3px;
@@ -261,9 +291,13 @@ export default {
     background-size: 100%;
     border-radius: 3px;
 }
+.one { background-image: url('../assets/image/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png');}
+.two { background-image: url('../assets/image/ef0755f4-97be-42d3-a1e9-e3c892b52706 2.png');}
+.three { background-image: url('../assets/image/4bcf6332-eea3-4278-8c75-9be1f59cbfa3 2.png');}
+.four { background-image: url('../assets/image/5f9d591f-54e0-4f48-99c8-33e5ab47c871 2.png');}
+.five { background-image: url('../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png');}
 img {
     width: 100%;
-    border-radius: 5px;
 }
 
 .box-detail {
@@ -295,7 +329,7 @@ img {
     width: 20px;
     height: 20px;
 
-    background-image: url('../../assets/image/Star.png');
+    background-image: url('../assets/image/Star.png');
     background-size: 100%;
     /* border: 1px solid black; */
 
