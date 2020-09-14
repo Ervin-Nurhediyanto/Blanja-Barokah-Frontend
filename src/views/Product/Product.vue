@@ -1,18 +1,12 @@
 <template>
     <div class="container-fluid">
-        <navbar/>
-        <div class="container">
+         <div class="container">
         <div class="product">
         <div class="headProduct">
             <div class="box-image">
-<<<<<<< HEAD
-<<<<<<< HEAD
                 <div class="img-view">
                     <img class="" :src="selectProduct.image[0]" alt="">
                 </div>
-=======
-                <div class="img-view"><img src="../../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png"></div>
->>>>>>> tes
                 <div class="img-select">
                     <div v-for="(image,index) in selectProduct.image" :key="index">
                         <img class="image" :src="image" alt="">
@@ -22,15 +16,6 @@
                     <div class="image three"><img src="../../assets/image/5f9d591f-54e0-4f48-99c8-33e5ab47c871 2.png" alt=""></div>
                     <div class="image four"><img src="../../assets/image/ef0755f4-97be-42d3-a1e9-e3c892b52706 2.png" alt=""></div>
                     <div class="image five"><img src="../../assets/image/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png" alt=""></div> -->
-=======
-                <div class="img-view"></div>
-                <div class="img-select">
-                    <div class="image one"></div>
-                    <div class="image two"></div>
-                    <div class="image three"></div>
-                    <div class="image four"></div>
-                    <div class="image five"></div>
->>>>>>> test
                 </div>
             </div>
             <div class="box-detail">
@@ -55,14 +40,18 @@
                 <div class="color">
                     <div class="colorName"><h6><b>color: {{selectProduct.color}}</b></h6></div>
                     <div class="setColor">
-                        <div id="color">
+                        <div class="ellipse black"></div>
+                        <div class="ellipse red"></div>
+                        <div class="ellipse blue"></div>
+                        <div class="ellipse green"></div>
+                        <!-- <div id="color">
                             <input type="radio" class="option-input radio shadow" name="example" style="background: black;" checked />
                             <input type="radio" class="option-input radio shadow" name="example" style="background: #FFFFFF;" />
                             <input type="radio" class="option-input radio shadow" name="example" style="background: #B82222;" />
                             <input type="radio" class="option-input radio shadow" name="example" style="background: #BEA9A9;" />
                             <input type="radio" class="option-input radio shadow" name="example" style="background: #E2BB8D;" />
                             <input type="radio" class="option-input radio shadow" name="example" style="background: #151867" />
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="count-box">
@@ -163,17 +152,10 @@
 </template>
 
 <script>
-<<<<<<< HEAD
 import { mapGetters } from 'vuex'
-=======
-import { mapActions, mapGetters, mapMutations } from 'vuex'
-import navbar from '../components/nav'
-
->>>>>>> test
 export default {
   name: 'Product',
   components: {
-    navbar
   },
   data () {
     return {
@@ -187,8 +169,6 @@ export default {
     })
   },
   methods: {
-    ...mapActions(['getProduct']),
-    ...mapMutations(['addCart']),
     addCount () {
       this.count = this.count + 1
     },
@@ -210,17 +190,6 @@ export default {
     checkout () {
       this.$router.push('/checkout')
     }
-<<<<<<< HEAD
-=======
-  },
-  computed: {
-    ...mapGetters({
-      productstate: 'getProducts'
-    })
-  },
-  mounted () {
-    this.getProduct()
->>>>>>> test
   }
 }
 </script>
@@ -267,7 +236,7 @@ export default {
     display: flex;
     /* height: 250px; */
 
-    background-image: url('../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png');
+    background-image: url('../../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png');
     background-size: 100%;
     background-repeat: no-repeat;
     border-radius: 3px;
@@ -291,11 +260,11 @@ export default {
     background-size: 100%;
     border-radius: 3px;
 }
-.one { background-image: url('../assets/image/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png');}
-.two { background-image: url('../assets/image/ef0755f4-97be-42d3-a1e9-e3c892b52706 2.png');}
-.three { background-image: url('../assets/image/4bcf6332-eea3-4278-8c75-9be1f59cbfa3 2.png');}
-.four { background-image: url('../assets/image/5f9d591f-54e0-4f48-99c8-33e5ab47c871 2.png');}
-.five { background-image: url('../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png');}
+.one { background-image: url('../../assets/image/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png');}
+.two { background-image: url('../../assets/image/ef0755f4-97be-42d3-a1e9-e3c892b52706 2.png');}
+.three { background-image: url('../../assets/image/4bcf6332-eea3-4278-8c75-9be1f59cbfa3 2.png');}
+.four { background-image: url('../../assets/image/5f9d591f-54e0-4f48-99c8-33e5ab47c871 2.png');}
+.five { background-image: url('../../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png');}
 img {
     width: 100%;
 }
@@ -329,7 +298,7 @@ img {
     width: 20px;
     height: 20px;
 
-    background-image: url('../assets/image/Star.png');
+    background-image: url('../../assets/image/Star.png');
     background-size: 100%;
     /* border: 1px solid black; */
 
@@ -357,7 +326,7 @@ img {
 .color {
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 200px;
 }
  @keyframes click-wave {
             0% {
@@ -430,6 +399,18 @@ img {
     flex-direction: row;
     justify-content: space-between;
 }
+.ellipse {
+    display: flex;
+    width: 40px;
+    height: 40px;
+
+    border-radius: 100%;
+    /* border: 1px solid black; */
+}
+.black { background-color: black;}
+.red { background-color: #D84242;}
+.blue { background-color: #4290D8;}
+.green { background-color: #42D86C;}
 .count-box {
     display: flex;
     flex-direction: row;
@@ -468,6 +449,7 @@ img {
     display: flex;
     margin: 0px 10px 0px 10px;
     width: 40px;
+    height: 35px;
 
     border-radius: 50%;
 }
@@ -488,7 +470,9 @@ img {
 .chat {
     display: flex;
     width: 200px;
+    height: 40px;
     justify-content: center;
+    margin-right: 10px;
 
     background-color: white;
     border-radius: 20px;
@@ -499,6 +483,7 @@ img {
     width: 200px;
     height: 40px;
     justify-content: center;
+    margin-right: 10px;
 
     background-color: white;
     border-radius: 20px;
@@ -507,6 +492,7 @@ img {
 .buy {
     display: flex;
     width: 355px;
+    height: 40px;
     justify-content: center;
 
     color: white;

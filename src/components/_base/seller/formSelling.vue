@@ -1,7 +1,7 @@
 <template>
 <div class="scroll">
-  <!-- <div id="area"> -->
-            <!-- <div id="form-invent" class="shadow ml-5 p-4"> -->
+  <div id="area">
+            <div id="form-invent" class="shadow ml-5 p-4">
                 <h4 class="m-0">inventory</h4>
                 <hr>
                 <div class="row ">
@@ -9,15 +9,15 @@
                         <form>
                             <div class="form">
                                 <div class="col mb-3">
-                                    <label class="col-4 text-left">Name of goods</label>
-                                    <input v-model="name" type="text" class="form-control form-control-lg my-auto col" id="validationDefault01" required>
+                                    <label class="col-6 text-left">Name of goods</label>
+                                    <input type="text" class="form-control form-control-lg my-auto col" id="validationDefault01" required>
                                 </div>
                             </div>
                         </form>
                     </div>
-                <!-- </div> -->
-            <!-- </div> -->
-            <!-- <div id="form-item" class="shadow ml-5 p-4"> -->
+                </div>
+            </div>
+            <div id="form-item" class="shadow ml-5 p-4">
                 <h4 class="m-0">Item details</h4>
                 <hr>
                 <div class="row ">
@@ -50,25 +50,18 @@
                     </div>
                 </div>
             </div>
-        <!-- </div> -->
-        <!-- <div id="area"> -->
-            <!-- <div id="form-photo" class="shadow ml-5 p-4"> -->
+        <div id="area">
+            <div id="form-photo" class="shadow ml-5 p-4">
                 <h4 class="m-0">Photo of goods</h4>
                 <hr>
                 <div class="row ">
                     <div class="col-12 border rounded">
                        <div class="box-photo">
-                           <!-- <div class="main-foto"><div class="logo"><b>+</b></div></div>
+                            <div class="main-foto"><div class="logo"><b>+</b></div></div>
                             <div class="foto"><div class="logo"><b>+</b></div></div>
                             <div class="foto"><div class="logo"><b>+</b></div></div>
                             <div class="foto"><div class="logo"><b>+</b></div></div>
-                            <div class="foto"><div class="logo"><b>+</b></div></div> -->
-                           <input class="" type="file" @change="onFileUpload">
-                           <input class="" type="file" @change="onFileUpload">
-                           <input class="" type="file" @change="onFileUpload">
-                           <input class="" type="file" @change="onFileUpload">
-                           <input class="" type="file" @change="onFileUpload">
-                           <input class="" type="file" @change="onFileUpload">
+                            <div class="foto"><div class="logo"><b>+</b></div></div>
                        </div>
                        <hr>
                        <div class="btn-area">
@@ -76,41 +69,45 @@
                         </div>
                     </div>
                 </div>
-            <!-- </div> -->
-        <!-- </div> -->
-        <!-- <div id="area"> -->
-            <!-- <div id="form-desc" class="shadow ml-5 p-4"> -->
+            </div>
+        </div>
+        <div id="area">
+            <div id="form-desc" class="shadow ml-5 p-4">
                 <h4 class="m-0">Desription</h4>
                 <hr>
                 <div class="row ">
                     <div class="col-8">
                         <form>
                             <div class="form">
-                                <div class="col mb-3">
-                                    <img src="./img/Screenshot (86) 1.png">
-                                    <textarea></textarea>
+                                <div class="col-12">
+                                    <!-- <img src="./img/Screenshot (86) 1.png"> -->
+                                    <vue-editor v-model="content" :editor-toolbar="customToolbar" />
+                                    <!-- <div>{{ content }}</div> -->
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
-            <!-- </div> -->
-        <!-- </div> -->
-
+            </div>
+        </div>
         <div class="row">
             <div class="col-8 m-5"></div>
               <div class="col p-3">
                   <button style="background: #d31d0d" class="btn btn-danger rounded-pill m-0 w-50" type="submit" @click="handleAdd">Jual</button>
                 </div>
-        </div>
+            </div>
     </div>
+</div>
 
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import { VueEditor } from 'vue2-editor'
+
 export default {
   name: 'formSelling',
+  components: { VueEditor },
   data () {
     return {
       name: '',
@@ -126,7 +123,13 @@ export default {
       condition: '',
       stock: '',
       description: '',
-      idSeller: ''
+      idSeller: '',
+      content: '<h1>Some initial content</h1>',
+      customToolbar: [
+        ['bold', 'italic', 'underline'],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        ['image', 'code-block']
+      ]
     }
   },
   methods: {
@@ -190,40 +193,41 @@ export default {
         }
 
         #area {
-            width: 72%;
+            width: 100%;
+            margin-left: 0;
             background: #F5F5F5;
         }
 
         #form-invent {
             background: white;
             margin-top: 45px;
-            width: 850px;
+            width: 730px;
             height: 200px;
         }
         #form-item {
             background: white;
             margin-top: 45px;
-            width: 850px;
+            width: 730px;
             height: 400px;
         }
         #form-desc {
             background: white;
             margin-top: 45px;
-            width: 850px;
+            width: 730px;
             height: 400px;
         }
         #form-photo {
             background: white;
             margin-top: 45px;
             margin: auto;
-            width: 850px;
+            width: 730px;
             height: 500px;
         }
         .box-photo {
             display: flex;
             flex-direction: row;
             justify-content: center;
-            width: 800px;
+            width: 730px;
             height: 300px;
             /* border: 1px solid black; */
             border-radius: 4px;
@@ -237,7 +241,7 @@ export default {
         .foto {
             width: 120px;
             height: 120px;
-            margin: 20px;
+            margin: 10px;
             margin-top: 60px;
             background-color: #D4D4D4;
         }
@@ -271,7 +275,7 @@ export default {
         }
         textarea {
             resize: none;
-            width: 790px;
+            width: 670px;
             height: 240px;
             border: 1px solid #D4D4D4;
         }

@@ -4,8 +4,8 @@ import Home from '../views/Home/Home.vue'
 import Login from '../views/Auth/Login.vue'
 import Reset from '../views/Auth/ResetPassword.vue'
 import Chat from '../views/Chat/Chat.vue'
-import ProfileCustomer from '../views/Profile/Customer.vue'
-import ProfileSeller from '../views/Profile/Seller.vue'
+import ProfileCustomer from '../views/profile/Customer.vue'
+import ProfileSeller from '../views/profile/Seller.vue'
 import Product from '../views/Product/Product.vue'
 import MyBag from '../views/MyBag/MyBag.vue'
 import Checkout from '../views/Checkout/Checkout.vue'
@@ -40,29 +40,18 @@ const routes = [{
 {
   path: '/product',
   name: 'Product',
-<<<<<<< HEAD
   component: Product,
   meta: { requiresAuth: true }
-=======
-  component: Product
-  // meta: { requiresVisitor: true }
->>>>>>> tes
 },
 {
   path: '/mybag',
   name: 'MyBag',
-<<<<<<< HEAD
   component: MyBag,
   meta: { requiresAuth: true }
-=======
-  component: MyBag
-  // meta: { requiresVisitor: true }
->>>>>>> tes
 },
 {
   path: '/checkout',
   name: 'Checkout',
-<<<<<<< HEAD
   component: Checkout,
   meta: { requiresAuth: true }
 },
@@ -77,10 +66,6 @@ const routes = [{
   name: 'ProfileSeller',
   component: ProfileSeller,
   meta: { requiresAuth: true }
-=======
-  component: Checkout
-  // meta: { requiresVisitor: true }
->>>>>>> tes
 }
 ]
 

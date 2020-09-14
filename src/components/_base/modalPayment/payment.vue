@@ -1,29 +1,91 @@
 <template>
   <div class="modal">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content container">
-      <div class="modal-body">
-          <div class="col-12">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="this.closeModal">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <p class="text-md-center font-weight-bold">Choose another address</p>
-        <div class="addAddress"><p class="text-center">Add new address</p></div>
-        <div class="address border border-danger">
-            <div class="col-12 font-weight-bold">Andress Jane</div>
-            <div class="col-12"><h6>Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja, Kabuaten Banyumas, Jawa Tengah, 53181 [Tokopedia Note: bkok c 16] Sokaraja. Kab. Banyumas. 53181</h6></div>
-            <button class="btn changeAddress">Change address</button>
+    <div class="modal-dialog modal-md">
+        <div class="modal-content container">
+            <div class="modal-header">
+                <div class="row m-0">
+                    <div class="col-2 mt-2">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="this.closeModal">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="col-10">
+                        <p class="text-left font-weight-bold">Select Payment</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h5 class="text-left">Payment method</h5>
+                <div class="row">
+                    <div class="col-3">
+                        <img src="../../../assets/payment/Logo-GoPay-Vector-CDR-dan-PNG 1.png">
+                    </div>
+                    <div class="col-7">
+                        <h5 class="text-left mt-2">Gopay</h5>
+                    </div>
+                    <div class="col-2">
+                        <label class="container">
+                        <input type="checkbox">
+                        <div class="checkmark"></div>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <img src="../../../assets/payment/kisspng-pos-indonesia-mail-point-of-sale-logo-indonesia-5aeb329c2f74d7 1.png">
+                    </div>
+                    <div class="col-7">
+                        <h5 class="text-left mt-2">Pos indonesia</h5>
+                    </div>
+                    <div class="col-2">
+                        <label class="container">
+                        <input type="checkbox">
+                        <div class="checkmark"></div>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        <img src="../../../assets/payment/mc.png">
+                    </div>
+                    <div class="col-7">
+                        <h5 class="text-left mt-2">Mastercard</h5>
+                    </div>
+                    <div class="col-2">
+                        <label class="container">
+                        <input type="checkbox">
+                        <div class="checkmark"></div>
+                        </label>
+                    </div>
+                </div>
+                <hr>
+                <div class="summary-box">
+                <div class="col-12"><h5 class="text-left font-weight-bold">Shopping summary</h5></div>
+                    <div class="row">
+                        <div class="col-6"><h6 class="text-left">Order</h6></div>
+                        <div class="col-6"><h6 class="text-right font-weight-bold">$ 40.0</h6></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6"><h6 class="text-left">Delivery</h6></div>
+                        <div class="col-6"><h6 class="text-right font-weight-bold">$ 5.0</h6></div>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <div class="col">
+                    <div class="row-10"><h5 class="text-left font-weight-bold">Shopping summary</h5></div>
+                    <div class="row-6"><h5 class="text-left-danger">$ 45.0</h5></div>
+                </div>
+                <button type="button" class="btn btn-danger rounded-pill w-25">Buy</button>
+            </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 export default {
-  name: 'modalAddress',
+  name: 'modalPayment',
   props: {
     closeModal: {
       type: Function
@@ -37,27 +99,67 @@ export default {
         display: block;
     }
     .container {
-        height: 555px;
-    }
-    .addAddress {
-        margin-top: 30px;
-        height: 80px;
-        color: #d4d4d4;
-        border: 2px dashed #d4d4d4;
-    }
-    .address {
-        margin-top: 50px;
-    }
+  display: block;
+  position: relative;
+  padding-left: 0px;
+  margin-bottom: 12px;
+  font-size: 22px;
+  /* border: 1px solid black; */
+}
 
-    p {
-        margin-top: 20px;
-    }
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  /* cursor: pointer; */
 
-    .changeAddress {
-        height: 35px;
-        margin: 10px;
-        color: #D84242;
-        border: 2px solid #D4D4D4;
-        border-radius: 25px;
-    }
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  cursor: pointer;
+  top: 10px;
+  left: 5px;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #D84242;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.summary-box {
+    width: 420px;
+    height: 130px;
+}
+
 </style>
