@@ -64,11 +64,11 @@
                             <div class="foto"><div class="logo"><b>+</b></div></div>
                             <div class="foto"><div class="logo"><b>+</b></div></div> -->
                            <input class="" type="file" @change="onFileUpload">
+                           <!-- <input class="" type="file" @change="onFileUpload">
                            <input class="" type="file" @change="onFileUpload">
                            <input class="" type="file" @change="onFileUpload">
                            <input class="" type="file" @change="onFileUpload">
-                           <input class="" type="file" @change="onFileUpload">
-                           <input class="" type="file" @change="onFileUpload">
+                           <input class="" type="file" @change="onFileUpload"> -->
                        </div>
                        <hr>
                        <div class="btn-area">
@@ -131,6 +131,9 @@ export default {
   },
   methods: {
     ...mapActions(['addProduct']),
+    onFileUpload (event) {
+      this.FILE = event.target.files[0]
+    },
     handleAdd () {
       const formData = new FormData()
       formData.append('name', this.name)

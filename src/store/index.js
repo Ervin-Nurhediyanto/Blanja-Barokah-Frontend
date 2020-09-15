@@ -12,6 +12,7 @@ export default new Vuex.Store({
     newProduct: [],
     popularProduct: [],
     selectProduct: [],
+    productId: '',
     token: localStorage.getItem('token') || null,
     resetId: localStorage.getItem('resetId') || null,
     userId: localStorage.getItem('userId') || null,
@@ -57,6 +58,9 @@ export default new Vuex.Store({
     },
     setSelectProduct (state, payload) {
       state.selectProduct = payload
+    },
+    setProductId (state, payload) {
+      state.productId = payload
     }
   },
   actions: {
@@ -113,7 +117,31 @@ export default new Vuex.Store({
     },
     addProduct (setex, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_BASE_URL + '/products', payload)
+        axios.post(process.env.VUE_APP_BASE_URL + '/products', payload)
+          .then((res) => {
+            // setex.commit('setAllProduct', res.data.result)
+            resolve(res.data.result)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    updateProduct (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.patch(process.env.VUE_APP_BASE_URL + '/products/' + this.state.productId, payload)
+          .then((res) => {
+            // setex.commit('setAllProduct', res.data.result)
+            resolve(res.data.result)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    deleteProduct (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.patch(process.env.VUE_APP_BASE_URL + '/products/' + payload)
           .then((res) => {
             // setex.commit('setAllProduct', res.data.result)
             resolve(res.data.result)

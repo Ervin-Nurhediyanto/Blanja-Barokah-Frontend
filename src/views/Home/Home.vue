@@ -66,9 +66,9 @@ export default {
     })
   },
   mounted () {
-    this.getAllProduct()
     this.getNewProduct()
     this.getPopularProduct()
+    this.getAllProduct()
   },
   methods: {
     ...mapActions(['getAllProduct']),
