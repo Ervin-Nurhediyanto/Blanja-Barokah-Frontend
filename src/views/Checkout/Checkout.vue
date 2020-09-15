@@ -38,7 +38,8 @@
                 <div class="text"><h6>Shopping summary</h6></div>
                 <div class="total"><h6>Rp. 45000</h6></div>
             </div>
-            <button class="btn buy">Select payment</button>
+            <button class="btn buy" @click="togglePayment">Select payment</button>
+            <Payment v-show="selectPay" :closeModal="togglePayment"/>
           </div>
         </div>
         </div>
@@ -47,18 +48,20 @@
 
 <script>
 import ModalAddress from '../../components/_base/modalAddress/dataAddress'
-// import addAddress from '../../components/_base/modalAddress/addAddress'
+import Payment from '../../components/_base/modalPayment/payment'
 
 export default {
   name: 'Mybag',
   components: {
-    ModalAddress
-    // addAddress
+    ModalAddress,
+    Payment
+
   },
   data () {
     return {
       count: 0,
-      modalActive: false
+      modalActive: false,
+      selectPay: false
     }
   },
   methods: {
@@ -70,6 +73,9 @@ export default {
     },
     toggleModal () {
       this.modalActive = !this.modalActive
+    },
+    togglePayment () {
+      this.selectPay = !this.selectPay
     }
   },
   computed: {
