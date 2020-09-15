@@ -2,18 +2,18 @@
     <div>
         <nav class="bg-light p-0 shadow">
             <nav class="navbar container navbar-expand-lg navbar-light bg-light p-0">
-                <div class="row mx-auto my-2">
+                <div class="row mx-auto my-2" @click="home">
                     <img src="../../../assets/Vector.png">
-                    <strong id="brand" class="my-auto mr-5">Barokah</strong>
+                    <strong id="brand" class="my-auto mr-5" >Barokah</strong>
                 </div>
                 <button class="navbar-toggler mr-5" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="row">
                     <form class="form-inline rounded-pill bg-white row mt-1 ml-5 mb-2">
-                        <input class="form-control mr-3 rounded-pill w-100 col" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control mr-3 rounded-pill w-100 col" type="text" v-model="search" placeholder="Search" aria-label="Search">
                         <a href="#" type="submit">
-                            <img src="../../../assets/nav/Search.png" class="my-2 col-auto">
+                            <img src="../../../assets/nav/Search.png" class="my-2 col-auto"  @click="searchProduct">
                         </a>
                     </form>
                         <button type="button" id="btndrop" class="btn ml-4 my-auto" data-toggle="modal" data-target="#navModal">
@@ -25,7 +25,8 @@
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/shopping-cart.png"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/bell.png"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/mail.png" @click="chat"></a>
-                        <a class="nav-link mr-5" href="#"><img src="../../../assets/nav/christian-buehner-DItYlc26zVI-unsplash 1.png" class="rounded-circle"></a>
+                        <a class="nav-link mr-5" href="#"><img :src="userImg" class="rounded-circle" @click="profile"></a>
+                        <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/logout.png" class="logout" @click="handleLogout"></a>
                     </div>
                 </div>
             </nav>
@@ -121,11 +122,51 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'after',
+  data () {
+    return {
+      search: ''
+    }
+  },
+  computed: {
+    ...mapGetters({
+      user: 'user',
+      userImg: 'userImg',
+      userName: 'userName',
+      userRoleId: 'userRoleId',
+
+      userEmail: 'userEmail',
+      userGender: 'userGender',
+      userdateOfBirth: 'userdateOfBirth',
+      userphoneNumber: 'userphoneNumber',
+      userstoreName: 'userstoreName',
+      userstoreDescription: 'userstoreDescription'
+    })
+  },
   methods: {
     chat () {
       this.$router.push('/chat')
+    },
+    home () {
+      this.$router.push('/')
+    },
+    ...mapActions(['getSearchProduct']),
+    ...mapActions(['logout']),
+    searchProduct () {
+      this.getSearchProduct(this.search)
+    },
+    profile () {
+      if (this.userRoleId === 'Seller') {
+        this.$router.push('/profileSeller')
+      } else {
+        this.$router.push('/profileCustomer')
+      }
+    },
+    handleLogout () {
+      this.$router.go(0)
+      this.logout()
     }
   }
 }
@@ -166,6 +207,16 @@ label:focus,
         opacity: 0;
     }
 }
+
+.logout {
+    max-height: 30px;
+}
+
+.rounded-circle {
+    max-height: 35px;
+    /* max-width: 90px; */
+}
+
 .option-input {
     -webkit-appearance: none;
     -moz-appearance: none;
