@@ -194,7 +194,6 @@ export default new Vuex.Store({
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            alert(err.response.data.result)
             reject(err)
           })
       })
@@ -208,7 +207,6 @@ export default new Vuex.Store({
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            alert(err.response.data.result)
             reject(err)
           })
       })
@@ -220,7 +218,6 @@ export default new Vuex.Store({
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            alert(err.response.data.result)
             reject(err)
           })
       })
@@ -232,7 +229,6 @@ export default new Vuex.Store({
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            alert(err.response.data.result)
             reject(err)
           })
       })

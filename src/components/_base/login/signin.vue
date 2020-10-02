@@ -1,20 +1,19 @@
 <template>
   <div>
     <div class="container">
-      <div class="main-content mt-4">
+      <div class="main-content mt-5">
         <div class="container">
           <div class="login-area">
-            <div class="row mb-2">
+            <div class="row mb-4">
               <div class="mx-auto row">
                   <div id="logo">
                     <img src="../../../assets/Vector.png" alt="">
                   </div>
                   <div id="brand">
-                    <strong>Fir'aun Store</strong>
+                    <strong>Blanja Barokah</strong>
                   </div>
               </div>
             </div>
-            <h5>Anda siap murtad ..?</h5>
             <h4 class="m-0"><strong>Please login with your account</strong></h4>
             <form role="form" id="login-form">
               <div class="row">
@@ -70,7 +69,21 @@ export default {
       }
       this.loginSeller(data)
         .then((res) => {
+          this.$swal({
+            icon: 'success',
+            title: 'Login Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
           this.$router.push('/')
+        })
+        .catch((err) => {
+          this.$swal({
+            icon: 'error',
+            title: err.response.data.result,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     handleLoginCustomer (e) {
@@ -81,7 +94,21 @@ export default {
       }
       this.loginCustomer(data)
         .then((res) => {
+          this.$swal({
+            icon: 'success',
+            title: 'Login Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
           this.$router.push('/')
+        })
+        .catch((err) => {
+          this.$swal({
+            icon: 'error',
+            title: err.response.data.result,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     roleCustomer () {

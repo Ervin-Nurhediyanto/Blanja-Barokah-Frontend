@@ -86,7 +86,21 @@ export default {
       }
       this.registerSeller(data)
         .then((res) => {
+          this.$swal({
+            icon: 'success',
+            title: 'Register Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
           this.$router.go(0)
+        })
+        .catch((err) => {
+          this.$swal({
+            icon: 'error',
+            title: err.response.data.result,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     handleRegisterCustomer (e) {
@@ -98,7 +112,21 @@ export default {
       }
       this.registerCustomer(data)
         .then((res) => {
+          this.$swal({
+            icon: 'success',
+            title: 'Register Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
           this.$router.go(0)
+        })
+        .catch((err) => {
+          this.$swal({
+            icon: 'error',
+            title: err.response.data.result,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
     roleCustomer () {
