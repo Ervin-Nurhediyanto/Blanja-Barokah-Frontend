@@ -58,6 +58,12 @@ export default {
       }
       this.resetPassword(data)
         .then((res) => {
+          this.$swal({
+            icon: 'success',
+            title: 'Change password success',
+            showConfirmButton: false,
+            timer: 1500
+          })
           this.$router.push('/login')
         })
     }

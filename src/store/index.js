@@ -240,7 +240,6 @@ export default new Vuex.Store({
           .then((res) => {
             setex.commit('setSesetId', res.data.result)
             localStorage.setItem('resetId', this.state.resetId)
-            console.log(res.data.message)
             resolve(res)
           })
           .catch((err) => {

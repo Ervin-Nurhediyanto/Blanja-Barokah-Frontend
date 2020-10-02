@@ -84,6 +84,20 @@ export default {
       }
       this.forgotPassword(data)
         .then((res) => {
+          this.$swal({
+            icon: 'success',
+            title: res.data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+        .catch((err) => {
+          this.$swal({
+            icon: 'error',
+            title: err.response.data.result,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   }
