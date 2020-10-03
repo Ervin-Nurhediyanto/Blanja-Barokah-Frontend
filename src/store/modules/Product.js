@@ -3,6 +3,7 @@ import axios from 'axios'
 const product = {
   state: {
     allProduct: [],
+    productSeller: [],
     newProduct: [],
     popularProduct: [],
     selectProduct: [],
@@ -11,6 +12,9 @@ const product = {
   mutations: {
     setAllProduct (state, payload) {
       state.allProduct = payload
+    },
+    setProductSeller (state, payload) {
+      state.productSeller = payload
     },
     setNewProduct (state, payload) {
       state.newProduct = payload
@@ -38,6 +42,73 @@ const product = {
           })
       })
     },
+
+    getProductSeller (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?seller=' + payload)
+          .then((res) => {
+            setex.commit('setProductSeller', res.data.result)
+            resolve(res.data.result)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
+    sortNameProductSeller (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?seller=' + payload.id + '&sort=products.name&order=' + payload.sort)
+          .then((res) => {
+            setex.commit('setProductSeller', res.data.result)
+            resolve(res.data.result)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
+    sortPriceProductSeller (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?seller=' + payload.id + '&sort=products.price&order=' + payload.sort)
+          .then((res) => {
+            setex.commit('setProductSeller', res.data.result)
+            resolve(res.data.result)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
+    sortStockProductSeller (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?seller=' + payload.id + '&sort=products.stock&order=' + payload.sort)
+          .then((res) => {
+            setex.commit('setProductSeller', res.data.result)
+            resolve(res.data.result)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
+    searchProductSeller (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?seller=' + payload.id + '&search=' + payload.search)
+          .then((res) => {
+            console.log(res.data.result)
+            setex.commit('setProductSeller', res.data.result)
+            resolve(res.data.result)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
     getNewProduct (setex, payload) {
       return new Promise((resolve, reject) => {
         axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.id&order=DESC')
@@ -120,6 +191,9 @@ const product = {
   getters: {
     allProduct (state) {
       return state.allProduct
+    },
+    productSeller (state) {
+      return state.productSeller
     },
     newProduct (state) {
       return state.newProduct

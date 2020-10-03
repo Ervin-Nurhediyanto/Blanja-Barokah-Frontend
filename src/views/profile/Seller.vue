@@ -8,7 +8,9 @@
                             <img :src="userImg" id="photo" height="61px">
                             <div class="col">
                                 <h5 class="m-0 mt-2">{{userName}}</h5>
-                                <a href="" class="text-secondary"><img src="../../assets/icon-profil/edit (1) 1.png"> ubah profil
+                                <a class="text-secondary">
+                                  <img src="../../assets/icon-profil/edit (1) 1.png">
+                                  ubah profil
                                 </a>
                             </div>
                         </div>
@@ -18,7 +20,9 @@
                     <div class="col" id="iconprofil">
                         <div class="col mb-4">
                             <div class="row">
-                                <button class="text-secondary btn border border-0 bg-white" @click="handleShowStore">
+                                <button
+                                class="text-secondary btn border border-0 bg-white"
+                                @click="handleShowStore">
                                     <div class="row">
                                         <div id="icon" style="background: #456BF3;" >
                                             <img src="../../assets/icon-seller/home (2) 1.png" alt="">
@@ -27,13 +31,18 @@
                                     </div>
                                 </button>
                             </div>
-                            <button v-show="showStore" class="text-secondary btn border border-0 bg-white" @click="component='profilestore'">
+                            <button
+                            v-show="showStore"
+                            class="text-secondary btn border border-0 bg-white"
+                            @click="component='profilestore'">
                               Store Profile
                             </button>
                         </div>
                         <div class="col mb-4">
                             <div class="row">
-                                <button class="text-secondary btn border border-0 bg-white" @click="handleShowProduct">
+                                <button
+                                class="text-secondary btn border border-0 bg-white"
+                                @click="handleShowProduct">
                                     <div class="row">
                                         <div id="icon" style="background: #F36F45;">
                                             <img src="../../assets/icon-seller/package 1.png" alt="">
@@ -43,19 +52,27 @@
                                 </button>
                             </div>
                             <div>
-                              <button v-show="showProduct" class="text-secondary btn border border-0 bg-white" @click="component='product'">
+                              <button
+                              v-show="showProduct"
+                              class="text-secondary btn border border-0 bg-white"
+                              @click="component='product'; handleProduct">
                                 My product
                               </button>
                             </div>
                             <div>
-                              <button v-show="showProduct" class="text-secondary btn border border-0 bg-white" @click="component='selling'">
+                              <button
+                              v-show="showProduct"
+                              class="text-secondary btn border border-0 bg-white"
+                              @click="component='selling'">
                                 Selling Product
                               </button>
                             </div>
                         </div>
                         <div class="col mb-4">
                             <div class="row">
-                                <button class="text-secondary btn border border-0 bg-white" @click="handleShowOrder">
+                                <button
+                                class="text-secondary btn border border-0 bg-white"
+                                @click="handleShowOrder">
                                     <div class="row">
                                         <div id="icon" style="background: #F3456F;">
                                             <img src="../../assets/icon-seller/shopping-cart (3) 1.png" alt="">
@@ -63,14 +80,19 @@
                                         <h6 class="my-auto ml-2">Order</h6>
                                     </div>
                                 </button>
-                        </div>
+                            </div>
                         <div>
-                          <button v-show="showOrder" class="text-secondary btn border border-0 bg-white"  @click="component='order'">
+                          <button
+                          v-show="showOrder"
+                          class="text-secondary btn border border-0 bg-white"
+                          @click="component='order'">
                             My order
                           </button>
                         </div>
                         <div>
-                          <button v-show="showOrder" class="text-secondary btn border border-0 bg-white">
+                          <button
+                          v-show="showOrder"
+                          class="text-secondary btn border border-0 bg-white">
                             Order Cancel
                           </button>
                         </div>
@@ -115,11 +137,15 @@ export default {
       user: 'user',
       userImg: 'userImg',
       userName: 'userName',
+      userId: 'userId',
       userstoreName: 'userstoreName'
     })
   },
   methods: {
-    ...mapActions(['getSearchProduct']),
+    ...mapActions([
+      'getSearchProduct',
+      'getProductSeller'
+    ]),
 
     handleShowStore () {
       if (this.showStore) {
@@ -143,6 +169,11 @@ export default {
       } else {
         this.showOrder = true
       }
+    },
+
+    handleProduct () {
+      // this.getProductSeller(this.userId)
+      // this.getProductSeller('3')
     }
   }
 }
