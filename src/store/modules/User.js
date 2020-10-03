@@ -86,7 +86,6 @@ const user = {
       return new Promise((resolve, reject) => {
         axios.post(process.env.VUE_APP_BASE_URL + '/users/login/seller', payload)
           .then((res) => {
-            // console.log(res.data.result.message)
             setex.commit('setUser', res.data.result)
             localStorage.setItem('token', res.data.result.token)
             localStorage.setItem('userId', res.data.result.id)
@@ -103,7 +102,6 @@ const user = {
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            // alert(err.response.data.result)
             reject(err)
           })
       })
@@ -113,6 +111,7 @@ const user = {
         axios.post(process.env.VUE_APP_BASE_URL + '/users/login/custommer/', payload)
           .then((res) => {
             setex.commit('setUser', res.data.result)
+            console.log(res.data.result)
             localStorage.setItem('token', res.data.result.token)
             localStorage.setItem('userId', res.data.result.id)
             localStorage.setItem('userImg', res.data.result.image)
@@ -128,7 +127,6 @@ const user = {
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            // alert(err.response.data.result)
             reject(err)
           })
       })
@@ -279,6 +277,12 @@ const user = {
           localStorage.removeItem('userName')
           localStorage.removeItem('userId')
           localStorage.removeItem('userImg')
+          localStorage.removeItem('userstoreName')
+          localStorage.removeItem('userEmail')
+          localStorage.removeItem('userphoneNumber')
+          localStorage.removeItem('userGender')
+          localStorage.removeItem('userdateOfBirth')
+          localStorage.removeItem('userstoreDescription')
         }
       })
     }

@@ -284,7 +284,11 @@ export default {
     }
 
     if (this.userGender) {
-      this.gender = this.userGender
+      if (this.userGender === 'female') {
+        this.gender = 2
+      } else {
+        this.gender = 1
+      }
     }
   },
   methods: {
