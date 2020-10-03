@@ -18,7 +18,7 @@
                     <div class="col" id="iconprofil">
                         <div class="col mb-4">
                             <div class="row">
-                                <button class="text-secondary btn border border-0 bg-white" @click="component='profilestore'">
+                                <button class="text-secondary btn border border-0 bg-white" @click="handleShowStore">
                                     <div class="row">
                                         <div id="icon" style="background: #456BF3;" >
                                             <img src="../../assets/icon-seller/home (2) 1.png" alt="">
@@ -27,11 +27,13 @@
                                     </div>
                                 </button>
                             </div>
-                            <button class="text-secondary btn border border-0 bg-white">Store Profile</button>
+                            <button v-show="showStore" class="text-secondary btn border border-0 bg-white" @click="component='profilestore'">
+                              Store Profile
+                            </button>
                         </div>
                         <div class="col mb-4">
                             <div class="row">
-                                <button class="text-secondary btn border border-0 bg-white">
+                                <button class="text-secondary btn border border-0 bg-white" @click="handleShowProduct">
                                     <div class="row">
                                         <div id="icon" style="background: #F36F45;">
                                             <img src="../../assets/icon-seller/package 1.png" alt="">
@@ -40,12 +42,20 @@
                                     </div>
                                 </button>
                             </div>
-                            <button class="text-secondary btn border border-0 bg-white" @click="component='product'">My product</button>
-                            <button class="text-secondary btn border border-0 bg-white" @click="component='selling'">Selling Product</button>
+                            <div>
+                              <button v-show="showProduct" class="text-secondary btn border border-0 bg-white" @click="component='product'">
+                                My product
+                              </button>
+                            </div>
+                            <div>
+                              <button v-show="showProduct" class="text-secondary btn border border-0 bg-white" @click="component='selling'">
+                                Selling Product
+                              </button>
+                            </div>
                         </div>
                         <div class="col mb-4">
                             <div class="row">
-                                <button class="text-secondary btn border border-0 bg-white"  @click="component='order'">
+                                <button class="text-secondary btn border border-0 bg-white" @click="handleShowOrder">
                                     <div class="row">
                                         <div id="icon" style="background: #F3456F;">
                                             <img src="../../assets/icon-seller/shopping-cart (3) 1.png" alt="">
@@ -54,8 +64,16 @@
                                     </div>
                                 </button>
                         </div>
-                        <button class="text-secondary btn border border-0 bg-white">My order</button><br>
-                        <button class="text-secondary btn border border-0 bg-white">Order Cancel</button>
+                        <div>
+                          <button v-show="showOrder" class="text-secondary btn border border-0 bg-white"  @click="component='order'">
+                            My order
+                          </button>
+                        </div>
+                        <div>
+                          <button v-show="showOrder" class="text-secondary btn border border-0 bg-white">
+                            Order Cancel
+                          </button>
+                        </div>
                     </div>
                 </div>
                 </div>
@@ -86,18 +104,46 @@ export default {
   },
   data () {
     return {
-      component: profilestore
+      component: profilestore,
+      showStore: false,
+      showProduct: false,
+      showOrder: false
     }
   },
   computed: {
     ...mapGetters({
       user: 'user',
       userImg: 'userImg',
-      userName: 'userName'
+      userName: 'userName',
+      userstoreName: 'userstoreName'
     })
   },
   methods: {
-    ...mapActions(['getSearchProduct'])
+    ...mapActions(['getSearchProduct']),
+
+    handleShowStore () {
+      if (this.showStore) {
+        this.showStore = false
+      } else {
+        this.showStore = true
+      }
+    },
+
+    handleShowProduct () {
+      if (this.showProduct) {
+        this.showProduct = false
+      } else {
+        this.showProduct = true
+      }
+    },
+
+    handleShowOrder () {
+      if (this.showOrder) {
+        this.showOrder = false
+      } else {
+        this.showOrder = true
+      }
+    }
   }
 }
 </script>
