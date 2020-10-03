@@ -7,12 +7,19 @@
                 <div class="row ">
                     <div class="col-8">
                         <form>
+                            <!-- Product-Name -->
                             <div class="form">
                                 <div class="col mb-3">
                                     <label class="col-6 text-left">Name of goods</label>
-                                    <input type="text" class="form-control form-control-lg my-auto col" id="validationDefault01" required>
+                                    <input
+                                    v-model="name"
+                                    type="text"
+                                    class="form-control form-control-lg my-auto col"
+                                    id="validationDefault01"
+                                    required>
                                 </div>
                             </div>
+                            <!-- End Product-Name -->
                         </form>
                     </div>
                 </div>
@@ -24,27 +31,58 @@
                     <div class="col-8">
                         <form>
                             <div class="form">
+                                <!-- Product-Price -->
                                 <div class="col mb-3">
                                     <label class="my-auto col-3 text-left">Unit price</label>
-                                    <input v-model="price" type="number" class="form-control form-control-lg my-auto col" id="validationDefault01" required>
+                                    <input
+                                    v-model="price"
+                                    type="number"
+                                    class="form-control form-control-lg my-auto col"
+                                    id="validationDefault01"
+                                    required>
                                 </div>
+                                <!-- End Product-Price -->
+
+                                <!-- Product-Stock -->
                                 <div class="col mb-3">
                                     <label class="my-auto col-3 text-left">Stock</label>
-                                    <input v-model="stock" type="text" class="form-control form-control-lg my-auto col" id="validationDefault02" required>
+                                    <input
+                                    v-model="stock"
+                                    type="number"
+                                    class="form-control form-control-lg my-auto col"
+                                    id="validationDefault02"
+                                    required>
                                 </div>
+                                <!-- End Product-Stock -->
+
+                                <!-- Product-Condition -->
                                 <div class="col mb-3">
-                                    <label class="my-auto col-3 text-left">Stock</label>
+                                    <label class="my-auto col-3 text-left">Condition</label>
                                     <div class="col my-auto">
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadioInline1">Baru</label>
+                                            <input
+                                            v-model="condition"
+                                            type="radio"
+                                            id="customRadioInline1"
+                                            name="customRadioInline1"
+                                            class="custom-control-input"
+                                            value="new">
+                                            <label class="custom-control-label" for="customRadioInline1">New</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadioInline2">Bekas</label>
+                                            <input
+                                            v-model="condition"
+                                            type="radio"
+                                            id="customRadioInline2"
+                                            name="customRadioInline1"
+                                            class="custom-control-input"
+                                            value="old">
+                                            <label class="custom-control-label" for="customRadioInline2">Old</label>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- End Product-Condition -->
+
                             </div>
                         </form>
                     </div>
@@ -52,16 +90,14 @@
             </div>
         <div id="area">
             <div id="form-photo" class="shadow ml-5 p-4">
+
+                <!-- Product-Image -->
                 <h4 class="m-0">Photo of goods</h4>
                 <hr>
                 <div class="row ">
                     <div class="col-12 border rounded">
                        <div class="box-photo">
-                            <div class="main-foto"><div class="logo"><b>+</b></div></div>
-                            <div class="foto"><div class="logo"><b>+</b></div></div>
-                            <div class="foto"><div class="logo"><b>+</b></div></div>
-                            <div class="foto"><div class="logo"><b>+</b></div></div>
-                            <div class="foto"><div class="logo"><b>+</b></div></div>
+                            <input class="photo" type="file" @change="onFileUpload">
                        </div>
                        <hr>
                        <div class="btn-area">
@@ -69,10 +105,14 @@
                         </div>
                     </div>
                 </div>
+                <!-- End Product-Image -->
+
             </div>
         </div>
         <div id="area">
             <div id="form-desc" class="shadow ml-5 p-4">
+
+                <!-- Product-Description -->
                 <h4 class="m-0">Desription</h4>
                 <hr>
                 <div class="row ">
@@ -80,20 +120,28 @@
                         <form>
                             <div class="form">
                                 <div class="col-12">
-                                    <!-- <img src="./img/Screenshot (86) 1.png"> -->
-                                    <vue-editor v-model="content" :editor-toolbar="customToolbar" />
-                                    <!-- <div>{{ content }}</div> -->
+                                    <vue-editor
+                                    v-model="description"
+                                    :editor-toolbar="customToolbar" />
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
+                <!-- End Product-Description -->
+
             </div>
         </div>
         <div class="row">
             <div class="col-8 m-5"></div>
               <div class="col p-3">
-                  <button style="background: #d31d0d" class="btn btn-danger rounded-pill m-0 w-50" type="submit" @click="handleAdd">Jual</button>
+                  <button
+                  style="background: #d31d0d"
+                  class="btn btn-danger rounded-pill m-0 w-50"
+                  type="submit"
+                  @click="handleAddProduct">
+                  Jual
+                  </button>
                 </div>
             </div>
     </div>
@@ -102,7 +150,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import { VueEditor } from 'vue2-editor'
 
 export default {
@@ -110,54 +158,75 @@ export default {
   components: { VueEditor },
   data () {
     return {
+      // Form input product
       name: '',
       FILE: null,
       price: '',
-      idCategory: '',
       color: '',
       category: '',
       size: '',
       brand: '',
       author: '',
-      rate: '',
       condition: '',
       stock: '',
-      description: '',
-      idSeller: '',
-      content: '<h1>Some initial content</h1>',
+      description: 'description of product',
+      // End Form input product
+
+      // Vue Editor
       customToolbar: [
         ['bold', 'italic', 'underline'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         ['image', 'code-block']
       ]
+      // End Vue Editor
     }
   },
+  computed: {
+    ...mapGetters({
+      userId: 'userId'
+    })
+  },
   methods: {
-    ...mapActions(['addProduct']),
+    ...mapActions([
+      'addProduct',
+      'getNewProduct',
+      'imageProduct'
+    ]),
+
     onFileUpload (event) {
       this.FILE = event.target.files[0]
     },
-    handleAdd () {
-      const formData = new FormData()
-      formData.append('name', this.name)
-      formData.append('price', this.price)
-      formData.append('stock', this.stock)
-      formData.append('condition', this.condition)
-      formData.append('image', this.FILE, this.FILE.name)
-      formData.append('description', this.description)
-      formData.append('idCategory', this.idCategory)
-      formData.append('color', this.color)
-      formData.append('category', this.category)
-      formData.append('size', this.size)
-      formData.append('brand', this.brand)
-      formData.append('author', this.author)
-      formData.append('rate', this.rate)
-      formData.append('idSeller', this.idSeller)
 
-      this.addProduct(formData)
+    handleAddProduct () {
+      const data = {
+        name: this.name,
+        price: this.price,
+        rate: 0,
+        condition: this.condition,
+        stock: this.stock,
+        description: this.description,
+        idSeller: this.userId
+      }
+      this.addProduct(data)
         .then((res) => {
-          console.log(res)
-        //   this.$router.go(0)
+          this.getNewProduct()
+            .then((res) => {
+              const idProduct = res.data.result[0].id
+              const formData = new FormData()
+              formData.append('image', this.FILE, this.FILE.name)
+              const input = {
+                id: idProduct,
+                data: formData
+              }
+              this.imageProduct(input)
+                .then((res) => {
+                  this.name = ''
+                  this.price = ''
+                  this.condition = ''
+                  this.stock = ''
+                  this.condition = 'description of product'
+                })
+            })
         })
     }
   }

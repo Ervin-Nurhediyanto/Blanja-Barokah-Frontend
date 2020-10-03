@@ -113,8 +113,7 @@ const product = {
       return new Promise((resolve, reject) => {
         axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.id&order=DESC')
           .then((res) => {
-            setex.commit('setNewProduct', res.data.result)
-            resolve(res.data.result)
+            resolve(res)
           })
           .catch((err) => {
             reject(err)
@@ -137,8 +136,6 @@ const product = {
       return new Promise((resolve, reject) => {
         axios.get(process.env.VUE_APP_BASE_URL + '/products/?search=' + payload)
           .then((res) => {
-            // setex.commit('setAllProduct', res.data.result)
-            // resolve(res.data.result)
             setex.commit('setNewProduct', res.data.result)
             setex.commit('setPopularProduct', res.data.result)
             resolve(res.data.result)
@@ -152,7 +149,7 @@ const product = {
       return new Promise((resolve, reject) => {
         axios.post(process.env.VUE_APP_BASE_URL + '/products', payload)
           .then((res) => {
-            // setex.commit('setAllProduct', res.data.result)
+            console.log(res.data.result)
             resolve(res.data.result)
           })
           .catch((err) => {
@@ -160,11 +157,12 @@ const product = {
           })
       })
     },
+
     updateProduct (setex, payload) {
       return new Promise((resolve, reject) => {
         axios.patch(process.env.VUE_APP_BASE_URL + '/products/' + this.state.productId, payload)
           .then((res) => {
-            // setex.commit('setAllProduct', res.data.result)
+            console.log(res.data.result)
             resolve(res.data.result)
           })
           .catch((err) => {
@@ -172,11 +170,25 @@ const product = {
           })
       })
     },
+
+    imageProduct (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.patch(process.env.VUE_APP_BASE_URL + '/products/updateImage/' + payload.id, payload.data)
+          .then((res) => {
+            console.log(res.data.result)
+            resolve(res.data.result)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
     deleteProduct (setex, payload) {
       return new Promise((resolve, reject) => {
         axios.patch(process.env.VUE_APP_BASE_URL + '/products/' + payload)
           .then((res) => {
-            // setex.commit('setAllProduct', res.data.result)
+            console.log(res.data.result)
             resolve(res.data.result)
           })
           .catch((err) => {
