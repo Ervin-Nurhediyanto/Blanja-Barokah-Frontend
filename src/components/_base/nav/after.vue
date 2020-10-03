@@ -133,6 +133,7 @@ export default {
   computed: {
     ...mapGetters({
       user: 'user',
+      userId: 'userId',
       userImg: 'userImg',
       userName: 'userName',
       userRoleId: 'userRoleId',
@@ -146,19 +147,24 @@ export default {
     })
   },
   methods: {
+    ...mapActions([
+      'getSearchProduct',
+      'getProductSeller',
+      'logout'
+    ]),
+
     chat () {
       this.$router.push('/chat')
     },
     home () {
       this.$router.push('/')
     },
-    ...mapActions(['getSearchProduct']),
-    ...mapActions(['logout']),
     searchProduct () {
       this.getSearchProduct(this.search)
     },
     profile () {
       if (this.userRoleId === 'Seller') {
+        this.getProductSeller(this.userId)
         this.$router.push('/profileSeller')
       } else {
         this.$router.push('/profileCustomer')
