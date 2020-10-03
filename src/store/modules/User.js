@@ -38,6 +38,12 @@ const user = {
     setUserImage (state, payload) {
       state.userImg = payload
     },
+    setDateOfBirth (state, payload) {
+      state.userdateOfBirth = payload
+    },
+    setGender (state, payload) {
+      state.userGender = payload
+    },
     setStoreName (state, payload) {
       state.userstoreName = payload
     },
@@ -80,7 +86,7 @@ const user = {
       return new Promise((resolve, reject) => {
         axios.post(process.env.VUE_APP_BASE_URL + '/users/login/seller', payload)
           .then((res) => {
-            console.log(res.data.result.message)
+            // console.log(res.data.result.message)
             setex.commit('setUser', res.data.result)
             localStorage.setItem('token', res.data.result.token)
             localStorage.setItem('userId', res.data.result.id)
@@ -107,7 +113,18 @@ const user = {
         axios.post(process.env.VUE_APP_BASE_URL + '/users/login/custommer/', payload)
           .then((res) => {
             setex.commit('setUser', res.data.result)
-            localStorage.setItem('token', this.state.token)
+            localStorage.setItem('token', res.data.result.token)
+            localStorage.setItem('userId', res.data.result.id)
+            localStorage.setItem('userImg', res.data.result.image)
+            localStorage.setItem('userRoleId', res.data.result.roleId)
+            localStorage.setItem('userName', res.data.result.name)
+            localStorage.setItem('userEmail', res.data.result.email)
+            localStorage.setItem('userGender', res.data.result.gender)
+            localStorage.setItem('userdateOfBirth', res.data.result.dateOfBirth)
+            localStorage.setItem('userphoneNumber', res.data.result.phoneNumber)
+            localStorage.setItem('userstoreName', res.data.result.storeName)
+            localStorage.setItem('userstoreDescription', res.data.result.storeDescription)
+
             resolve(res.data.result[0])
           })
           .catch((err) => {
@@ -184,6 +201,15 @@ const user = {
             setex.commit('setStoreDes', res.data.result[0].storeDescription)
             localStorage.setItem('userstoreDescription', res.data.result[0].storeDescription)
 
+            setex.commit('setUsername', res.data.result[0].name)
+            localStorage.setItem('userName', res.data.result[0].name)
+
+            setex.commit('setDateOfBirth', res.data.result[0].dateOfBirth)
+            localStorage.setItem('userdateOfBirth', res.data.result[0].dateOfBirth)
+
+            setex.commit('setGender', res.data.result[0].gender)
+            localStorage.setItem('userGender', res.data.result[0].gender)
+
             resolve(res.data.result[0])
           })
           .catch((err) => {
@@ -207,7 +233,6 @@ const user = {
     },
 
     uploadImageStore (setex, payload) {
-      // console.log(payload)
       return new Promise((resolve, reject) => {
         axios.patch(process.env.VUE_APP_BASE_URL + '/users/uploadImageStore/' + payload.id, payload.data)
           .then((res) => {
@@ -219,6 +244,33 @@ const user = {
           })
       })
     },
+
+    updateCustomer (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.patch(process.env.VUE_APP_BASE_URL + '/users/myProfile/' + payload.id, payload.data)
+          .then((res) => {
+            console.log(res.data)
+            resolve(res.data.message)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
+    uploadImageCustomer (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.patch(process.env.VUE_APP_BASE_URL + '/users/uploadImageStore/' + payload.id, payload.data)
+          .then((res) => {
+            console.log(res.data)
+            resolve(res.data.message)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+
     logout () {
       return new Promise((resolve, reject) => {
         if (this.state.token !== null) {
