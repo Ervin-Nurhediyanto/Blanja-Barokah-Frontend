@@ -35,7 +35,8 @@
             <div class="col">
                 <div class="border-left ml-4">
                     <div class="row p-0">
-                        <img :src="userImg" class="rounded-circle mx-auto" alt="Responsive image" height="111px">
+                        <img v-if="userImg" :src="userImg" class="rounded-circle mx-auto" alt="Responsive image" height="111px">
+                        <img v-else src="../../../assets/Profile/pp.png" class="rounded-circle mx-auto" alt="Responsive image" height="111px">
                     </div>
                     <div class="row p-0">
                         <form>

@@ -25,7 +25,10 @@
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/shopping-cart.png"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/bell.png"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/mail.png" @click="chat"></a>
-                        <a class="nav-link mr-5" href="#"><img :src="userImg" class="rounded-circle" @click="profile"></a>
+
+                        <a v-if="userImg" class="nav-link mr-5" href="#"><img :src="userImg" class="rounded-circle" @click="profile"></a>
+                        <a v-else class="nav-link mr-5" href="#"><img src="../../../assets/Profile/pp.png" class="rounded-circle" @click="profile"></a>
+
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/logout.png" class="logout" @click="handleLogout"></a>
                     </div>
                 </div>
