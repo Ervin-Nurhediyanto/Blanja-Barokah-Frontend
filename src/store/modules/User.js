@@ -97,7 +97,7 @@ const user = {
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            alert(err.response.data.result)
+            // alert(err.response.data.result)
             reject(err)
           })
       })
@@ -111,7 +111,7 @@ const user = {
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            alert(err.response.data.result)
+            // alert(err.response.data.result)
             reject(err)
           })
       })
@@ -123,7 +123,7 @@ const user = {
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            alert(err.response.data.result)
+            // alert(err.response.data.result)
             reject(err)
           })
       })
@@ -135,7 +135,7 @@ const user = {
             resolve(res.data.result[0])
           })
           .catch((err) => {
-            alert(err.response.data.result)
+            // alert(err.response.data.result)
             reject(err)
           })
       })

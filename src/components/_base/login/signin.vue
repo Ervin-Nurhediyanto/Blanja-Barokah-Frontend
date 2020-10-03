@@ -75,6 +75,9 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
+
+          // kalo sweet alert gamau muncul, coba sweet alertnya make kek gini dulu
+          // this.$swal('Hello Vue world!!!')
           this.$router.push('/')
         })
         .catch((err) => {
@@ -100,6 +103,7 @@ export default {
             showConfirmButton: false,
             timer: 1500
           })
+          // this.$swal('Hello Vue world!!!')
           this.$router.push('/')
         })
         .catch((err) => {
