@@ -2,9 +2,9 @@
     <div>
         <nav class="bg-light p-0 shadow">
             <nav class="navbar container navbar-expand-lg navbar-light bg-light p-0">
-                <div class="row mx-auto my-2" @click="home">
+                <div class="barokah row mx-auto my-2" @click="home">
                     <img src="../../../assets/Vector.png">
-                    <strong id="brand" class="my-auto mr-5" >Barokah</strong>
+                    <strong id="brand" class="barokah my-auto mr-5" >Barokah</strong>
                 </div>
                 <button class="navbar-toggler mr-5" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -294,5 +294,9 @@ label {
     border: 2px solid #bdb7b7;
     border-radius: 10px;
     overflow: hidden;
+}
+
+.barokah {
+    cursor: pointer;
 }
 </style>

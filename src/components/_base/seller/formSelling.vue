@@ -96,11 +96,11 @@
                 <hr>
                 <div class="row ">
                     <div class="col-12 border rounded">
-                       <div class="box-photo">
+                       <div v-show="showUpload" class="box-photo">
                             <input class="photo" type="file" @change="onFileUpload">
                        </div>
-                       <hr>
-                       <div class="btn-area">
+                       <hr v-show="showUpload">
+                       <div @click="handleShowUpload" class="btn-area">
                             <button class="btn btn-upload rounded-pill ml-0 w-40" type="submit">Upload foto</button>
                         </div>
                     </div>
@@ -177,8 +177,12 @@ export default {
         ['bold', 'italic', 'underline'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         ['image', 'code-block']
-      ]
+      ],
       // End Vue Editor
+
+      // V-Show
+      showUpload: false
+      // End V-Show
     }
   },
   computed: {
@@ -220,14 +224,27 @@ export default {
               }
               this.imageProduct(input)
                 .then((res) => {
-                  this.name = ''
-                  this.price = ''
-                  this.condition = ''
-                  this.stock = ''
-                  this.condition = 'description of product'
+                  if (res.data.result === 'Update Product Success') {
+                    alert('Add Product Success')
+                    this.name = ''
+                    this.price = ''
+                    this.condition = ''
+                    this.stock = ''
+                    this.description = 'description of product'
+                  } else {
+                    alert(res.data.result)
+                  }
                 })
             })
         })
+    },
+
+    handleShowUpload () {
+      if (this.showUpload) {
+        this.showUpload = false
+      } else {
+        this.showUpload = true
+      }
     }
   }
 }

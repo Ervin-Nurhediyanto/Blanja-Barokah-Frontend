@@ -7,7 +7,10 @@ const product = {
     newProduct: [],
     popularProduct: [],
     selectProduct: [],
-    productId: ''
+    productId: '',
+    totalPage: '',
+    pageNew: '',
+    pagePopular: ''
   },
   mutations: {
     setAllProduct (state, payload) {
@@ -16,17 +19,33 @@ const product = {
     setProductSeller (state, payload) {
       state.productSeller = payload
     },
+
+    // New Product
     setNewProduct (state, payload) {
       state.newProduct = payload
     },
+    setPageNew (state, payload) {
+      state.pageNew = payload
+    },
+    // End New Product
+
+    // Popular Product
     setPopularProduct (state, payload) {
       state.popularProduct = payload
     },
+    setPagePopular (state, payload) {
+      state.pagePopular = payload
+    },
+    // End Popular Product
+
     setSelectProduct (state, payload) {
       state.selectProduct = payload
     },
     setProductId (state, payload) {
       state.productId = payload
+    },
+    setTotalPage (state, payload) {
+      state.totalPage = payload
     }
   },
   actions: {
@@ -35,6 +54,7 @@ const product = {
         axios.get(process.env.VUE_APP_BASE_URL + '/products')
           .then((res) => {
             setex.commit('setAllProduct', res.data.result)
+            setex.commit('setTotalPage', Math.ceil(res.data.result.length / 10))
             resolve(res.data.result)
           })
           .catch((err) => {
@@ -120,6 +140,37 @@ const product = {
           })
       })
     },
+
+    // New Product
+    getNewProductHome (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.id&order=DESC&page=1&limit=10')
+          .then((res) => {
+            setex.commit('setPageNew', Number(res.data.page))
+            setex.commit('setNewProduct', res.data.result)
+            resolve(res)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    getPageNew (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.id&order=DESC&page=' + payload + '&limit=10')
+          .then((res) => {
+            setex.commit('setPageNew', Number(res.data.page))
+            setex.commit('setNewProduct', res.data.result)
+            resolve(res)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    // End New Product
+
+    // Popular Product
     getPopularProduct (setex, payload) {
       return new Promise((resolve, reject) => {
         axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.rate&order=DESC')
@@ -132,6 +183,8 @@ const product = {
           })
       })
     },
+    // End Popular Product
+
     getSearchProduct (setex, payload) {
       return new Promise((resolve, reject) => {
         axios.get(process.env.VUE_APP_BASE_URL + '/products/?search=' + payload)
@@ -176,7 +229,7 @@ const product = {
         axios.patch(process.env.VUE_APP_BASE_URL + '/products/updateImage/' + payload.id, payload.data)
           .then((res) => {
             console.log(res.data.result)
-            resolve(res.data.result)
+            resolve(res)
           })
           .catch((err) => {
             reject(err)
@@ -215,6 +268,15 @@ const product = {
     },
     selectProduct  (state) {
       return state.selectProduct
+    },
+    totalPage (state) {
+      return state.totalPage
+    },
+    pageNew (state) {
+      return state.pageNew
+    },
+    pagePopular (state) {
+      return state.pagePopular
     }
   }
 }
