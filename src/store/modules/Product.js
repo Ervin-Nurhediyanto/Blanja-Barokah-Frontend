@@ -173,10 +173,24 @@ const product = {
     // Popular Product
     getPopularProduct (setex, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.rate&order=DESC')
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.rate&order=DESC&page=1&limit=10')
           .then((res) => {
+            setex.commit('setPagePopular', Number(res.data.page))
             setex.commit('setPopularProduct', res.data.result)
             resolve(res.data.result)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    getPagePopular (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.rate&order=DESC&page=' + payload + '&limit=10')
+          .then((res) => {
+            setex.commit('setPagePopular', Number(res.data.page))
+            setex.commit('setPopularProduct', res.data.result)
+            resolve(res)
           })
           .catch((err) => {
             reject(err)
