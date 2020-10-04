@@ -19,7 +19,7 @@
         </a>
       </li>
       <li
-        v-show="pageNew >= totalPage && pageNew < 2"
+        v-show="pageNew >= totalPage && pageNew < 2 && pageNew !== 1"
         @click.prevent="handlePrevPage(2)"
         class="page-item"
       >

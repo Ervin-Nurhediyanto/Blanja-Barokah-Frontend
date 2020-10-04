@@ -19,7 +19,7 @@
         </a>
       </li>
       <li
-        v-show="pagePopular >= totalPage && pagePopular < 2"
+        v-show="pagePopular >= totalPage && pagePopular < 2 && pagePopular !== 1"
         @click.prevent="handlePrevPage(2)"
         class="page-item"
       >

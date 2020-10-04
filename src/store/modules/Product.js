@@ -201,11 +201,35 @@ const product = {
 
     getSearchProduct (setex, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_BASE_URL + '/products/?search=' + payload)
+        // Search New Product
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.id&order=DESC&page=1&limit=10&search=' + payload)
           .then((res) => {
+            setex.commit('setPageNew', Number(res.data.page))
             setex.commit('setNewProduct', res.data.result)
-            setex.commit('setPopularProduct', res.data.result)
-            resolve(res.data.result)
+            // End Search New Product
+
+            // Search Popular Product
+            axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.rate&order=DESC&page=1&limit=10&search=' + payload)
+              .then((res) => {
+                setex.commit('setPagePopular', Number(res.data.page))
+                setex.commit('setPopularProduct', res.data.result)
+                // End Search Popular Product
+
+                // Search Set Total Page
+                axios.get(process.env.VUE_APP_BASE_URL + '/products/?search=' + payload)
+                  .then((res) => {
+                    setex.commit('setAllProduct', res.data.result)
+                    setex.commit('setTotalPage', Math.ceil(res.data.result.length / 10))
+                    // End Search Set Total Page
+                    resolve(res.data.result)
+                  })
+                  .catch((err) => {
+                    reject(err)
+                  })
+              })
+              .catch((err) => {
+                reject(err)
+              })
           })
           .catch((err) => {
             reject(err)
