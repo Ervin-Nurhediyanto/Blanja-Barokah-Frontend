@@ -207,37 +207,19 @@
           </div>
         </form>
       </div>
-      <div class="col">
-        <div class="border-left ml-4">
-          <div class="row p-0">
-            <img
-              v-if="userImg"
-              :src="userImg"
-              class="rounded-circle mx-auto"
-              alt="Responsive image"
-              height="111px"
-            />
-            <img
-              v-else
-              src="../../../assets/Profile/pp.png"
-              class="rounded-circle mx-auto"
-              alt="Responsive image"
-              height="111px"
-            />
-          </div>
-          <div class="row p-0">
-              <form>
-                <input class="" type="file" @change="onFileUpload">
+      <div class="col profile">
+        <div class="border-left">
+            <div class="row p-0 img-container">
+                <img v-if="userImg" :src="userImg" class="rounded-circle mx-auto" alt="Responsive image" height="111px">
+                <img v-else src="../../../assets/Profile/pp.png" class="rounded-circle mx-auto" alt="Responsive image" height="111px">
+            </div>
+            <div class="row cek ml-1">
+              <form class="upload mt-2">
+                <input type="file" name="file" id="file" class="inputFile" @change="onFileUpload" />
+                <label for="file" @change="onFileUpload"><i class="fa fa-pencil-square-o"> Edit</i></label>
+                <button type="submit" class="btn-submit mt-3" @click.prevent="handleUploadImg">Upload</button>
               </form>
-          </div>
-          <div class="row p-0">
-            <button
-              class="btn btn-outline-secondary rounded-pill m-0 px-3 mx-auto mt-4"
-              @click.prevent="handleUploadImg"
-            >
-              Select image
-            </button>
-          </div>
+            </div>
         </div>
       </div>
     </div>
@@ -322,6 +304,12 @@ export default {
           this.textName = ''
           this.textEmail = ''
           this.textPhone = ''
+          this.$swal({
+            icon: 'success',
+            title: 'Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
       })
     },
@@ -340,6 +328,12 @@ export default {
               this.textName = ''
               this.textEmail = ''
               this.textPhone = ''
+              this.$swal({
+                icon: 'success',
+                title: 'Success',
+                showConfirmButton: false,
+                timer: 1500
+              })
             })
         })
     },
@@ -351,4 +345,65 @@ export default {
 }
 </script>
 <style scoped>
+.img-container {
+  width: 120px;
+  height: 120px;
+  margin-left: 40px;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+}
+.profile {
+  margin-right: 20px;
+}
+.cek {
+  max-width: 170px;
+  height: auto;
+}
+.btn-submit {
+  border: none;
+  background-color: #d31d0d;
+  color: #fff;
+  width: 65px;
+  height: 35px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.upload {
+  width: 200px;
+}
+.upload input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.upload label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #d31d0d;
+  padding: 5px;
+  width: 70px;
+  height: 50px;
+  margin-left: 15px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
+  background-color: #fff;
+  display: inline-block;
+}
+
+.upload input:focus + label,
+.upload input + label:hover {
+  background-color: #ee6a5e;
+  color: #fff;
+}
+.upload input + label {
+  cursor: pointer;
+}
 </style>
