@@ -175,6 +175,7 @@ export default {
 .img-container img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 .profile {
   margin-right: 20px;
