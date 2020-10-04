@@ -192,59 +192,59 @@ button:hover,
 label:focus,
 .btn:active,
 .btn.active {
-    outline: 0px !important;
-    -webkit-appearance: none;
-    box-shadow: none !important;
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
 }
 #iconprofil{
-    width: 120px;
-    margin-left: 120px;
+  width: 120px;
+  margin-left: 120px;
 }
 .container-fluid {
-    height: 91vh;
-    padding: 0;
-    margin: 0;
+  height: 91vh;
+  padding: 0;
+  margin: 0;
 }
 a {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 #profil {
-    width: 28%;
-    padding-top: 45px;
+  width: 28%;
+  padding-top: 45px;
 }
 #photo {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 #icon {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 #profil h6:hover {
-    background: rgb(255, 242, 124);
+  background: rgb(255, 242, 124);
 }
 #icon img {
-    margin: auto;
+  margin: auto;
 }
 #area {
-    width: 72%;
-    background: #F5F5F5;
+  width: 72%;
+  background: #F5F5F5;
 }
 #form {
-    background: white;
-    margin-top: 45px;
-    width: 850px;
-    height: 500px;
+  background: white;
+  margin-top: 45px;
+  width: 90%;
+  height: 500px;
 }
 .form-inline {
-    border: 1px solid #bdb7b7 !important;
-    overflow: hidden;
-    padding: 0;
-    height: 35px;
-    width: 250px;
+  border: 1px solid #bdb7b7 !important;
+  overflow: hidden;
+  padding: 0;
+  height: 35px;
+  width: 250px;
 }
 .form-inline input {
-    border: none;
+  border: none;
 }
 </style>
