@@ -5,7 +5,7 @@
         <div class="title"><h1>My bag</h1></div>
         <div class="box-content">
           <div class="boxItem">
-            <div class="checklistAll-box">
+            <!-- <div class="checklistAll-box">
               <div class="box-checkbox">
                 <label class="container">
                   <input type="checkbox">
@@ -13,21 +13,21 @@
                 </label>
               </div>
               <div class="text1"><h5>Select all items</h5></div>
-              <div class="text2"><h5>(1 items selected)</h5></div>
+              <div class="text2"><h5>({{myBag.length}} items selected)</h5></div>
               <div class="delete"><h5>Delete</h5></div>
-            </div>
+            </div> -->
 
             <!-- List My Bag -->
             <div class="cardItem" v-for="(product, index) in myBag" :key="index">
               <div class="card">
-                <div class="box-checkbox">
-                   <label class="container">
+                <!-- <div class="box-checkbox">
+                   <label class="container"> -->
                   <!-- <div class="selected"><h5>(2 items selected)</h5></div> -->
                   <!-- <div class="delete"><h5>Delete</h5></div> -->
-                  <input type="checkbox">
-                  <div class="checkmark"></div>
-                </label>
-                </div>
+                    <!-- <input type="checkbox">
+                    <div class="checkmark"></div>
+                  </label>
+                </div> -->
                 <div class="container-img">
                   <img v-if="product.image" :src="product.image">
                   <img v-else src="../../assets/image/Empty.jpg">
