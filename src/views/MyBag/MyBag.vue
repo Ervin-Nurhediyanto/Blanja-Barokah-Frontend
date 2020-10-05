@@ -54,7 +54,7 @@
               <div class="text"><h6>Total price</h6></div>
               <div class="total"><h6>Rp. {{totalPrice}}</h6></div>
             </div>
-            <button class="btn buy" ref="../views/Checkout.vue">Buy</button>
+            <button class="btn buy" ref="../views/Checkout.vue" @click="handleCheckout">Buy</button>
           </div>
         </div>
       </div>
@@ -89,6 +89,9 @@ export default {
     ]),
     handleDelete (index) {
       this.deleteFronMyBag(index)
+    },
+    handleCheckout () {
+      this.$router.push('/checkout')
     }
   //   plus () {
   //     this.count = this.count + 1

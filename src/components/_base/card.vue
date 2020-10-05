@@ -2,8 +2,10 @@
     <div>
         <div class="card shadow m-3">
             <!-- Card Image -->
-            <img v-if="image" :src="image.split(',')[0]" class="card-img-top" :alt="name" @click="select">
-            <img v-else src="../../assets/image/Empty.jpg" class="card-img-top" :alt="name" @click="select">
+            <div class="img-container">
+              <img v-if="image" :src="image.split(',')[0]" class="card-img-top" :alt="name" @click="select">
+              <img v-else src="../../assets/image/Empty.jpg" class="card-img-top" :alt="name" @click="select">
+            </div>
             <!-- End Card Image -->
             <div class="card-body col">
                 <!-- Card Rate -->
@@ -60,10 +62,15 @@ export default {
 </script>
 
 <style scoped>
-img {
+.img-container {
   width: 238px;
-  height: 136px;
+  height: 170px;
   cursor: pointer;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .card {
   border-radius: 8px !important;

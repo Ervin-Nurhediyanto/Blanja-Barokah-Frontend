@@ -22,7 +22,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/shopping-cart.png"></a>
+                        <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/shopping-cart.png" @click="myBag"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/bell.png"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/mail.png" @click="chat"></a>
 
@@ -175,6 +175,9 @@ export default {
 
     chat () {
       this.$router.push('/chat')
+    },
+    myBag () {
+      this.$router.push('/mybag')
     },
     home () {
       this.$router.push('/')
