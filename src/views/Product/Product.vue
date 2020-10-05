@@ -3,21 +3,20 @@
          <div class="container">
         <div class="product">
         <div class="headProduct">
+
+            <!-- Image Product -->
             <div class="box-image">
                 <div class="img-view">
-                    <img class="" :src="selectProduct.image[0]" alt="">
+                    <img class="" :src="viewProduct" alt="">
                 </div>
                 <div class="img-select">
                     <div v-for="(image,index) in selectProduct.image" :key="index">
-                        <img class="image" :src="image" alt="">
+                        <img class="image" :src="image" alt="" @click.prevent="handleViewProduct(image)">
                     </div>
-                    <!-- <div class="image one"><img src="../../assets/image/1de17b40-c750-40ed-a618-ca2c5ee79da0 3.png" alt=""></div>
-                    <div class="image two"><img src="../../assets/image/4bcf6332-eea3-4278-8c75-9be1f59cbfa3 2.png" alt=""></div>
-                    <div class="image three"><img src="../../assets/image/5f9d591f-54e0-4f48-99c8-33e5ab47c871 2.png" alt=""></div>
-                    <div class="image four"><img src="../../assets/image/ef0755f4-97be-42d3-a1e9-e3c892b52706 2.png" alt=""></div>
-                    <div class="image five"><img src="../../assets/image/f2c747c5-1f63-4476-b1b9-d8aa8ace2ac2 2.png" alt=""></div> -->
                 </div>
             </div>
+            <!-- End Image Product -->
+
             <div class="box-detail">
                 <div class="title-product">
                     <div class="name-product">
@@ -38,20 +37,20 @@
                     <div class="priceMoney"><h3>Rp {{selectProduct.price}} </h3></div>
                 </div>
                 <div class="color">
-                    <div class="colorName"><h6><b>color: {{selectProduct.color}}</b></h6></div>
-                    <div class="setColor">
-                        <div class="ellipse black"></div>
-                        <div class="ellipse red"></div>
-                        <div class="ellipse blue"></div>
-                        <div class="ellipse green"></div>
-                        <!-- <div id="color">
-                            <input type="radio" class="option-input radio shadow" name="example" style="background: black;" checked />
-                            <input type="radio" class="option-input radio shadow" name="example" style="background: #FFFFFF;" />
-                            <input type="radio" class="option-input radio shadow" name="example" style="background: #B82222;" />
-                            <input type="radio" class="option-input radio shadow" name="example" style="background: #BEA9A9;" />
-                            <input type="radio" class="option-input radio shadow" name="example" style="background: #E2BB8D;" />
-                            <input type="radio" class="option-input radio shadow" name="example" style="background: #151867" />
-                        </div> -->
+                    <div class="colorName"><h6><b>Color</b></h6></div>
+                    <div class="row">
+
+                    <!-- Color Product -->
+                    <div class="setColor pl-3" v-for="(color, index) in selectProduct.color.split(', ')" :key="index">
+                        <div v-if="color === 'Black'" class="ellipse black"></div>
+                        <div v-if="color === 'Red'" class="ellipse red"></div>
+                        <div v-if="color === 'Blue'" class="ellipse blue"></div>
+                        <div v-if="color === 'Green'" class="ellipse green"></div>
+                        <div v-if="color === 'Purple'" class="ellipse purple"></div>
+                        <div v-if="color === 'Grey'" class="ellipse grey"></div>
+                    </div>
+                    <!-- End Color Product -->
+
                     </div>
                 </div>
                 <div class="count-box">
@@ -159,6 +158,7 @@ export default {
   },
   data () {
     return {
+      viewProduct: '',
       countSize: 0,
       count: 0
     }
@@ -168,7 +168,13 @@ export default {
       selectProduct: 'selectProduct'
     })
   },
+  mounted () {
+    this.viewProduct = this.selectProduct.image[0]
+  },
   methods: {
+    handleViewProduct (image) {
+      this.viewProduct = image
+    },
     addCount () {
       this.count = this.count + 1
     },
@@ -247,6 +253,7 @@ export default {
     flex-direction: row;
     justify-content: space-between;
     width: 378px;
+    cursor: pointer;
 
     /* border: 1px solid black; */
 }
@@ -411,6 +418,9 @@ img {
 .red { background-color: #D84242;}
 .blue { background-color: #4290D8;}
 .green { background-color: #42D86C;}
+.purple { background-color: purple;}
+.grey { background-color: grey;}
+
 .count-box {
     display: flex;
     flex-direction: row;
