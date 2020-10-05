@@ -50,6 +50,6 @@
 
 <script>
 export default {
-  name: 'myorder'
+  name: 'My-Order'
 }
 </script>
