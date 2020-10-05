@@ -11,7 +11,9 @@ const product = {
     totalPage: '',
     pageNew: '',
     pagePopular: '',
-    myBag: []
+    myBag: [],
+    checkout: null,
+    totalCheckout: null
   },
   mutations: {
     setAllProduct (state, payload) {
@@ -55,8 +57,17 @@ const product = {
     },
     deleteMyBag (state, payload) {
       state.myBag.splice(payload, 1)
-    }
+    },
     // End My Bag
+
+    // Checkout
+    setCheckout (state, payload) {
+      state.checkout = payload
+    },
+    setTotalCheckout (state, payload) {
+      state.totalCheckout = payload
+    }
+    // End Checkout
   },
   actions: {
     getAllProduct (setex, payload) {
@@ -307,8 +318,15 @@ const product = {
     },
     deleteFronMyBag (setex, payload) {
       setex.commit('deleteMyBag', payload)
-    }
+    },
     // End My Bag
+
+    // Checkout
+    setToCheckout (setex, payload) {
+      setex.commit('setCheckout', payload.data)
+      setex.commit('setTotalCheckout', payload.total)
+    }
+    // End Checkout
   },
   getters: {
     allProduct (state) {
@@ -337,6 +355,12 @@ const product = {
     },
     myBag (state) {
       return state.myBag
+    },
+    checkout (state) {
+      return state.checkout
+    },
+    totalCheckout (state) {
+      return state.totalCheckout
     }
   }
 }

@@ -5,38 +5,50 @@
             <div class="title"><h1><b>Checkout</b></h1></div>
             <div class="content-box">
             <div class="boxItem">
+
+                <!-- User Address -->
                 <div class="title"><h5><b>Shipping Address</b></h5></div>
                 <div class="address-box">
-                    <div class="name"><h5>Andress Jane</h5></div>
-                    <div class="address"><h6>Perumahan Sapphire Mediterania, Wiradadi, Kec. Sokaraja, Kabuaten Banyumas, Jawa Tengah, 53181 [Tokopedia Note: bkok c 76] Sokaraja. Kab. Banyumas. 53181</h6></div>
+                  <h5>{{selectAddress.title}}</h5>
+                      <div class="address">
+                        <h6>{{ selectAddress.address }}. Kota {{selectAddress.city}}. Kode Pos {{selectAddress.postalCode}}</h6>
+                        <h6>Penerima: {{selectAddress.name}} ({{selectAddress.telephoneNumber}})</h6>
+                      </div>
                     <button class="btn chooseAddress" @click="toggleModal">Choose another address</button>
-                    <modalAddress v-show="modalActive" :closeModal="toggleModal"/>
-                    <!-- <addAddress v-show="modalActive" :closeModal="toggleModal"/> -->
+                    <ModalAddress v-show="modalActive" :closeModal="toggleModal"/>
                 </div>
-                <div class="cardItem">
+                <!-- End User Address -->
+
+                <!-- List Checkout -->
+                <div class="cardItem" v-for="(product, index) in checkout" :key="index">
                     <div class="card">
-                        <div class="container-img"><img src="../../assets/image/4bcf6332-eea3-4278-8c75-9be1f59cbfa3 2.png"></div>
-                        <div class="name-box">
-                            <div class="name"><h5>Men's formal suit-Black</h5></div>
-                            <div class="brand"><h6>Zalora Cloth</h6></div>
+                        <div class="container-img">
+                          <img v-if="product.image" :src="product.image">
+                          <img v-else src="../../assets/image/Empty.jpg">
                         </div>
-                    <div class="price"><h4>Rp. 40000</h4></div>
+                        <div class="name-box">
+                            <div class="name"><h5>{{product.name}}</h5></div>
+                            <div class="brand"><h6>{{product.brand}}</h6></div>
+                        </div>
+                    <div class="price"><h4>Rp. {{product.price * product.count}}</h4></div>
                 </div>
+                <!-- End List Checkout -->
+
             </div>
         </div>
           <div class="box-summary">
             <div class="summary"><h5>Shopping summary</h5></div>
             <div class="order-box">
               <div class="text"><h6>Order</h6></div>
-              <div class="total"><h6>Rp.40000</h6></div>
+              <div class="total"><h6>Rp.{{totalCheckout}}</h6></div>
             </div>
             <div class="total-box">
               <div class="text"><h6>Delivery</h6></div>
-              <div class="total"><h6>Rp. 5000</h6></div>
+              <div class="total"><h6>Rp. {{delivery}}</h6></div>
             </div>
             <div class="total-shopping">
                 <div class="text"><h6>Shopping summary</h6></div>
-                <div class="total"><h6>Rp. 45000</h6></div>
+                <div class="total"><h6>Rp. {{totalCheckout + delivery}}</h6></div>
             </div>
             <button class="btn buy" @click="togglePayment">Select payment</button>
             <Payment v-show="selectPay" :closeModal="togglePayment"/>
@@ -47,24 +59,49 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import ModalAddress from '../../components/_base/modalAddress/dataAddress'
 import Payment from '../../components/_base/modalPayment/payment'
 
 export default {
-  name: 'Mybag',
+  name: 'Checkout',
   components: {
     ModalAddress,
     Payment
-
   },
   data () {
     return {
       count: 0,
       modalActive: false,
-      selectPay: false
+      selectPay: false,
+      delivery: 15000
     }
   },
+  computed: {
+    ...mapGetters({
+      userId: 'userId',
+      checkout: 'checkout',
+      totalCheckout: 'totalCheckout',
+      userAddress: 'userAddress',
+      selectAddress: 'selectAddress'
+    })
+  },
+  mounted () {
+    const data = {
+      id: this.userId
+    }
+    this.getUserAddress(data)
+    this.userAddress.map((item) => {
+      if (item.setAddress === 1) {
+        this.getSelectAddress(item)
+      }
+    })
+  },
   methods: {
+    ...mapActions([
+      'getUserAddress',
+      'getSelectAddress'
+    ]),
     plus () {
       this.count = this.count + 1
     },
@@ -77,8 +114,6 @@ export default {
     togglePayment () {
       this.selectPay = !this.selectPay
     }
-  },
-  computed: {
   }
 }
 </script>

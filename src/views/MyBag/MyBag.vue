@@ -5,29 +5,10 @@
         <div class="title"><h1>My bag</h1></div>
         <div class="box-content">
           <div class="boxItem">
-            <!-- <div class="checklistAll-box">
-              <div class="box-checkbox">
-                <label class="container">
-                  <input type="checkbox">
-                  <div class="checkmark"></div>
-                </label>
-              </div>
-              <div class="text1"><h5>Select all items</h5></div>
-              <div class="text2"><h5>({{myBag.length}} items selected)</h5></div>
-              <div class="delete"><h5>Delete</h5></div>
-            </div> -->
 
             <!-- List My Bag -->
             <div class="cardItem" v-for="(product, index) in myBag" :key="index">
               <div class="card">
-                <!-- <div class="box-checkbox">
-                   <label class="container"> -->
-                  <!-- <div class="selected"><h5>(2 items selected)</h5></div> -->
-                  <!-- <div class="delete"><h5>Delete</h5></div> -->
-                    <!-- <input type="checkbox">
-                    <div class="checkmark"></div>
-                  </label>
-                </div> -->
                 <div class="container-img">
                   <img v-if="product.image" :src="product.image">
                   <img v-else src="../../assets/image/Empty.jpg">
@@ -37,9 +18,7 @@
                   <div class="brand"><h6>{{product.brand}}</h6></div>
                 </div>
                 <div class="count">
-                  <!-- <button class="btn count min" @click="min(product.count)">-</button> -->
                   <div class="number">{{product.count}}x</div>
-                  <!-- <button class="btn count plus" @click="plus(product.count)">+</button> -->
                 </div>
                 <div class="price"><h4>Rp. {{product.price * product.count}}</h4></div>
                 <div @click.prevent="handleDelete(index)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></div>
@@ -85,12 +64,19 @@ export default {
   },
   methods: {
     ...mapActions([
-      'deleteFronMyBag'
+      'deleteFronMyBag',
+      'setToCheckout'
     ]),
     handleDelete (index) {
       this.deleteFronMyBag(index)
     },
     handleCheckout () {
+      // const data = this.myBag
+      const input = {
+        data: this.myBag,
+        total: this.totalPrice
+      }
+      this.setToCheckout(input)
       this.$router.push('/checkout')
     }
   //   plus () {
