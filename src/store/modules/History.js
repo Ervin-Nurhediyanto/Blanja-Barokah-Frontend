@@ -32,7 +32,7 @@ const history = {
     },
     getHistoryUser (setex, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_BASE_URL + '/histories/?user=' + payload)
+        axios.get(process.env.VUE_APP_BASE_URL + '/histories/?user=' + payload + '&sort=id&order=DESC')
           .then((res) => {
             setex.commit('setHistoryUser', res.data.result)
             resolve(res)
@@ -42,18 +42,6 @@ const history = {
           })
       })
     },
-    // getStatusHistoryUser (setex, payload) {
-    //   return new Promise((resolve, reject) => {
-    //     axios.get(process.env.VUE_APP_BASE_URL + '/histories/?user=' + payload.id + '&status=' + payload.status)
-    //       .then((res) => {
-    //         setex.commit('setHistoryUser', res.data.result)
-    //         resolve(res)
-    //       })
-    //       .catch((err) => {
-    //         reject(err)
-    //       })
-    //   })
-    // },
     getHistorySeller (setex, payload) {
       return new Promise((resolve, reject) => {
         axios.get(process.env.VUE_APP_BASE_URL + '/histories/?seller=' + payload)
