@@ -32,7 +32,7 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Card',
-  props: ['name', 'image', 'price', 'brand', 'id', 'rate', 'color', 'condition', 'description', 'stock'],
+  props: ['name', 'image', 'price', 'brand', 'id', 'rate', 'color', 'condition', 'description', 'stock', 'idSeller'],
   computed: {
     ...mapGetters({
       selectProduct: 'selectProduct'
@@ -52,7 +52,8 @@ export default {
         color: this.color,
         condition: this.condition,
         description: this.description,
-        stock: this.stock
+        stock: this.stock,
+        idSeller: this.idSeller
       }
       this.chooseProduct(data)
       this.$router.push('/product')

@@ -23,9 +23,9 @@
                     <div class="col-7">
                         <h5 class="text-left mt-2">Gopay</h5>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2" @click="selectGopay">
                         <label class="container">
-                        <input type="checkbox">
+                        <input v-model="gopay" type="checkbox">
                         <div class="checkmark"></div>
                         </label>
                     </div>
@@ -38,8 +38,8 @@
                         <h5 class="text-left mt-2">Pos indonesia</h5>
                     </div>
                     <div class="col-2">
-                        <label class="container">
-                        <input type="checkbox">
+                        <label class="container" @click="selectPosIndo">
+                        <input v-model="posIndonesia" type="checkbox">
                         <div class="checkmark"></div>
                         </label>
                     </div>
@@ -52,8 +52,8 @@
                         <h5 class="text-left mt-2">Mastercard</h5>
                     </div>
                     <div class="col-2">
-                        <label class="container">
-                        <input type="checkbox">
+                        <label class="container" @click="selectMastercard">
+                        <input v-model="mastercard" type="checkbox">
                         <div class="checkmark"></div>
                         </label>
                     </div>
@@ -63,19 +63,19 @@
                 <div class="col-12"><h5 class="text-left font-weight-bold">Shopping summary</h5></div>
                     <div class="row">
                         <div class="col-6"><h6 class="text-left">Order</h6></div>
-                        <div class="col-6"><h6 class="text-right font-weight-bold">$ 40.0</h6></div>
+                        <div class="col-6"><h6 class="text-right font-weight-bold">Rp. {{totalCheckout}}</h6></div>
                     </div>
                     <div class="row">
                         <div class="col-6"><h6 class="text-left">Delivery</h6></div>
-                        <div class="col-6"><h6 class="text-right font-weight-bold">$ 5.0</h6></div>
+                        <div class="col-6"><h6 class="text-right font-weight-bold">Rp. {{delivery}}</h6></div>
                     </div>
                 </div>
             <div class="modal-footer">
                 <div class="col">
                     <div class="row-10"><h5 class="text-left font-weight-bold">Shopping summary</h5></div>
-                    <div class="row-6"><h5 class="text-left-danger">$ 45.0</h5></div>
+                    <div class="row-6"><h5 class="text-left-danger">Rp. {{totalCheckout + delivery}}</h5></div>
                 </div>
-                <button type="button" class="btn btn-danger rounded-pill w-25">Buy</button>
+                <button type="button" class="btn btn-danger rounded-pill w-25" @click.prevent="handleBuy">Buy</button>
             </div>
         </div>
       </div>
@@ -84,11 +84,77 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'modalPayment',
   props: {
     closeModal: {
       type: Function
+    }
+  },
+  data () {
+    return {
+      delivery: 15000,
+      gopay: null,
+      posIndonesia: null,
+      mastercard: null
+    }
+  },
+  computed: {
+    ...mapGetters({
+      userId: 'userId',
+      checkout: 'checkout',
+      totalCheckout: 'totalCheckout',
+      selectAddress: 'selectAddress'
+    })
+  },
+  mounted () {
+  },
+  methods: {
+    ...mapActions([
+      'addHistory'
+    ]),
+    selectGopay () {
+      this.posIndonesia = false
+      this.mastercard = false
+    },
+    selectPosIndo () {
+      this.gopay = false
+      this.mastercard = false
+    },
+    selectMastercard () {
+      this.gopay = false
+      this.posIndonesia = false
+    },
+    handleBuy () {
+      let payment = ''
+      if (this.gopay) {
+        payment = 'Gopay'
+      } else if (this.posIndonesia) {
+        payment = 'Pos Indonesia'
+      } else if (this.mastercard) {
+        payment = 'Mastercard'
+      }
+
+      if (payment) {
+        this.checkout.map((item) => {
+          const data = {
+            idUser: this.userId,
+            idSeller: item.idSeller,
+            idProduct: item.id,
+            countItem: item.count,
+            payment: payment,
+            addressUser: this.selectAddress.id,
+            imageProduct: item.image
+          }
+          this.addHistory(data)
+            .then((res) => {
+              alert('Silahkan kirim bukti transfer')
+            })
+        })
+      } else {
+        alert('pilih payment method')
+      }
     }
   }
 }

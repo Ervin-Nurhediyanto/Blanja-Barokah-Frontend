@@ -203,7 +203,8 @@ export default {
           image: this.viewProduct,
           stock: this.selectProduct.stock,
           count: this.count,
-          price: this.selectProduct.price
+          price: this.selectProduct.price,
+          idSeller: this.selectProduct.idSeller
         }
         this.addToMyBag(data)
         this.$router.push('/mybag')

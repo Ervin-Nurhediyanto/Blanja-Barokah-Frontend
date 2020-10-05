@@ -8,7 +8,7 @@
 
                 <!-- User Address -->
                 <div class="title"><h5><b>Shipping Address</b></h5></div>
-                <div class="address-box">
+                <div v-if="selectAddress" class="address-box">
                   <h5>{{selectAddress.title}}</h5>
                       <div class="address">
                         <h6>{{ selectAddress.address }}. Kota {{selectAddress.city}}. Kode Pos {{selectAddress.postalCode}}</h6>

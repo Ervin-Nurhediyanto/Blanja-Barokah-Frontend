@@ -19,6 +19,7 @@
           :condition='product.condition'
           :description='product.description'
           :stock='product.stock'
+          :idSeller='product.idSeller'
           />
         </div>
         <NewPage />
@@ -43,6 +44,7 @@
           :condition='product.condition'
           :description='product.description'
           :stock='product.stock'
+          :idSeller='product.idSeller'
           />
         </div>
         <PopularPage />
