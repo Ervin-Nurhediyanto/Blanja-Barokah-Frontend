@@ -55,6 +55,23 @@
                                 <input type="checkbox" class="option-input radio shadow" name="example" style="background: #E2BB8D;" />
                                 <input type="checkbox" class="option-input radio shadow" name="example" style="background: #151867" />
                             </div>
+                            <!-- <div class="color">
+                                <label class="radio">
+                                    <span class="radio__input">
+                                        <input type="radio" name="radio">
+                                        <span class="radio__control"></span>
+                                    </span>
+                                    <span class="radio__label">Radio 1</span>
+                                </label>
+
+                                <label class="radio">
+                                    <span class="radio__input">
+                                        <input type="radio" name="radio">
+                                        <span class="radio__control"></span>
+                                    </span>
+                                    <span class="radio__label">Radio 2</span>
+                                </label>
+                            </div> -->
                             <br>
                             <hr>
                             <strong>Sizes</strong><br><br>
@@ -295,7 +312,6 @@ label {
     border-radius: 10px;
     overflow: hidden;
 }
-
 .barokah {
     cursor: pointer;
 }

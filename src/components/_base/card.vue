@@ -4,6 +4,12 @@
             <!-- <img src="../../assets/Cappucino.jpg" class="card-img-top" alt="Responsive image"> -->
             <img :src="image.split(',')[0]" class="card-img-top" alt="Responsive image" @click="select">
             <div class="card-body col">
+                <i class="fa fa-star fa-lg"></i>
+                <i class="fa fa-star fa-lg"></i>
+                <i class="fa fa-star fa-lg"></i>
+                <i class="fa fa-star-o fa-lg"></i>
+                <i class="fa fa-star-o fa-lg"></i>
+                <br>
                 <!-- <strong>Mens Formal suit- Black and White</strong><br> -->
                 <strong>{{name}}</strong><br>
                 <!-- <span class="text-danger m-0">$40.0</span><br> -->
@@ -49,12 +55,16 @@ export default {
 
 <style scoped>
 img {
-    width: 238px;
-    height: 136px;
+  width: 238px;
+  height: 136px;
 }
 .card {
-    border-radius: 8px !important;
-    overflow: hidden;
-    max-width: 238px;
+  border-radius: 8px !important;
+  overflow: hidden;
+  max-width: 238px;
+}
+.fa {
+  color: yellow;
+  margin: 2px;
 }
 </style>
