@@ -142,6 +142,7 @@ export default {
             idUser: this.userId,
             idSeller: item.idSeller,
             idProduct: item.id,
+            nameProduct: item.name,
             countItem: item.count,
             payment: payment,
             addressUser: this.selectAddress.id,

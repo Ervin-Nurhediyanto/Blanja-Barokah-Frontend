@@ -32,7 +32,7 @@ const history = {
     },
     getHistoryUser (setex, payload) {
       return new Promise((resolve, reject) => {
-        axios.get(process.env.VUE_APP_BASE_URL + '/histories/?user=' + payload)
+        axios.get(process.env.VUE_APP_BASE_URL + '/histories/?user=' + payload + '&sort=id&order=DESC')
           .then((res) => {
             setex.commit('setHistoryUser', res.data.result)
             resolve(res)
