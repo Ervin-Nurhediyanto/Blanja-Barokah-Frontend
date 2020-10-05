@@ -26,8 +26,8 @@
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/bell.png"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/mail.png" @click="chat"></a>
 
-                        <a v-if="userImg" class="nav-link mr-5" href="#"><img :src="userImg" class="rounded-circle" @click="profile"></a>
-                        <a v-else class="nav-link mr-5" href="#"><img src="../../../assets/Profile/pp.png" class="rounded-circle" @click="profile"></a>
+                        <a v-if="userImg" class="nav-link mr-5 img-container" href="#"><img :src="userImg" class="rounded-circle" @click="profile"></a>
+                        <a v-else class="nav-link mr-5 img-container" href="#"><img src="../../../assets/Profile/pp.png" class="rounded-circle" @click="profile"></a>
 
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/logout.png" class="logout" @click="handleLogout"></a>
                     </div>
@@ -311,5 +311,15 @@ label:focus,
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 8px 6px 0 rgba(184, 180, 180, 0.19);
     position: relative;
     content: '✔';
+}
+.img-container {
+  width: 50px;
+  height: 50px;
+  margin-left: 40px;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
