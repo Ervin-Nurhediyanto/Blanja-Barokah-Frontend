@@ -65,15 +65,16 @@
                     <div class="jumlah">
                         <div class="jumlahName"><h6><b>Jumlah</b></h6></div>
                         <div class="count-jumlah">
-                            <button class="btn count min" @click="minCount">-</button>
-                            <div class="number">{{count}}</div>
-                            <button class="btn count plus" @click="addCount">+</button>
+                            <button v-if="count > 0" class="btn count min pt-2" @click="minCount"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                            <button v-else class="btn count min pt-2"><i class="fa fa-minus text-danger" aria-hidden="true"></i></button>
+                            <div class="number"><b>{{count}}</b></div>
+                            <button v-if="count < selectProduct.stock" class="btn count plus pt-2" @click="addCount"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                            <button v-else class="btn count plus pt-2"><i class="fa fa-plus text-danger" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
                 <div class="btn box-button">
                     <button class="btn chat" @click="chat">Chat</button>
-                    <!-- <button class="btn addBag" @click="$emit('add-bag')">Add bag</button> -->
                     <button class="btn addBag" @click="mybag">Add bag</button>
                     <button class="btn buy" @click="checkout">Buy Now</button>
                 </div>
@@ -151,7 +152,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Product',
   components: {
@@ -172,6 +173,9 @@ export default {
     this.viewProduct = this.selectProduct.image[0]
   },
   methods: {
+    ...mapActions([
+      'addToMyBag'
+    ]),
     handleViewProduct (image) {
       this.viewProduct = image
     },
@@ -191,7 +195,21 @@ export default {
       this.$router.push('/chat')
     },
     mybag () {
-      this.$router.push('/mybag')
+      if (this.count !== 0) {
+        const data = {
+          id: this.selectProduct.id,
+          name: this.selectProduct.name,
+          brand: this.selectProduct.brand,
+          image: this.viewProduct,
+          stock: this.selectProduct.stock,
+          count: this.count,
+          price: this.selectProduct.price
+        }
+        this.addToMyBag(data)
+        this.$router.push('/mybag')
+      } else {
+        alert('Silahkan masukan jumlah barang')
+      }
     },
     checkout () {
       this.$router.push('/checkout')

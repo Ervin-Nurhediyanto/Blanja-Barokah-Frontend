@@ -18,6 +18,7 @@
           :color='product.color'
           :condition='product.condition'
           :description='product.description'
+          :stock='product.stock'
           />
         </div>
         <NewPage />
@@ -41,6 +42,7 @@
           :color='product.color'
           :condition='product.condition'
           :description='product.description'
+          :stock='product.stock'
           />
         </div>
         <PopularPage />

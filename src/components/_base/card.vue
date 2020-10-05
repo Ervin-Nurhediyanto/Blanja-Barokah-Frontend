@@ -1,20 +1,25 @@
 <template>
     <div>
         <div class="card shadow m-3">
-            <!-- <img src="../../assets/Cappucino.jpg" class="card-img-top" alt="Responsive image"> -->
-            <img :src="image.split(',')[0]" class="card-img-top" alt="Responsive image" @click="select">
+            <!-- Card Image -->
+            <img v-if="image" :src="image.split(',')[0]" class="card-img-top" :alt="name" @click="select">
+            <img v-else src="../../assets/image/Empty.jpg" class="card-img-top" :alt="name" @click="select">
+            <!-- End Card Image -->
             <div class="card-body col">
-                <i class="fa fa-star fa-lg"></i>
-                <i class="fa fa-star fa-lg"></i>
-                <i class="fa fa-star fa-lg"></i>
-                <i class="fa fa-star-o fa-lg"></i>
-                <i class="fa fa-star-o fa-lg"></i>
-                <br>
-                <!-- <strong>Mens Formal suit- Black and White</strong><br> -->
+                <!-- Card Rate -->
+                <i v-if="rate > 0" class="fa fa-star fa-lg"></i>
+                <i v-else class="fa fa-star-o fa-lg"></i>
+                <i v-if="rate > 2" class="fa fa-star fa-lg"></i>
+                <i v-else class="fa fa-star-o fa-lg"></i>
+                <i v-if="rate > 4" class="fa fa-star fa-lg"></i>
+                <i v-else class="fa fa-star-o fa-lg"></i>
+                <i v-if="rate > 6" class="fa fa-star fa-lg"></i>
+                <i v-else class="fa fa-star-o fa-lg"></i>
+                <i v-if="rate > 8" class="fa fa-star fa-lg"></i>
+                <i v-else class="fa fa-star-o fa-lg"></i><br>
+                <!-- End Card Rate -->
                 <strong>{{name}}</strong><br>
-                <!-- <span class="text-danger m-0">$40.0</span><br> -->
                 <span class="text-danger m-0">{{price}}</span><br>
-                <!-- <span class="text-muted m-0">Zalora Cloth</span> -->
                 <span class="text-muted m-0">{{brand}}</span>
             </div>
         </div>
@@ -25,7 +30,7 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Card',
-  props: ['name', 'image', 'price', 'brand', 'id', 'rate', 'color', 'condition', 'description'],
+  props: ['name', 'image', 'price', 'brand', 'id', 'rate', 'color', 'condition', 'description', 'stock'],
   computed: {
     ...mapGetters({
       selectProduct: 'selectProduct'
@@ -44,7 +49,8 @@ export default {
         rate: this.rate,
         color: this.color,
         condition: this.condition,
-        description: this.description
+        description: this.description,
+        stock: this.stock
       }
       this.chooseProduct(data)
       this.$router.push('/product')
@@ -57,6 +63,7 @@ export default {
 img {
   width: 238px;
   height: 136px;
+  cursor: pointer;
 }
 .card {
   border-radius: 8px !important;

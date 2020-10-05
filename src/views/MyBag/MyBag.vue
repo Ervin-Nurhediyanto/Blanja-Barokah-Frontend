@@ -16,7 +16,9 @@
               <div class="text2"><h5>(1 items selected)</h5></div>
               <div class="delete"><h5>Delete</h5></div>
             </div>
-            <div class="cardItem">
+
+            <!-- List My Bag -->
+            <div class="cardItem" v-for="(product, index) in myBag" :key="index">
               <div class="card">
                 <div class="box-checkbox">
                    <label class="container">
@@ -26,25 +28,31 @@
                   <div class="checkmark"></div>
                 </label>
                 </div>
-                <div class="container-img"><img src="../../assets/image/4bcf6332-eea3-4278-8c75-9be1f59cbfa3 2.png"></div>
+                <div class="container-img">
+                  <img v-if="product.image" :src="product.image">
+                  <img v-else src="../../assets/image/Empty.jpg">
+                </div>
                 <div class="name-box">
-                  <div class="name"><h5>Men's formal suit-Black</h5></div>
-                  <div class="brand"><h6>Zalora Cloth</h6></div>
+                  <div class="name"><h5>{{product.name}}</h5></div>
+                  <div class="brand"><h6>{{product.brand}}</h6></div>
                 </div>
                 <div class="count">
-                  <button class="btn count min" @click="min">-</button>
-                  <div class="number">{{count}}</div>
-                  <button class="btn count plus" @click="plus">+</button>
+                  <!-- <button class="btn count min" @click="min(product.count)">-</button> -->
+                  <div class="number">{{product.count}}x</div>
+                  <!-- <button class="btn count plus" @click="plus(product.count)">+</button> -->
                 </div>
-                <div class="price"><h4>Rp. 40000</h4></div>
+                <div class="price"><h4>Rp. {{product.price * product.count}}</h4></div>
+                <div @click.prevent="handleDelete(index)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></div>
               </div>
             </div>
+            <!-- End List My Bag -->
+
           </div>
           <div class="box-summary">
             <div class="summary"><h5><b>Shopping summary</b></h5></div>
             <div class="total-box">
               <div class="text"><h6>Total price</h6></div>
-              <div class="total"><h6>Rp. 40000</h6></div>
+              <div class="total"><h6>Rp. {{totalPrice}}</h6></div>
             </div>
             <button class="btn buy" ref="../views/Checkout.vue">Buy</button>
           </div>
@@ -54,22 +62,40 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'Mybag',
   components: {
   },
   data () {
     return {
-      count: 0
+      totalPrice: 0
+      // count: 0
     }
   },
+  computed: {
+    ...mapGetters({
+      myBag: 'myBag'
+    })
+  },
+  mounted () {
+    this.myBag.map((item) => {
+      this.totalPrice += (item.price * item.count)
+    })
+  },
   methods: {
-    plus () {
-      this.count = this.count + 1
-    },
-    min () {
-      this.count = this.count - 1
+    ...mapActions([
+      'deleteFronMyBag'
+    ]),
+    handleDelete (index) {
+      this.deleteFronMyBag(index)
     }
+  //   plus () {
+  //     this.count = this.count + 1
+  //   },
+  //   min () {
+  //     this.count = this.count - 1
+  //   }
   }
 }
 </script>

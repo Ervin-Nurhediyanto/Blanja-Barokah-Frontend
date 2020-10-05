@@ -10,7 +10,8 @@ const product = {
     productId: '',
     totalPage: '',
     pageNew: '',
-    pagePopular: ''
+    pagePopular: '',
+    myBag: []
   },
   mutations: {
     setAllProduct (state, payload) {
@@ -46,7 +47,16 @@ const product = {
     },
     setTotalPage (state, payload) {
       state.totalPage = payload
+    },
+
+    // My Bag
+    addMyBag (state, payload) {
+      state.myBag.push(payload)
+    },
+    deleteMyBag (state, payload) {
+      state.myBag.splice(payload, 1)
     }
+    // End My Bag
   },
   actions: {
     getAllProduct (setex, payload) {
@@ -289,7 +299,16 @@ const product = {
     },
     chooseProduct (setex, payload) {
       setex.commit('setSelectProduct', payload)
+    },
+
+    // My Bag
+    addToMyBag (setex, payload) {
+      setex.commit('addMyBag', payload)
+    },
+    deleteFronMyBag (setex, payload) {
+      setex.commit('deleteMyBag', payload)
     }
+    // End My Bag
   },
   getters: {
     allProduct (state) {
@@ -315,6 +334,9 @@ const product = {
     },
     pagePopular (state) {
       return state.pagePopular
+    },
+    myBag (state) {
+      return state.myBag
     }
   }
 }
