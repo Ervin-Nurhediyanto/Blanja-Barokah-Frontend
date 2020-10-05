@@ -1,55 +1,233 @@
 <template>
-    <div>
-        <h4 class="mb-4">My Order</h4>
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">All Items</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Not yet paid</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Packed</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="sent-tab" data-toggle="tab" href="#sent" role="tab" aria-controls="sent" aria-selected="false">Sent</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="completed-tab" data-toggle="tab" href="#completed" role="tab" aria-controls="completed" aria-selected="false">Completed</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="order-tab" data-toggle="tab" href="#order" role="tab" aria-controls="order" aria-selected="false">Order Cancel</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                <h1>home</h1>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita molestiae maxime quibusdam inventore voluptate. Sunt itaque molestiae ad debitis ipsam perspiciatis recusandae corrupti nam eius nesciunt quibusdam neque beatae officiis omnis alias, ratione
-                quae animi cum. Id, quae. Molestiae voluptate tempore impedit iusto eius, rerum pariatur! Laboriosam tempora ullam corporis distinctio numquam, unde necessitatibus fugit ab porro vero, quidem reiciendis adipisci, accusamus quis
-                odit vitae dignissimos. Tempore magni dignissimos ratione reiciendis optio laborum eaque tenetur sed saepe, nisi nihil, modi provident placeat est unde laboriosam cum et consequuntur doloribus recusandae explicabo exercitationem,
-                illo odit. Aspernatur possimus sapiente soluta voluptatum facere.
+  <div>
+    <h4 class="mb-4">My Order</h4>
+    <ul class="nav nav-tabs">
+      <li class="nav-item" @click.prevent="handleAll">
+        <a class="nav-link">All Items</a>
+      </li>
+      <li class="nav-item" @click.prevent="handleyetpaid">
+        <a class="nav-link">Not yet paid</a>
+      </li>
+      <li class="nav-item" @click.prevent="handlePacked">
+        <a class="nav-link">Packed</a>
+      </li>
+      <li class="nav-item" @click.prevent="handleSend">
+        <a class="nav-link">Send</a>
+      </li>
+      <li class="nav-item" @click.prevent="handleCompleted">
+        <a class="nav-link">Completed</a>
+      </li>
+      <li class="nav-item" @click.prevent="handleOrderCancel">
+        <a class="nav-link">Order Cancel</a>
+      </li>
+    </ul>
+    <div class="tab-content scroll" id="myTabContent">
+
+      <div class="scroll col">
+        <!-- List History -->
+
+          <div v-for="history in myOrder" :key="history.id" class="list-product row">
+            <div class="product-image">
+              <img :src="history.imageProduct" alt="" />
             </div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                <h1>Not yet paid</h1>
+            <div class="col product-info">
+              <div class="row">
+                <h4 class="product-name">{{ history.nameProduct }}</h4>
+              </div>
+              <div class="row">
+                <h4 class="product-price">Rp.{{ history.price }}</h4>
+                <h4 class="product-stock">
+                  <span>Jumlah: {{ history.countItem }}</span>
+                </h4>
+                <h4 class="product-total">
+                  Total: Rp.{{ history.price * history.countItem }}
+                </h4>
+              </div>
             </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <h1>Packed</h1>
+            <!-- Transfer -->
+            <div v-if="history.imageTransfer" class="product-image">
+              <img :src="history.imageTransfer" alt="" />
             </div>
-            <div class="tab-pane fade" id="sent" role="tabpanel" aria-labelledby="sent-tab">
-                <h1>Sent</h1>
+            <div v-else class="product-image upload-container">
+              <h4 class="upload">Upload bukti transfer</h4>
             </div>
-            <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">
-                <h1>Completed</h1>
+            <!-- End Transfer -->
+            <div class="product-status">
+              <h4>{{ history.status }}</h4>
             </div>
-            <div class="tab-pane fade" id="order" role="tabpanel" aria-labelledby="order-tab">
-                <h1>Order Cancel</h1>
-            </div>
+          </div>
         </div>
+        <!-- End List History -->
+
     </div>
+  </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'My-Order'
+  name: 'My-Order',
+  data () {
+    return {
+      myOrder: []
+    }
+  },
+  components: {
+  },
+  computed: {
+    ...mapGetters({
+      userId: 'userId',
+      historyUser: 'historyUser'
+    })
+  },
+  mounted () {
+    this.getHistoryUser(this.userId)
+      .then((res) => {
+        this.historyUser.map((item) => {
+          this.myOrder.push(item)
+        })
+      })
+  },
+  methods: {
+    ...mapActions([
+      'getHistoryUser'
+    ]),
+    handleAll () {
+      this.myOrder = []
+      this.historyUser.map((item) => {
+        this.myOrder.push(item)
+      })
+    },
+    handleyetpaid () {
+      this.myOrder = []
+      this.historyUser.map((item) => {
+        if (item.status === 'not yet paid') {
+          this.myOrder.push(item)
+        }
+      })
+    },
+    handlePacked () {
+      this.myOrder = []
+      this.historyUser.map((item) => {
+        if (item.status === 'packed') {
+          this.myOrder.push(item)
+        }
+      })
+    },
+    handleSend () {
+      this.myOrder = []
+      this.historyUser.map((item) => {
+        if (item.status === 'send') {
+          this.myOrder.push(item)
+        }
+      })
+    },
+    handleCompleted () {
+      this.myOrder = []
+      this.historyUser.map((item) => {
+        if (item.status === 'completed') {
+          this.myOrder.push(item)
+        }
+      })
+    },
+    handleOrderCancel () {
+      this.myOrder = []
+      this.historyUser.map((item) => {
+        if (item.status === 'order cancel') {
+          this.myOrder.push(item)
+        }
+      })
+    }
+  }
 }
 </script>
+<style scoped>
+.scroll {
+  height: 375px;
+  overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.list-product {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.product-image {
+  height: 100px;
+  width: 100px;
+}
+
+.product-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.product-info {
+  width: 200px;
+}
+
+.product-status {
+  width: 150px;
+  padding-top: 10px;
+}
+
+.product-status h4 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.product-name {
+  width: 480px;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.product-price {
+  width: 100px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.product-stock {
+  width: 100px;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 15px;
+  padding-top: 5px;
+}
+
+.product-stock span {
+  height: 30px;
+  width: 80px;
+  border-radius: 50%;
+  box-shadow: 2px 2px solid grey;
+  text-align: center;
+  padding: 5px;
+}
+
+.product-total {
+  width: 150px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.upload-container {
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.upload {
+  font-size: 16px;
+  text-align: center;
+}
+
+.upload:hover {
+  color: red;
+  font-weight: bold;
+}
+</style>
