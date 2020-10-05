@@ -22,12 +22,12 @@
                 </div>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ml-auto">
-                        <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/shopping-cart.png" @click="myBag"></a>
+                        <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/shopping-cart.png"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/bell.png"></a>
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/mail.png" @click="chat"></a>
 
-                        <a v-if="userImg" class="nav-link mr-5 img-container" href="#"><img :src="userImg" class="rounded-circle" @click="profile"></a>
-                        <a v-else class="nav-link mr-5 img-container" href="#"><img src="../../../assets/Profile/pp.png" class="rounded-circle" @click="profile"></a>
+                        <a v-if="userImg" class="nav-link mr-5" href="#"><img :src="userImg" class="rounded-circle" @click="profile"></a>
+                        <a v-else class="nav-link mr-5" href="#"><img src="../../../assets/Profile/pp.png" class="rounded-circle" @click="profile"></a>
 
                         <a class="nav-link mr-3" href="#"><img src="../../../assets/nav/logout.png" class="logout" @click="handleLogout"></a>
                     </div>
@@ -47,79 +47,79 @@
                     <form action="post">
                         <div class="modal-body border-top">
                             <strong>Colors</strong><br>
-                            <div id="color">
-                                <input type="checkbox" class="option-input radio shadow" name="example" style="background: black;" checked />
-                                <input type="checkbox" class="option-input radio shadow" name="example" style="background: #FFFFFF;" />
-                                <input type="checkbox" class="option-input radio shadow" name="example" style="background: #B82222;" />
-                                <input type="checkbox" class="option-input radio shadow" name="example" style="background: #BEA9A9;" />
-                                <input type="checkbox" class="option-input radio shadow" name="example" style="background: #E2BB8D;" />
-                                <input type="checkbox" class="option-input radio shadow" name="example" style="background: #151867" />
+                            <div id="color" class="row mt-2">
+                                <div class="custom-control custom-radio clr">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample1" name="groupOfDefaultRadios" checked>
+                                    <label class="option-input radio" for="defaultGroupExample1" style="background: black;"></label>
+                                </div>
+                                <div class="custom-control custom-radio clr">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample2" name="groupOfDefaultRadios">
+                                    <label class="option-input radio" for="defaultGroupExample2" style="background: #FFFFFF;"></label>
+                                </div>
+                                <div class="custom-control custom-radio clr">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample3" name="groupOfDefaultRadios">
+                                    <label class="option-input radio" for="defaultGroupExample3" style="background: #B82222;"></label>
+                                </div>
+                                <div class="custom-control custom-radio clr">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample4" name="groupOfDefaultRadios">
+                                    <label class="option-input radio" for="defaultGroupExample4" style="background: #BEA9A9;"></label>
+                                </div>
+                                <div class="custom-control custom-radio clr">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample5" name="groupOfDefaultRadios">
+                                    <label class="option-input radio" for="defaultGroupExample5" style="background: #E2BB8D;"></label>
+                                </div>
+                                <div class="custom-control custom-radio clr">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample6" name="groupOfDefaultRadios">
+                                    <label class="option-input radio" for="defaultGroupExample6" style="background: #151867"></label>
+                                </div>
                             </div>
-                            <!-- <div class="color">
-                                <label class="radio">
-                                    <span class="radio__input">
-                                        <input type="radio" name="radio">
-                                        <span class="radio__control"></span>
-                                    </span>
-                                    <span class="radio__label">Radio 1</span>
-                                </label>
-
-                                <label class="radio">
-                                    <span class="radio__input">
-                                        <input type="radio" name="radio">
-                                        <span class="radio__control"></span>
-                                    </span>
-                                    <span class="radio__label">Radio 2</span>
-                                </label>
-                            </div> -->
                             <br>
                             <hr>
-                            <strong>Sizes</strong><br><br>
-                            <div class="row my-2">
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="sizexs" name="selector" value="customer">
-                                    <label for="sizexs">XS</label>
+                            <strong>Sizes</strong><br>
+                            <div id="color" class="row mt-2">
+                                <div class="custom-control custom-radio size">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup1" name="groupOfDefaultRadios" checked>
+                                    <label class="input-size radio" for="defaultGroup1">XS</label>
                                 </div>
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="sizes" name="selector" value="seller" checked>
-                                    <label for="sizes">S</label>
+                                <div class="custom-control custom-radio size">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup2" name="groupOfDefaultRadios">
+                                    <label class="input-size radio" for="defaultGroup2">S</label>
                                 </div>
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="s" name="selector" value="seller">
-                                    <label for="s">M</label>
+                                <div class="custom-control custom-radio size">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup3" name="groupOfDefaultRadios">
+                                    <label class="input-size radio" for="defaultGroup3">M</label>
                                 </div>
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="sizel" name="selector" value="seller">
-                                    <label for="sizel">L</label>
+                                <div class="custom-control custom-radio size">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup4" name="groupOfDefaultRadios">
+                                    <label class="input-size radio" for="defaultGroup4">L</label>
                                 </div>
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="sizexl" name="selector" value="seller">
-                                    <label for="sizexl">XL</label>
+                                <div class="custom-control custom-radio size">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup5" name="groupOfDefaultRadios">
+                                    <label class="input-size radio" for="defaultGroup5">XL</label>
                                 </div>
                             </div>
                             <hr>
-                            <strong>Category</strong><br><br>
-
-                            <div class="row my-2">
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="all" name="selector" value="customer" checked>
-                                    <label for="all" style="width: 110px;">All</label>
+                            <strong>Category</strong><br>
+                            <div id="color" class="row mt-2">
+                                <div class="custom-control custom-radio category">
+                                    <input type="radio" class="custom-control-input option-input" id="group1" name="groupOfDefaultRadios" checked>
+                                    <label class="input-category radio" for="group1">All</label>
                                 </div>
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="women" name="selector" value="customer">
-                                    <label for="women" style="width: 110px;">Women</label>
+                                <div class="custom-control custom-radio category">
+                                    <input type="radio" class="custom-control-input option-input" id="group2" name="groupOfDefaultRadios">
+                                    <label class="input-category radio" for="group2">Woman</label>
                                 </div>
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="men" name="selector" value="customer">
-                                    <label for="men" style="width: 110px;">Men</label>
+                                <div class="custom-control custom-radio category">
+                                    <input type="radio" class="custom-control-input option-input" id="group3" name="groupOfDefaultRadios">
+                                    <label class="input-category radio" for="group3">Men</label>
                                 </div>
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="boys" name="selector" value="customer">
-                                    <label for="boys" style="width: 110px;">Boys</label>
+                                <div class="custom-control custom-radio category">
+                                    <input type="radio" class="custom-control-input option-input" id="group4" name="groupOfDefaultRadios">
+                                    <label class="input-category radio" for="group4">Girls</label>
                                 </div>
-                                <div class="radio-groups shadow">
-                                    <input type="checkbox" id="girl" name="selector" value="customer">
-                                    <label for="girl" style="width: 110px;">Girl</label>
+                                <div class="custom-control custom-radio category">
+                                    <input type="radio" class="custom-control-input option-input" id="group5" name="groupOfDefaultRadios">
+                                    <label class="input-category radio" for="group5">Boys</label>
                                 </div>
                             </div>
                             <hr>
@@ -157,7 +157,6 @@ export default {
       userImg: 'userImg',
       userName: 'userName',
       userRoleId: 'userRoleId',
-
       userEmail: 'userEmail',
       userGender: 'userGender',
       userdateOfBirth: 'userdateOfBirth',
@@ -172,12 +171,8 @@ export default {
       'getProductSeller',
       'logout'
     ]),
-
     chat () {
       this.$router.push('/chat')
-    },
-    myBag () {
-      this.$router.push('/mybag')
     },
     home () {
       this.$router.push('/')
@@ -236,52 +231,24 @@ label:focus,
         opacity: 0;
     }
 }
-
 .logout {
     max-height: 30px;
 }
-
 .rounded-circle {
     max-height: 35px;
     /* max-width: 90px; */
 }
-
-.option-input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-    position: relative;
-    top: 30px;
-    height: 40px;
-    width: 40px;
-    transition: all 0.15s ease-out 0s;
-    border: none;
-    color: rgb(64, 131, 2);
+.barokah {
     cursor: pointer;
-    display: inline-block;
-    margin-right: 1rem;
-    outline: none;
-    z-index: 1000;
-    border: 2px solid #bdb7b7;
+}
+.option-input.radio {
+    margin-right: 0;
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e5e5e5;
 }
 .option-input:hover {
-    background: #9faab7;
-}
-.option-input:checked::before {
-    border: 2px solid red;
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-    bottom: 7px;
-    right: 7px;
-    position: relative;
-    content: '✔';
-    display: inline-block;
-    font-size: 32px;
-    text-align: center;
-    margin: auto;
+    opacity: 0.4;
 }
 .option-input.radio {
     border-radius: 50%;
@@ -289,43 +256,60 @@ label:focus,
 .option-input.radio::after {
     border-radius: 50%;
 }
-.radio-groups input[type=checkbox] {
-    position: absolute;
-    visibility: hidden;
-    display: none;
-}
-label {
-    width: 50px;
+.input-size.radio {
+    margin-right: 0;
+    width: 40px;
     height: 40px;
-    margin: 0;
-    padding-top: 8px;
-    text-align: center;
-    display: inline-block;
-    cursor: pointer;
+    padding: 5px;
+    border: 3px solid #e5e5e5;
 }
-.radio-groups input[type=checkbox]:checked+label {
-    color: white;
-    background: #d31d0d;
+.input-size:hover {
+    opacity: 0.4;
 }
-.radio-groups {
-    margin-left: 20px;
-    margin-bottom: 20px;
-    color: #bdb7b7;
-    border: 2px solid #bdb7b7;
-    border-radius: 10px;
-    overflow: hidden;
+.input-size.radio {
+    border-radius: 15%;
 }
-.barokah {
-    cursor: pointer;
+.input-size.radio::after {
+    border-radius: 15%;
 }
-.img-container {
-    width: 50px;
-    height: 50px;
-    margin-left: 40px;
+.input-category.radio {
+    margin-right: 0;
+    width: 70px;
+    height: 40px;
+    padding: 5px;
+    border: 3px solid #e5e5e5;
 }
-.img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.input-category:hover {
+    opacity: 0.4;
+}
+.input-category.radio {
+    border-radius: 15%;
+}
+.input-category.radio::after {
+    border-radius: 15%;
+}
+.clr input[type=radio]:checked+label {
+    border: 2px solid #ec3838;
+    width: 43px;
+    height: 43px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 8px 6px 0 rgba(184, 180, 180, 0.19);
+    position: relative;
+    content: '✔';
+}
+.size input[type=radio]:checked+label {
+    border: none;
+    width: 43px;
+    height: 43px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 8px 6px 0 rgba(184, 180, 180, 0.19);
+    position: relative;
+    content: '✔';
+}
+.category input[type=radio]:checked+label {
+    border: none;
+    width: 70px;
+    height: 43px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 8px 6px 0 rgba(184, 180, 180, 0.19);
+    position: relative;
+    content: '✔';
 }
 </style>
