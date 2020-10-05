@@ -5,18 +5,20 @@
         <div class="row">
           <div class="mx-auto mb-5">
             <div class="row ml-4">
-              <img
-                v-if="userImg"
-                :src="userImg"
-                id="photo"
-                height="61px"
-              />
-              <img
-                v-else
-                src="../../assets/Profile/pp.png"
-                id="photo"
-                height="61px"
-              />
+              <div class="img-container">
+                <img
+                  v-if="userImg"
+                  :src="userImg"
+                  id="photo"
+                  height="61px"
+                />
+                <img
+                  v-else
+                  src="../../assets/Profile/pp.png"
+                  id="photo"
+                  height="61px"
+                />
+              </div>
               <div class="col">
                 <h5 v-if="userName" class="m-0 mt-2">{{ userName }}</h5>
                 <h5 v-else class="m-0 mt-2">username</h5>
@@ -176,5 +178,15 @@ a {
   margin-top: 45px;
   width: 850px;
   height: 500px;
+}
+.img-container {
+  width: 80px;
+  height: 80px;
+  margin-left: 40px;
+}
+.img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>

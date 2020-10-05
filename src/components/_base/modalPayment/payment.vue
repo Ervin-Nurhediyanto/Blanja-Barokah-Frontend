@@ -149,11 +149,21 @@ export default {
           }
           this.addHistory(data)
             .then((res) => {
-              alert('Silahkan kirim bukti transfer')
+              this.$swal({
+                icon: 'success',
+                title: 'Silahkan kirim bukti transfer',
+                showConfirmButton: false,
+                timer: 1500
+              })
             })
         })
       } else {
-        alert('pilih payment method')
+        this.$swal({
+          icon: 'error',
+          title: 'Pilih payment methodnya dulu yaa..',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     }
   }

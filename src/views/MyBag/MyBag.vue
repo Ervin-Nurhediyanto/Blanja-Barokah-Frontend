@@ -8,20 +8,20 @@
 
             <!-- List My Bag -->
             <div class="cardItem" v-for="(product, index) in myBag" :key="index">
-              <div class="card">
+              <div class="card pl-3 pr-3">
                 <div class="container-img">
                   <img v-if="product.image" :src="product.image">
                   <img v-else src="../../assets/image/Empty.jpg">
                 </div>
-                <div class="name-box">
+                <div class="name-box pt-2">
                   <div class="name"><h5>{{product.name}}</h5></div>
                   <div class="brand"><h6>{{product.brand}}</h6></div>
                 </div>
-                <div class="count">
+                <div class="count pt-3">
                   <div class="number">{{product.count}}x</div>
                 </div>
-                <div class="price"><h4>Rp. {{product.price * product.count}}</h4></div>
-                <div @click.prevent="handleDelete(index)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></div>
+                <div class="price pt-1"><h4>Rp. {{product.price * product.count}}</h4></div>
+                <div @click.prevent="handleDelete(index)"><i class="fa fa-trash text-danger pt-3 pl-5 pr-2" aria-hidden="true"></i></div>
               </div>
             </div>
             <!-- End List My Bag -->
@@ -90,98 +90,103 @@ export default {
 </script>
 
 <style scoped>
-  .title {
-    margin: 20px 0px 20px 0px;
-    text-align: left;
-  }
-  .box-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .boxItem {
-    display: flex;
-    flex-direction: column;
-  }
-  .checklistAll-box {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 800px;
-    height: 50px;
+.title {
+  margin: 20px 0px 20px 0px;
+  text-align: left;
+}
+.box-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.boxItem {
+  display: flex;
+  flex-direction: column;
+}
+.checklistAll-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 800px;
+  height: 50px;
 
-    border-radius: 4px;
-    box-shadow: 0px 0px 8px rgba(115, 115, 115, 0.25);
-  }
-  .text1 {
-    padding-top: 10px;
-    align-self: start;
-    text-align: left;
-  }
-  .text2 {
-    width: 550px;
-    padding-top: 10px;
-    padding-left: 3px;
-    text-align: left;
-    color: #ccc;
-    /* border: 1px solid black; */
-  }
-  .brand {
-    color: #ccc;
-  }
-  .delete {
+  border-radius: 4px;
+  box-shadow: 0px 0px 8px rgba(115, 115, 115, 0.25);
+}
+.text1 {
+  padding-top: 10px;
+  align-self: start;
+  text-align: left;
+}
+.text2 {
+  width: 550px;
+  padding-top: 10px;
+  padding-left: 3px;
+  text-align: left;
+  color: #ccc;
+  /* border: 1px solid black; */
+}
+.brand {
+  color: #ccc;
+}
+.delete {
   padding-top: 10px;
   padding-right: 15px;
   color: #D84242;
   cursor: pointer;
-  }
-
-  .card {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 20px;
-    width: 800px;
-    height: 100px;
-
-    border-radius: 4px;
-    box-shadow: 0px 0px 8px rgba(115, 115, 115, 0.25)
-  }
-  .box-checkbox {
-    margin-top: 20px;
-    width: 40px;
-  }
-  .checklistAll-box .box-checkbox {
-    margin-top: 0px;
-    padding: 0;
-    width: 40px;
-  }
-  .container-img img {
-    margin: 15px;
-    width: 65px;
-    border-radius: 6px;
-    object-fit: cover;
-  }
-  .name-box {
-    display: flex;
-    flex-direction: column;
-    width: 350px;
-    /* border: 1px solid black; */
-  }
-  .name {
-    margin-top: 20px;
-    align-self: start;
-  }
-  .brand {
-    align-self: start;
-  }
-  .count {
-    display: flex;
-    margin: 10px;
-    width: 40px;
-    height: 35px;
-
-    border-radius: 50%;
+}
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 800px;
+  height: 100px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 8px rgba(115, 115, 115, 0.25)
+}
+.box-checkbox {
+  margin-top: 20px;
+  width: 40px;
+}
+.checklistAll-box .box-checkbox {
+  margin-top: 0px;
+  padding: 0;
+  width: 40px;
+}
+.container-img img {
+  margin: 15px;
+  width: 65px;
+  height: 70px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.name-box {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  /* border: 1px solid black; */
+}
+.name {
+  margin-top: 20px;
+  align-self: start;
+}
+.name h5 {
+  font-size: 19px;
+  font-weight: bolder;
+}
+.brand {
+  align-self: start;
+}
+.count {
+  display: flex;
+  margin: 10px;
+  width: 40px;
+  height: 35px;
+  border-radius: 50%;
+}
+.price h4 {
+  font-size: 18px;
 }
 .plus {
   justify-items: center;
@@ -295,15 +300,19 @@ export default {
   text-align: right;
 }
 .buy {
-    display: flex;
-    justify-content: center;
-    margin: auto;
-    margin-top: 20px;
-    width: 250px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 20px;
+  width: 250px;
 
-    color: white;
-    background-color: #D84242;
-    border-radius: 20px;
-    border: 1px solid white;
+  color: white;
+  background-color: #D84242;
+  border-radius: 20px;
+  border: 1px solid white;
+}
+.count div {
+  font-size: 18px;
+  font-weight: 550;
 }
 </style>

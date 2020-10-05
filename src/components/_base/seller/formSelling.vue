@@ -225,14 +225,24 @@ export default {
               this.imageProduct(input)
                 .then((res) => {
                   if (res.data.result === 'Update Product Success') {
-                    alert('Add Product Success')
+                    this.$swal({
+                      icon: 'success',
+                      title: 'Add Product Success',
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
                     this.name = ''
                     this.price = ''
                     this.condition = ''
                     this.stock = ''
                     this.description = 'description of product'
                   } else {
-                    alert(res.data.result)
+                    this.$swal({
+                      icon: 'success',
+                      title: res.data.result,
+                      showConfirmButton: false,
+                      timer: 1500
+                    })
                   }
                 })
             })

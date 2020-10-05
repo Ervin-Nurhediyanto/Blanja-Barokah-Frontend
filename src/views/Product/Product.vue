@@ -209,7 +209,12 @@ export default {
         this.addToMyBag(data)
         this.$router.push('/mybag')
       } else {
-        alert('Silahkan masukan jumlah barang')
+        this.$swal({
+          icon: 'error',
+          title: 'Silahkan masukan jumlah barangnya',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
     },
     checkout () {
@@ -354,69 +359,69 @@ img {
     flex-direction: column;
     width: 200px;
 }
- @keyframes click-wave {
-            0% {
-                height: 40px;
-                width: 40px;
-                opacity: 0.35;
-                position: relative;
-            }
-            100% {
-                height: 200px;
-                width: 200px;
-                margin-left: -80px;
-                margin-top: -80px;
-                opacity: 0;
-            }
-        }
+@keyframes click-wave {
+    0% {
+        height: 40px;
+        width: 40px;
+        opacity: 0.35;
+        position: relative;
+    }
+    100% {
+        height: 200px;
+        width: 200px;
+        margin-left: -80px;
+        margin-top: -80px;
+        opacity: 0;
+    }
+}
 
-        .option-input {
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            -ms-appearance: none;
-            -o-appearance: none;
-            appearance: none;
-            position: relative;
-            top: 12px;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            height: 40px;
-            width: 40px;
-            transition: all 0.15s ease-out 0s;
-            border: none;
-            color: rgb(217, 255, 0);
-            cursor: pointer;
-            display: inline-block;
-            margin-right: 0.5rem;
-            outline: none;
-            z-index: 1000;
-        }
+.option-input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    top: 12px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    width: 40px;
+    transition: all 0.15s ease-out 0s;
+    border: none;
+    color: rgb(217, 255, 0);
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 0.5rem;
+    outline: none;
+    z-index: 1000;
+}
 
-        .option-input:hover {
-            background: #9faab7;
-        }
+.option-input:hover {
+    background: #9faab7;
+}
 
-        .option-input:checked::before {
-            border: 3px solid red;
-            border-radius: 50%;
-            height: 40px;
-            width: 40px;
-            position: absolute;
-            content: '✔';
-            display: inline-block;
-            font-size: 32px;
-            text-align: center;
-            line-height: 40px;
-        }
+.option-input:checked::before {
+    border: 3px solid red;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    content: '✔';
+    display: inline-block;
+    font-size: 32px;
+    text-align: center;
+    line-height: 40px;
+}
 
-        .option-input.radio {
-            border-radius: 50%;
-        }
+.option-input.radio {
+    border-radius: 50%;
+}
 
-        .option-input.radio::after {
-            border-radius: 50%;
-        }
+.option-input.radio::after {
+    border-radius: 50%;
+}
 .colorName {
     display: flex;
 }
