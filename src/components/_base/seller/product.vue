@@ -294,11 +294,6 @@
                     <div class="col mb-2">
                       <label>Image Product</label>
                       <div class="image-container">
-                        <form>
-                        <input type="file" name="file" id="file" class="inputFile" @change="onFileUpload" />
-                        <label for="file" @change="onFileUpload"><i class="fa fa-pencil-square-o"> Edit</i></label>
-                        <button type="submit" class="btn-submit mt-3" @click.prevent="handleUploadImg">Upload</button>
-                        </form>
                         <img
                         v-if="selectProduct.image"
                         :src="selectProduct.image.split(',')[0]"
@@ -310,18 +305,14 @@
                         src="../../../assets/image/Empty.jpg"
                         alt=""
                         >
+                        <form class="upload">
+                          <input type="file" name="file" id="file" class="inputFile" @change="onFileUpload" />
+                          <label for="file" @change="onFileUpload"><i class="fa fa-pencil-square-o"> Edit</i></label>
+                          <button type="submit" class="btn-submit mt-3" @click.prevent="handleUploadImg">Upload</button>
+                        </form>
                       </div>
                     </div>
-                    <div class="col mb-2">
-                      <label>Price Rp.</label>
-                      <input
-                        type="text"
-                        class="form-control form-control-lg"
-                        :placeholder="selectProduct.price"
-                        v-model="changePrice"
-                      />
-                    </div>
-                    <div class="col mb-2">
+                    <div class="col mb-2 color-container">
                       <label>Color</label>
                       <input
                       type="text"
@@ -329,13 +320,15 @@
                       v-model="changeColor"
                     />
                       <!-- Color Product -->
-                    <div class="row setColor pl-3" v-for="(color, index) in selectProduct.color.split(', ')" :key="index">
+                    <div class="row color">
+                      <div class="setColor pl-3" v-for="(color, index) in selectProduct.color.split(', ')" :key="index">
                         <div v-if="color === 'Black'" class="ellipse black"></div>
                         <div v-if="color === 'Red'" class="ellipse red"></div>
                         <div v-if="color === 'Blue'" class="ellipse blue"></div>
                         <div v-if="color === 'Green'" class="ellipse green"></div>
                         <div v-if="color === 'Purple'" class="ellipse purple"></div>
                         <div v-if="color === 'Grey'" class="ellipse grey"></div>
+                    </div>
                     </div>
                     <!-- End Color Product -->
                     </div>
@@ -346,12 +339,14 @@
                       placeholder="add category"
                       v-model="changeCategory"
                       >
-                      <div v-for="(category, index) in selectProduct.category.split(', ')" :key="index">
-                      <button v-if="category === 'all'" class="bg-info">All</button>
-                      <button v-if="category === 'Woman'" class="bg-info">Woman</button>
-                      <button v-if="category === 'Men'" class="bg-info">Men</button>
-                      <button v-if="category === 'Girls'" class="bg-info">Girls</button>
-                      <button v-if="category === 'Boys'" class="bg-info">Boys</button>
+                      <div class="row category">
+                        <div class="mr-2" v-for="(category, index) in selectProduct.category.split(', ')" :key="index">
+                        <button v-if="category === 'all'">All</button>
+                        <button v-if="category === 'Woman'">Woman</button>
+                        <button v-if="category === 'Men'">Men</button>
+                        <button v-if="category === 'Girls'">Girls</button>
+                        <button v-if="category === 'Boys'">Boys</button>
+                      </div>
                       </div>
                     </div>
                     <div class="col mb-2">
@@ -361,16 +356,27 @@
                       placeholder="add size"
                       v-model="changeSize"
                       >
-                      <div v-for="(size, index) in selectProduct.size.split(', ')" :key="index">
-                      <button v-if="size === 'XS'" class="bg-info">XS</button>
-                      <button v-if="size === 'S'" class="bg-info">S</button>
-                      <button v-if="size === 'M'" class="bg-info">M</button>
-                      <button v-if="size === 'L'" class="bg-info">L</button>
-                      <button v-if="size === 'XL'" class="bg-info">XL</button>
+                      <div class="row size">
+                        <div class="mr-2" v-for="(size, index) in selectProduct.size.split(', ')" :key="index">
+                        <button v-if="size === 'XS'">XS</button>
+                        <button v-if="size === 'S'">S</button>
+                        <button v-if="size === 'M'">M</button>
+                        <button v-if="size === 'L'">L</button>
+                        <button v-if="size === 'XL'">XL</button>
+                      </div>
                       </div>
                     </div>
                   </div>
                   <div class="col-6">
+                    <div class="col mb-2">
+                      <label>Price Rp.</label>
+                      <input
+                        type="text"
+                        class="form-control form-control-lg"
+                        :placeholder="selectProduct.price"
+                        v-model="changePrice"
+                      />
+                    </div>
                     <div class="col mb-2">
                       <label>Brand</label>
                       <input
@@ -728,6 +734,31 @@ nav {
 }
 
 /* Color Product */
+.color {
+  margin-left: 30px;
+}
+.category {
+  margin-left: 30px;
+}
+.size {
+  margin-left: 30px;
+}
+.category button {
+  border: none;
+  border-radius: 10px;
+  width: auto;
+  height: 35px;
+  background-color: #f0493a;
+  color: #fff;
+}
+.size button {
+  border: none;
+  border-radius: 10px;
+  width: 35px;
+  height: 35px;
+  background-color: #f0493a;
+  color: #fff;
+}
 .setColor {
     display: flex;
     flex-direction: row;
@@ -762,5 +793,52 @@ nav {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+.upload {
+  width: 200px;
+}
+.upload input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.upload label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #d31d0d;
+  padding: 5px;
+  width: 70px;
+  height: 50px;
+  margin-left: 15px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19);
+  background-color: #fff;
+  display: inline-block;
+}
+.upload input:focus + label,
+.upload input + label:hover {
+  background-color: #ee6a5e;
+  color: #fff;
+}
+.upload input + label {
+  cursor: pointer;
+}
+.btn-submit {
+  border: none;
+  background-color: #d31d0d;
+  color: #fff;
+  width: 65px;
+  height: 35px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.color-container {
+  margin-top: 80px;
 }
 </style>
