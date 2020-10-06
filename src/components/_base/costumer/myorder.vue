@@ -157,7 +157,12 @@ export default {
                 this.myOrder.push(item)
               })
             })
-          alert('Update Status')
+          this.$swal({
+            icon: 'success',
+            title: 'Cancelling Order',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   }
