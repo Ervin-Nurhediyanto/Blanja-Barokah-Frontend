@@ -32,7 +32,7 @@
               </div>
               <p class="text-right"><a href="#" id="forgot" @click="$emit('forgot-password')">Forgot Password?</a></p>
               <button v-show="userRole == 1" type="submit" id="btn" class="btn text-white" :disabled="!input" @click="handleLoginSeller">Login</button>
-              <button v-show="userRole == 2" type="submit" id="btn" class="btn text-white" :disabled="!input" @click="handleLoginCustomer">Login</button>
+              <button v-show="userRole == 2" type="submit" id="btn" class="btn text-white bg-info" :disabled="!input" @click="handleLoginCustomer">Login</button>
               <p class="mt-3 text-center">Don't have a Blanja Barokah account? <a href="#" id="forgot" @click="$emit('register-event')">Register</a></p>
             </form>
           </div>

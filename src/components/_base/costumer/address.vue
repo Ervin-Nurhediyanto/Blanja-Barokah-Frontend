@@ -105,7 +105,7 @@
                   </div>
                   <div class="col-6">
                     <div class="col mb-2">
-                      <label>Recipient's telephone number</label>
+                      <label class="telp">Recipient's telephone number</label>
                       <input
                         type="text"
                         class="form-control form-control-lg"
@@ -234,7 +234,7 @@
                     </div>
                     <div class="col-6">
                       <div class="col mb-2">
-                        <label>Recipient's telephone number</label>
+                        <label class="telp">Recipient's telephone number</label>
                         <input
                           type="text"
                           class="form-control form-control-lg"
@@ -487,6 +487,13 @@ export default {
 
 i {
     cursor: pointer;
+}
+
+.telp {
+  width: 300px;
+  margin-left: 0;
+  text-align: left;
+  padding-left: 20px;
 }
 
 </style>
