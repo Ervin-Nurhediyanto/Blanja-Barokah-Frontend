@@ -23,41 +23,42 @@
     </ul>
     <div class="tab-content scroll" id="myTabContent">
 
+      <!-- List History -->
       <div class="scroll col">
-        <!-- List History -->
-
-          <div v-for="history in myOrder" :key="history.id" class="list-product row">
-            <div class="product-image">
-              <img :src="history.imageProduct" alt="" />
+        <div v-for="history in myOrder" :key="history.id" class="list-product row">
+          <div class="product-image">
+            <img :src="history.imageProduct" alt="" />
+          </div>
+          <div class="col product-info">
+            <div class="row">
+              <h4 class="product-name">{{ history.nameProduct }}</h4>
             </div>
-            <div class="col product-info">
-              <div class="row">
-                <h4 class="product-name">{{ history.nameProduct }}</h4>
-              </div>
-              <div class="row">
-                <h4 class="product-price">Rp.{{ history.price }}</h4>
-                <h4 class="product-stock">
-                  <span>Jumlah: {{ history.countItem }}</span>
-                </h4>
-                <h4 class="product-total">
-                  Total: Rp.{{ history.price * history.countItem }}
-                </h4>
-              </div>
-            </div>
-            <!-- Transfer -->
-            <div v-if="history.imageTransfer" class="product-image">
-              <img :src="history.imageTransfer" alt="" />
-            </div>
-            <div v-else class="product-image upload-container">
-              <h4 class="upload">Upload bukti transfer</h4>
-            </div>
-            <!-- End Transfer -->
-            <div class="product-status">
-              <h4>{{ history.status }}</h4>
+            <div class="row">
+              <h4 class="product-price">Rp.{{ history.price }}</h4>
+              <h4 class="product-stock">
+                <span>Jumlah: {{ history.countItem }}</span>
+              </h4>
+              <h4 class="product-total">
+                Total: Rp.{{ history.price * history.countItem }}
+              </h4>
             </div>
           </div>
+          <!-- Transfer -->
+          <div v-if="history.imageTransfer" class="product-image">
+            <img :src="history.imageTransfer" alt="" />
+          </div>
+          <div v-else class="product-image upload-container">
+            <h4 class="upload">Upload bukti transfer</h4>
+          </div>
+          <!-- End Transfer -->
+          <div class="product-status">
+            <h4>{{ history.status }}</h4>
+            <button v-if="history.status === 'not yet paid'" @click.prevent="handleChangeStatus(history.id, 'order cancel')">Cancel</button>
+            <button v-if="history.status === 'send'" @click.prevent="handleChangeStatus(history.id, 'completed')">Completed</button>
+          </div>
         </div>
-        <!-- End List History -->
+      </div>
+      <!-- End List History -->
 
     </div>
   </div>
@@ -90,7 +91,8 @@ export default {
   },
   methods: {
     ...mapActions([
-      'getHistoryUser'
+      'getHistoryUser',
+      'changeStatus'
     ]),
     handleAll () {
       this.myOrder = []
@@ -137,6 +139,26 @@ export default {
           this.myOrder.push(item)
         }
       })
+    },
+    handleChangeStatus (id, status) {
+      const data = {
+        status: status
+      }
+      const input = {
+        id: id,
+        data: data
+      }
+      this.changeStatus(input)
+        .then((res) => {
+          this.getHistoryUser(this.userId)
+            .then((res) => {
+              this.myOrder = []
+              this.historyUser.map((item) => {
+                this.myOrder.push(item)
+              })
+            })
+          alert('Update Status')
+        })
     }
   }
 }
