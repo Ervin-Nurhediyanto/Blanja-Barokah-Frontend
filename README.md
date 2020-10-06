@@ -96,9 +96,9 @@ See the [open issues](https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Front
 
 <p align='center'>
   <span>
-      <image width="200" src='./src/assets/screenshoot/Capture 046.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 047.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 048.png' />
+      <image width="200" src='./src/assets/screenshoot/Capture 046-1.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 041.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 043.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 044.png' />
