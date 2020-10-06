@@ -24,16 +24,16 @@
         <div class="tab-content" id="myTabContent">
 
     <!-- List History -->
-      <div class="scroll col">
+      <div class="scroll col pr-5">
         <div v-for="history in order" :key="history.id" class="list-product row">
-          <div class="product-image">
+          <div class="product-image p-3">
             <img :src="history.imageProduct" alt="" />
           </div>
           <div class="col product-info">
             <div class="row">
               <h4 class="product-name">{{ history.nameProduct }}</h4>
             </div>
-            <div class="row bg-info">
+            <div class="row">
               <h4 class="product-price">Rp.{{ history.price }}</h4>
               <h4 class="product-stock">
                 <span>Jumlah: {{ history.countItem }}</span>
@@ -50,13 +50,13 @@
               <h6 v-else-if="history.status === 'completed'">Barang telah diterima</h6>
             <img v-else :src="history.imageTransfer" alt="" />
           </div>
-          <div v-else class="product-image upload-container bg-danger">
+          <div v-else class="product-image upload-container">
               <h6 v-if="history.status === 'order cancel'">Order dibatalkan</h6>
             <h4 v-else class="upload">Customer belum transfer</h4>
           </div>
           <!-- End Transfer -->
-          <div class="product-status col bg-warning">
-            <h4>{{ history.status }}</h4>
+          <div class="product-status col">
+            <h4>*{{ history.status }}</h4>
             <button v-if="history.status === 'already paid'" @click.prevent="handleChangeStatus(history.id, 'packed')">Packed</button>
             <button v-else-if="history.status === 'packed'" @click.prevent="handleChangeStatus(history.id, 'send')">Send</button>
           </div>
@@ -179,53 +179,55 @@ button:hover,
 label:focus,
 .btn:active,
 .btn.active {
-    outline: 0px !important;
-    -webkit-appearance: none;
-    box-shadow: none !important;
+  outline: 0px !important;
+  -webkit-appearance: none;
+  box-shadow: none !important;
 }
 a {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 #profil {
-    width: 28%;
-    padding-top: 45px;
+  width: 28%;
+  padding-top: 45px;
 }
 #photo {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 #icon {
-    display: flex;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 #profil h6:hover {
-    background: rgb(255, 242, 124);
+  background: rgb(255, 242, 124);
 }
 #icon img {
-    margin: auto;
+  margin: auto;
 }
 #area {
-    width: 72%;
-    background: #F5F5F5;
+  width: 72%;
+  background: #F5F5F5;
 }
 #form {
-    background: white;
-    margin-top: 45px;
-    width: 850px;
-    height: 500px;
+  background: white;
+  margin-top: 45px;
+  width: 850px;
+  height: 500px;
 }
 .form-inline {
-    border: 1px solid #bdb7b7 !important;
-    overflow: hidden;
-    padding: 0;
-    height: 35px;
-    width: 250px;
+  border: 1px solid #bdb7b7 !important;
+  overflow: hidden;
+  padding: 0;
+  height: 35px;
+  width: 250px;
 }
 .form-inline input {
-    border: none;
+  border: none;
 }
-
+.nav:hover {
+  cursor: pointer;
+}
 /* List Product */
 .scroll {
   height: 375px;
@@ -237,8 +239,10 @@ a {
 }
 
 .list-product {
+  padding: 3px;
   margin-top: 10px;
   margin-left: 10px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .product-image {
@@ -258,7 +262,7 @@ a {
 }
 
 .product-info {
-  width: 200px;
+  width: 400px;
 }
 
 .product-status {
@@ -267,8 +271,9 @@ a {
 }
 
 .product-status h4 {
-  font-size: 20px;
-  text-align: center;
+  font-size: 14px;
+  color: darkblue;
+  text-align: right;
 }
 
 .product-name {
@@ -312,7 +317,8 @@ a {
 }
 
 .upload {
-  font-size: 16px;
+  width: 100px;
+  font-size: 14px;
   text-align: center;
 }
 

@@ -21,7 +21,7 @@
                   <div class="number">{{product.count}}x</div>
                 </div>
                 <div class="price pt-1"><h4>Rp. {{product.price * product.count}}</h4></div>
-                <div @click.prevent="handleDelete(index)"><i class="fa fa-trash text-danger pt-3 pl-5 pr-2" aria-hidden="true"></i></div>
+                <div @click.prevent="handleDelete(index)" class="delete"><i class="fa fa-trash text-danger pt-3 pl-5 pr-2" aria-hidden="true"></i></div>
               </div>
             </div>
             <!-- End List My Bag -->
@@ -314,5 +314,8 @@ export default {
 .count div {
   font-size: 18px;
   font-weight: 550;
+}
+.delete i:hover {
+  cursor: pointer;
 }
 </style>

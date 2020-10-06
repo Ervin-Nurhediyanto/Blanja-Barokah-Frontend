@@ -56,8 +56,10 @@
                 <div class="count-box">
                     <div class="size">
                         <div class="sizeName"><h6><b>Size</b></h6></div>
-                        <div class="count-size" v-for="(size, index) in selectProduct.size.split(', ')" :key="index">
-                            <button @click="handleSize(size)"><b>{{size}}</b></button>
+                        <div class="btn-group">
+                            <div class="count-size" v-for="(size, index) in selectProduct.size.split(', ')" :key="index">
+                                <button @click="handleSize(size)" class="btn">{{size}}</button>
+                            </div>
                         </div>
                     </div>
                     <div class="jumlah">
@@ -468,12 +470,15 @@ img {
     justify-content: space-between;
     width: 100px;
 }
-
-.count-size input {
-    text-align: center;
-    width: 35px;
+.btn-group {
+    width: 300px;
 }
-
+.count-size button {
+    border-radius: 10px;
+    width: 50px;
+    height: 35px;
+    background-color: lightsalmon;
+}
 .jumlah {
     display: flex;
     flex-direction: column;

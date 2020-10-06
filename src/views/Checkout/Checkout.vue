@@ -51,6 +51,7 @@
                 <div class="total"><h6>Rp. {{totalCheckout + delivery}}</h6></div>
             </div>
             <button class="btn buy" @click="togglePayment">Select payment</button>
+            <!-- <Modal v-show="modalActive" :data="dataModal" @close-modal="toggleModal" @fire-event="handleEventModal" /> -->
             <Payment v-show="selectPay" :closeModal="togglePayment"/>
           </div>
         </div>
@@ -113,6 +114,13 @@ export default {
     },
     togglePayment () {
       this.selectPay = !this.selectPay
+      if (!this.selectPay) {
+        this.clearModal()
+      }
+      // this.selectPay = !this.selectPay
+    },
+    clearModal () {
+      this.modalActive = false
     }
   }
 }

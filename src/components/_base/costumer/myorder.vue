@@ -24,9 +24,9 @@
     <div class="tab-content scroll" id="myTabContent">
 
       <!-- List History -->
-      <div class="scroll col">
+      <div class="scroll col pr-5">
         <div v-for="history in myOrder" :key="history.id" class="list-product row">
-          <div class="product-image">
+          <div class="product-image p-3">
             <img :src="history.imageProduct" alt="" />
           </div>
           <div class="col product-info">
@@ -52,9 +52,9 @@
           </div>
           <!-- End Transfer -->
           <div class="product-status">
-            <h4>{{ history.status }}</h4>
-            <button v-if="history.status === 'not yet paid'" @click.prevent="handleChangeStatus(history.id, 'order cancel')">Cancel</button>
-            <button v-if="history.status === 'send'" @click.prevent="handleChangeStatus(history.id, 'completed')">Completed</button>
+            <h4>*{{ history.status }}</h4>
+            <button class="btn btn-danger" v-if="history.status === 'not yet paid'" @click.prevent="handleChangeStatus(history.id, 'order cancel')">Cancel</button>
+            <button class="btn btn-danger" v-if="history.status === 'send'" @click.prevent="handleChangeStatus(history.id, 'completed')">Completed</button>
           </div>
         </div>
       </div>
@@ -173,9 +173,13 @@ export default {
   display: none;
 }
 
+.nav:hover {
+  cursor: pointer;
+}
 .list-product {
-  margin-top: 10px;
+  margin-top: 15px;
   margin-left: 10px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .product-image {
@@ -199,7 +203,9 @@ export default {
 }
 
 .product-status h4 {
-  font-size: 20px;
+  font-size: 15px;
+  color: darkblue;
+  margin-left: 30px;
   text-align: center;
 }
 
@@ -216,7 +222,7 @@ export default {
 }
 
 .product-stock {
-  width: 100px;
+  width: 130px;
   display: flex;
   justify-content: flex-start;
   font-size: 15px;
@@ -225,7 +231,7 @@ export default {
 
 .product-stock span {
   height: 30px;
-  width: 80px;
+  width: auto;
   border-radius: 50%;
   box-shadow: 2px 2px solid grey;
   text-align: center;
@@ -244,12 +250,22 @@ export default {
 }
 
 .upload {
-  font-size: 16px;
+  /* background-color: darkorange; */
+  width: 100px;
+  font-size: 14px;
   text-align: center;
 }
 
 .upload:hover {
   color: red;
   font-weight: bold;
+}
+
+button {
+  font-size: 14px;
+  width: auto;
+  height: 35px;
+  margin-top: 10px;
+  margin-left: 60px;
 }
 </style>
