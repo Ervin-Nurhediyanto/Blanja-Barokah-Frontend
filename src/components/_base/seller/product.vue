@@ -479,7 +479,9 @@ export default {
   },
   mounted () {
     this.getProductSeller(this.userId)
-    this.chooseProduct(this.productSeller[0])
+      .then((res) => {
+        this.chooseProduct(this.productSeller[0])
+      })
   },
   methods: {
     ...mapActions([
