@@ -58,12 +58,12 @@
                         <div class="sizeName"><h6><b>Size</b></h6></div>
                         <div class="count-size">
                             <button class="btn count min" @click="minSize">-</button>
-                            <div class="number">{{countSize}}</div>
+                            <input type="text" v-model="size" maxlength="1" />
                             <button class="btn count plus" @click="addSize">+</button>
                         </div>
                     </div>
                     <div class="jumlah">
-                        <div class="jumlahName"><h6><b>Jumlah</b></h6></div>
+                        <div class="jumlahName ml-2"><h6><b>Jumlah</b></h6></div>
                         <div class="count-jumlah">
                             <button v-if="count > 0" class="btn count min pt-2" @click="minCount"><i class="fa fa-minus" aria-hidden="true"></i></button>
                             <button v-else class="btn count min pt-2"><i class="fa fa-minus text-danger" aria-hidden="true"></i></button>
@@ -161,7 +161,8 @@ export default {
     return {
       viewProduct: '',
       countSize: 0,
-      count: 0
+      count: 0,
+      size: ''
     }
   },
   computed: {
@@ -464,6 +465,11 @@ img {
     flex-direction: row;
     justify-content: space-between;
     width: 100px;
+}
+
+.count-size input {
+    text-align: center;
+    width: 35px;
 }
 
 .jumlah {
