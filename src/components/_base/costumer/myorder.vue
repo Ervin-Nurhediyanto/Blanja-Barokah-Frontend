@@ -48,24 +48,25 @@
             <img :src="history.imageTransfer" alt="" />
           </div>
           <div v-else class="product-image upload-container">
-            <h4 class="upload">Upload bukti transfer</h4>
+            <h4 class="upload" data-toggle="modal" data-target="#transfer" @click="handleTransfer(history.id)">Upload bukti transfer</h4>
           </div>
           <!-- End Transfer -->
           <div class="product-status">
             <h4>*{{ history.status }}</h4>
             <button class="btn btn-danger" v-if="history.status === 'not yet paid'" @click.prevent="handleChangeStatus(history.id, 'order cancel')">Cancel</button>
-            <button class="btn btn-danger" v-if="history.status === 'send'" @click.prevent="handleChangeStatus(history.id, 'completed')">Completed</button>
+            <button class="btn btn-success" v-if="history.status === 'send'" @click.prevent="handleChangeStatus(history.id, 'completed')">Completed</button>
           </div>
         </div>
       </div>
       <!-- End List History -->
-
+      <Transfer />
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import Transfer from '../modalImage/addImage'
 export default {
   name: 'My-Order',
   data () {
@@ -74,11 +75,13 @@ export default {
     }
   },
   components: {
+    Transfer
   },
   computed: {
     ...mapGetters({
       userId: 'userId',
-      historyUser: 'historyUser'
+      historyUser: 'historyUser',
+      idTransfer: 'idTransfer'
     })
   },
   mounted () {
@@ -92,7 +95,8 @@ export default {
   methods: {
     ...mapActions([
       'getHistoryUser',
-      'changeStatus'
+      'changeStatus',
+      'getIdTransfer'
     ]),
     handleAll () {
       this.myOrder = []
@@ -157,13 +161,26 @@ export default {
                 this.myOrder.push(item)
               })
             })
-          this.$swal({
-            icon: 'success',
-            title: 'Cancelling Order',
-            showConfirmButton: false,
-            timer: 1500
-          })
+          if (status === 'order cancel') {
+            this.$swal({
+              icon: 'success',
+              title: 'Cancelling Order',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+          if (status === 'completed') {
+            this.$swal({
+              icon: 'success',
+              title: 'Order completed',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
         })
+    },
+    handleTransfer (idTransfer) {
+      this.getIdTransfer(idTransfer)
     }
   }
 }

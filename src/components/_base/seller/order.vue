@@ -57,8 +57,8 @@
           <!-- End Transfer -->
           <div class="product-status col">
             <h4>*{{ history.status }}</h4>
-            <button v-if="history.status === 'already paid'" @click.prevent="handleChangeStatus(history.id, 'packed')">Packed</button>
-            <button v-else-if="history.status === 'packed'" @click.prevent="handleChangeStatus(history.id, 'send')">Send</button>
+            <button class="btn btn-danger" v-if="history.status === 'already paid'" @click.prevent="handleChangeStatus(history.id, 'packed')">Packed</button>
+            <button class="btn btn-danger" v-if="history.status === 'packed'" @click.prevent="handleChangeStatus(history.id, 'send')">Send</button>
           </div>
         </div>
       </div>
@@ -159,7 +159,22 @@ export default {
                 this.order.push(item)
               })
             })
-          alert('Update Status')
+          if (status === 'packed') {
+            this.$swal({
+              icon: 'success',
+              title: 'Packed',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
+          if (status === 'send') {
+            this.$swal({
+              icon: 'success',
+              title: 'Send',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
         })
     }
   }
@@ -328,4 +343,11 @@ a {
 }
 /* End List Product */
 
+button {
+  font-size: 14px;
+  width: auto;
+  height: 35px;
+  margin-top: 10px;
+  margin-left: 60px;
+}
 </style>

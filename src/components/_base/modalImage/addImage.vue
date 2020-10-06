@@ -1,6 +1,6 @@
 <template>
     <!-- modal -->
-    <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="transfer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header mr-auto border border-0">
@@ -20,8 +20,52 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'addImage'
+  name: 'addImage',
+  data () {
+    return {
+      FILE: ''
+    }
+  },
+  computed: {
+    ...mapGetters({
+      userId: 'userId',
+      idTransfer: 'idTransfer'
+    })
+  },
+  mounted () {
+    this.getHistoryUser(this.userId)
+  },
+  methods: {
+    ...mapActions([
+      'sendImageTransfer',
+      'getHistoryUser'
+    ]),
+
+    onFileUpload (event) {
+      this.FILE = event.target.files[0]
+    },
+
+    handleUploadImg () {
+      const formData = new FormData()
+      formData.append('imageTransfer', this.FILE, this.FILE.name)
+      const input = {
+        id: this.idTransfer,
+        data: formData
+      }
+      this.sendImageTransfer(input)
+        .then((res) => {
+          this.getHistoryUser(this.userId)
+          this.$swal({
+            icon: 'success',
+            title: 'Transfer Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
+    }
+  }
 }
 </script>
 

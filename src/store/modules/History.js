@@ -4,7 +4,8 @@ const history = {
   state: {
     allHistory: [],
     historyUser: [],
-    historySeller: []
+    historySeller: [],
+    idTransfer: ''
   },
   mutations: {
     setAllHistory (state, payload) {
@@ -15,6 +16,9 @@ const history = {
     },
     setHistorySeller (state, payload) {
       state.historySeller = payload
+    },
+    setIdTransfer (state, payload) {
+      state.idTransfer = payload
     }
   },
   actions: {
@@ -75,6 +79,20 @@ const history = {
             reject(err)
           })
       })
+    },
+    sendImageTransfer (setex, payload) {
+      return new Promise((resolve, reject) => {
+        axios.patch(process.env.VUE_APP_BASE_URL + '/histories/transfer/' + payload.id, payload.data)
+          .then((res) => {
+            resolve(res)
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    getIdTransfer (setex, payload) {
+      setex.commit('setIdTransfer', payload)
     }
   },
   getters: {
@@ -86,6 +104,9 @@ const history = {
     },
     historySeller (state) {
       return state.historySeller
+    },
+    idTransfer (state) {
+      return state.idTransfer
     }
   }
 }
