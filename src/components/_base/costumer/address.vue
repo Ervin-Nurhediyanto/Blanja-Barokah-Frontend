@@ -373,7 +373,12 @@ export default {
               this.textTelephoneNumber = ''
               this.textPostalCode = ''
             })
-          alert(res.data.result)
+          this.$swal({
+            icon: 'success',
+            title: res.data.result,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
 
@@ -420,7 +425,12 @@ export default {
               this.textTelephoneNumber = ''
               this.textPostalCode = ''
             })
-          alert(res.data.result)
+          this.$swal({
+            icon: 'success',
+            title: res.data.result,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
 
@@ -431,7 +441,12 @@ export default {
             id: this.userId
           }
           this.getUserAddress(data)
-          alert(res.data.result)
+          this.$swal({
+            icon: 'success',
+            title: res.data.result,
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     }
   }
