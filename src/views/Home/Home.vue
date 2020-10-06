@@ -20,6 +20,7 @@
           :description='product.description'
           :stock='product.stock'
           :idSeller='product.idSeller'
+          :size='product.size'
           />
         </div>
         <NewPage />
@@ -45,6 +46,7 @@
           :description='product.description'
           :stock='product.stock'
           :idSeller='product.idSeller'
+          :size='product.size'
           />
         </div>
         <PopularPage />

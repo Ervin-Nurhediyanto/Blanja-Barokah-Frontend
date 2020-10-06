@@ -56,10 +56,8 @@
                 <div class="count-box">
                     <div class="size">
                         <div class="sizeName"><h6><b>Size</b></h6></div>
-                        <div class="count-size">
-                            <button class="btn count min" @click="minSize">-</button>
-                            <input type="text" v-model="size" maxlength="1" />
-                            <button class="btn count plus" @click="addSize">+</button>
+                        <div class="count-size" v-for="(size, index) in selectProduct.size.split(', ')" :key="index">
+                            <button @click="handleSize(size)"><b>{{size}}</b></button>
                         </div>
                     </div>
                     <div class="jumlah">
@@ -192,6 +190,9 @@ export default {
     minSize () {
       this.countSize = this.countSize - 1
     },
+    handleSize (size) {
+      this.size = size
+    },
     chat () {
       this.$router.push('/chat')
     },
@@ -205,7 +206,8 @@ export default {
           stock: this.selectProduct.stock,
           count: this.count,
           price: this.selectProduct.price,
-          idSeller: this.selectProduct.idSeller
+          idSeller: this.selectProduct.idSeller,
+          size: this.size
         }
         this.addToMyBag(data)
         this.$router.push('/mybag')
