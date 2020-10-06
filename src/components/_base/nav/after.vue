@@ -48,28 +48,29 @@
                         <div class="modal-body border-top">
                             <strong>Colors</strong><br>
                             <div id="color" class="row mt-2">
-                                <div class="custom-control custom-radio clr">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample1" name="groupOfDefaultRadios" checked>
+                                <div class="custom-control custom-radio clr" @click="changeColor">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample1" name="groupOfDefaultRadios" checked v-model="color" value="Black">
                                     <label class="option-input radio" for="defaultGroupExample1" style="background: black;"></label>
                                 </div>
-                                <div class="custom-control custom-radio clr">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample2" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio clr" @click="changeColor">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample2" name="groupOfDefaultRadios"
+                                    v-model="color" value="White">
                                     <label class="option-input radio" for="defaultGroupExample2" style="background: #FFFFFF;"></label>
                                 </div>
-                                <div class="custom-control custom-radio clr">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample3" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio clr" @click="changeColor">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample3" name="groupOfDefaultRadios" v-model="color" value="Red">
                                     <label class="option-input radio" for="defaultGroupExample3" style="background: #B82222;"></label>
                                 </div>
-                                <div class="custom-control custom-radio clr">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample4" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio clr" @click="changeColor">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample4" name="groupOfDefaultRadios" v-model="color" value="Grey">
                                     <label class="option-input radio" for="defaultGroupExample4" style="background: #BEA9A9;"></label>
                                 </div>
-                                <div class="custom-control custom-radio clr">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample5" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio clr" @click="changeColor">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample5" name="groupOfDefaultRadios" v-model="color" value="Brown">
                                     <label class="option-input radio" for="defaultGroupExample5" style="background: #E2BB8D;"></label>
                                 </div>
-                                <div class="custom-control custom-radio clr">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample6" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio clr" @click="changeColor">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroupExample6" name="groupOfDefaultRadios" v-model="color" value="Blue">
                                     <label class="option-input radio" for="defaultGroupExample6" style="background: #151867"></label>
                                 </div>
                             </div>
@@ -77,61 +78,61 @@
                             <hr>
                             <strong>Sizes</strong><br>
                             <div id="color" class="row mt-2">
-                                <div class="custom-control custom-radio size">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup1" name="groupOfDefaultRadios" checked>
+                                <div class="custom-control custom-radio size" @click="changeSize">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup1" name="groupOfDefaultRadios" checked v-model="size" value="XS">
                                     <label class="input-size radio" for="defaultGroup1">XS</label>
                                 </div>
-                                <div class="custom-control custom-radio size">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup2" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio size" @click="changeSize">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup2" name="groupOfDefaultRadios" v-model="size" value="S">
                                     <label class="input-size radio" for="defaultGroup2">S</label>
                                 </div>
-                                <div class="custom-control custom-radio size">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup3" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio size" @click="changeSize">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup3" name="groupOfDefaultRadios" v-model="size" value="M">
                                     <label class="input-size radio" for="defaultGroup3">M</label>
                                 </div>
-                                <div class="custom-control custom-radio size">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup4" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio size" @click="changeSize">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup4" name="groupOfDefaultRadios" v-model="size" value="L">
                                     <label class="input-size radio" for="defaultGroup4">L</label>
                                 </div>
-                                <div class="custom-control custom-radio size">
-                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup5" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio size" @click="changeSize">
+                                    <input type="radio" class="custom-control-input option-input" id="defaultGroup5" name="groupOfDefaultRadios" v-model="size" value="XL">
                                     <label class="input-size radio" for="defaultGroup5">XL</label>
                                 </div>
                             </div>
                             <hr>
                             <strong>Category</strong><br>
                             <div id="color" class="row mt-2">
-                                <div class="custom-control custom-radio category">
-                                    <input type="radio" class="custom-control-input option-input" id="group1" name="groupOfDefaultRadios" checked>
+                                <div class="custom-control custom-radio category" @click="changeCategory">
+                                    <input type="radio" class="custom-control-input option-input" id="group1" name="groupOfDefaultRadios" checked v-model="category" value="All">
                                     <label class="input-category radio" for="group1">All</label>
                                 </div>
-                                <div class="custom-control custom-radio category">
-                                    <input type="radio" class="custom-control-input option-input" id="group2" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio category" @click="changeCategory">
+                                    <input type="radio" class="custom-control-input option-input" id="group2" name="groupOfDefaultRadios" v-model="category" value="Woman">
                                     <label class="input-category radio" for="group2">Woman</label>
                                 </div>
-                                <div class="custom-control custom-radio category">
-                                    <input type="radio" class="custom-control-input option-input" id="group3" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio category" @click="changeCategory">
+                                    <input type="radio" class="custom-control-input option-input" id="group3" name="groupOfDefaultRadios" v-model="category" value="Men">
                                     <label class="input-category radio" for="group3">Men</label>
                                 </div>
-                                <div class="custom-control custom-radio category">
-                                    <input type="radio" class="custom-control-input option-input" id="group4" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio category" @click="changeCategory">
+                                    <input type="radio" class="custom-control-input option-input" id="group4" name="groupOfDefaultRadios" v-model="category" value="Girls">
                                     <label class="input-category radio" for="group4">Girls</label>
                                 </div>
-                                <div class="custom-control custom-radio category">
-                                    <input type="radio" class="custom-control-input option-input" id="group5" name="groupOfDefaultRadios">
+                                <div class="custom-control custom-radio category" @click="changeCategory">
+                                    <input type="radio" class="custom-control-input option-input" id="group5" name="groupOfDefaultRadios" v-model="category" value="Boys">
                                     <label class="input-category radio" for="group5">Boys</label>
                                 </div>
                             </div>
                             <hr>
                             <strong>Brand</strong><br>
-                            <select name="brandCategory" id="brandCategory" class="w-100 border border-0 mb-4">
-                                <option value="allBrand">All Brand</option>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
+                            <select name="brandCategory" id="brandCategory" class="w-100 border border-0 mb-4" v-model="brand" @change="changebrand">
+                                <option value="">All Brand</option>
+                                <option value="volvo">Volvo</option>
+                                <option value="saab">Saab</option>
                             </select>
                             <div class="modal-footer px-5 row">
                                 <button type="button" class="btn btn-outline-secondary rounded-pill w-50 col mx-2" data-dismiss="modal">Disscard</button>
-                                <button type="submit" style="background-color: #d31d0d;" class="btn btn-danger rounded-pill w-50 col mx-2">Apply</button>
+                                <button type="submit" style="background-color: #d31d0d;" class="btn btn-danger rounded-pill w-50 col mx-2" @click.prevent="handleFilter">Apply</button>
                             </div>
                         </div>
                     </form>
@@ -147,7 +148,11 @@ export default {
   name: 'after',
   data () {
     return {
-      search: ''
+      search: '',
+      color: '',
+      size: '',
+      category: '',
+      brand: ''
     }
   },
   computed: {
@@ -162,13 +167,17 @@ export default {
       userdateOfBirth: 'userdateOfBirth',
       userphoneNumber: 'userphoneNumber',
       userstoreName: 'userstoreName',
-      userstoreDescription: 'userstoreDescription'
+      userstoreDescription: 'userstoreDescription',
+      allProduct: 'allProduct'
     })
+  },
+  mounted () {
   },
   methods: {
     ...mapActions([
       'getSearchProduct',
       'getProductSeller',
+      'filter',
       'logout'
     ]),
     chat () {
@@ -191,6 +200,41 @@ export default {
         this.$router.push('/profileCustomer')
       }
     },
+
+    // Filter Product
+    changeColor () {
+      this.brand = ''
+      this.size = ''
+      this.category = ''
+    },
+    changeSize (size) {
+      this.brand = ''
+      this.color = ''
+      this.category = ''
+    },
+    changeCategory (category) {
+      this.brand = ''
+      this.color = ''
+      this.size = ''
+    },
+    changebrand () {
+      this.color = ''
+      this.size = ''
+      this.category = ''
+    },
+    handleFilter () {
+      const data = {
+        color: this.color || null,
+        size: this.size || null,
+        category: this.category || null,
+        brand: this.brand || null
+      }
+      this.filter(data)
+        .then((res) => {
+        })
+    },
+    // End Filter Product
+
     handleLogout () {
       this.$router.go(0)
       this.logout()

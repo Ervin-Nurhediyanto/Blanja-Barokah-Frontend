@@ -257,6 +257,60 @@ const product = {
           })
       })
     },
+
+    // Filter Products
+    filter (setex, payload) {
+      let filter = ''
+      if (payload.color) {
+        filter = `color=${payload.color}`
+      }
+      if (payload.size) {
+        filter = `size=${payload.size}`
+      }
+      if (payload.category) {
+        filter = `category=${payload.category}`
+      }
+      if (payload.brand) {
+        filter = `brand=${payload.brand}`
+      }
+      return new Promise((resolve, reject) => {
+        // Search New Product
+        axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.id&order=DESC&page=1&limit=10&' + filter)
+          .then((res) => {
+            setex.commit('setPageNew', Number(res.data.page))
+            setex.commit('setNewProduct', res.data.result)
+            // End Search New Product
+
+            // Search Popular Product
+            axios.get(process.env.VUE_APP_BASE_URL + '/products/?sort=products.rate&order=DESC&page=1&limit=10&' + filter)
+              .then((res) => {
+                setex.commit('setPagePopular', Number(res.data.page))
+                setex.commit('setPopularProduct', res.data.result)
+                // End Search Popular Product
+
+                // Search Set Total Page
+                axios.get(process.env.VUE_APP_BASE_URL + '/products/?' + filter)
+                  .then((res) => {
+                    setex.commit('setAllProduct', res.data.result)
+                    setex.commit('setTotalPage', Math.ceil(res.data.result.length / 10))
+                    // End Search Set Total Page
+                    resolve(res.data.result)
+                  })
+                  .catch((err) => {
+                    reject(err)
+                  })
+              })
+              .catch((err) => {
+                reject(err)
+              })
+          })
+          .catch((err) => {
+            reject(err)
+          })
+      })
+    },
+    // End Filter Products
+
     addProduct (setex, payload) {
       return new Promise((resolve, reject) => {
         axios.post(process.env.VUE_APP_BASE_URL + '/products', payload)
