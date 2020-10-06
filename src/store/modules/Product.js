@@ -272,7 +272,7 @@ const product = {
 
     updateProduct (setex, payload) {
       return new Promise((resolve, reject) => {
-        axios.patch(process.env.VUE_APP_BASE_URL + '/products/' + this.state.productId, payload)
+        axios.patch(process.env.VUE_APP_BASE_URL + '/products/' + payload.id, payload.data)
           .then((res) => {
             console.log(res.data.result)
             resolve(res.data.result)
@@ -298,7 +298,7 @@ const product = {
 
     deleteProduct (setex, payload) {
       return new Promise((resolve, reject) => {
-        axios.patch(process.env.VUE_APP_BASE_URL + '/products/' + payload)
+        axios.delete(process.env.VUE_APP_BASE_URL + '/products/' + payload)
           .then((res) => {
             console.log(res.data.result)
             resolve(res.data.result)
