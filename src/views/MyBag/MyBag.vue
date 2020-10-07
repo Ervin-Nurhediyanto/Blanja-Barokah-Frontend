@@ -83,6 +83,43 @@ export default {
 </script>
 
 <style scoped>
+
+@media only screen and (max-width: 576px) {
+  .box-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+   .card {
+    align-items: center;
+    align-content: center !important;
+    align-self: center !important;
+    min-width: 120px !important;
+  }
+  .box-summary {
+    align-self: center;
+    min-width: auto !important;
+  }
+ }
+
+@media only screen and (max-width: 768px) {
+  .box-content {
+    min-height: 830px;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: space-between;
+  }
+  .card {
+    align-items: center;
+    align-content: center !important;
+    align-self: center !important;
+    max-width: 520px !important;
+  }
+  .box-summary {
+    align-self: center;
+    min-width: 520px !important;
+  }
+}
 .title {
   margin: 20px 0px 20px 0px;
   text-align: left;
