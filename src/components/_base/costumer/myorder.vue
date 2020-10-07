@@ -44,7 +44,7 @@
             </div>
           </div>
           <!-- Transfer -->
-          <div v-if="history.imageTransfer" class="product-image">
+          <div v-if="history.imageTransfer" class="product-image p-3">
             <img :src="history.imageTransfer" alt="" />
           </div>
           <div v-else class="product-image upload-container">

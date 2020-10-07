@@ -65,8 +65,9 @@ export default {
 
 <style scoped>
 .img-container {
-  width: 238px;
+  width: 100%;
   height: 170px;
+  padding: 20px;
   cursor: pointer;
 }
 img {
