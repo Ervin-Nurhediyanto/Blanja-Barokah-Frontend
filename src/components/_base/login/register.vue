@@ -40,7 +40,7 @@
                 <input type="password" v-model="password" class="form-control-lg w-100 " placeholder="Password">
               </div>
               <button v-show="userRole == 1" type="submit" id="btn" class="btn text-white" :disabled="!inputSeller" @click="handleRegisterSeller">Register</button>
-              <button v-show="userRole == 2" type="submit" id="btn" class="btn text-white" :disabled="!inputCustomer" @click="handleRegisterCustomer">Register</button>
+              <button v-show="userRole == 2" type="submit" id="btn" class="btn text-white bg-info" :disabled="!inputCustomer" @click="handleRegisterCustomer">Register</button>
               <p class="mt-3 text-center">Already have a Blanja Barokah account? <a href="#" id=forgot @click="$emit('login-event')">Login</a></p>
             </form>
           </div>
@@ -84,24 +84,33 @@ export default {
         storeName: this.storeName,
         password: this.password
       }
-      this.registerSeller(data)
-        .then((res) => {
-          this.$swal({
-            icon: 'success',
-            title: 'Register Success',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          this.$router.go(0)
+      if (this.password.length < 8) {
+        this.$swal({
+          icon: 'error',
+          title: 'Min password 8 char',
+          showConfirmButton: false,
+          timer: 1500
         })
-        .catch((err) => {
-          this.$swal({
-            icon: 'error',
-            title: err.response.data.result,
-            showConfirmButton: false,
-            timer: 1500
+      } else {
+        this.registerSeller(data)
+          .then((res) => {
+            this.$swal({
+              icon: 'success',
+              title: 'Register Success',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            this.$router.go(0)
           })
-        })
+          .catch((err) => {
+            this.$swal({
+              icon: 'error',
+              title: err.response.data.result,
+              showConfirmButton: false,
+              timer: 1500
+            })
+          })
+      }
     },
     handleRegisterCustomer (e) {
       e.preventDefault()
@@ -110,24 +119,33 @@ export default {
         email: this.email,
         password: this.password
       }
-      this.registerCustomer(data)
-        .then((res) => {
-          this.$swal({
-            icon: 'success',
-            title: 'Register Success',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          this.$router.go(0)
+      if (this.password.length < 8) {
+        this.$swal({
+          icon: 'error',
+          title: 'Min password 8 char',
+          showConfirmButton: false,
+          timer: 1500
         })
-        .catch((err) => {
-          this.$swal({
-            icon: 'error',
-            title: err.response.data.result,
-            showConfirmButton: false,
-            timer: 1500
+      } else {
+        this.registerCustomer(data)
+          .then((res) => {
+            this.$swal({
+              icon: 'success',
+              title: 'Register Success',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            this.$router.go(0)
           })
-        })
+          .catch((err) => {
+            this.$swal({
+              icon: 'error',
+              title: err.response.data.result,
+              showConfirmButton: false,
+              timer: 1500
+            })
+          })
+      }
     },
     roleCustomer () {
       this.userRole = 2

@@ -11,7 +11,7 @@
                 </button>
                 <div class="row">
                     <form class="form-inline rounded-pill bg-white row mt-1 ml-5 mb-2">
-                        <input class="form-control mr-3 rounded-pill w-100 col" type="text" v-model="search" @keyup.enter.prevent="searchProduct" placeholder="Search" aria-label="Search">
+                        <input class="form-control mr-3 rounded-pill w-100 col" type="text" v-model="search" @keyup.enter="searchProduct" placeholder="Search" aria-label="Search">
                         <a href="#" type="submit">
                             <img src="../../../assets/nav/Search.png" class="my-2 col-auto"  @click.prevent="searchProduct">
                         </a>
@@ -187,7 +187,16 @@ export default {
       this.$router.push('/')
     },
     myBag () {
-      this.$router.push('/mybag')
+      if (this.userRoleId === 'Seller') {
+        this.$swal({
+          icon: 'error',
+          title: 'Customer Only',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else {
+        this.$router.push('/mybag')
+      }
     },
     searchProduct () {
       this.getSearchProduct(this.search)

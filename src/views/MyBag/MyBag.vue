@@ -71,7 +71,6 @@ export default {
       this.deleteFronMyBag(index)
     },
     handleCheckout () {
-      // const data = this.myBag
       const input = {
         data: this.myBag,
         total: this.totalPrice
@@ -79,12 +78,6 @@ export default {
       this.setToCheckout(input)
       this.$router.push('/checkout')
     }
-  //   plus () {
-  //     this.count = this.count + 1
-  //   },
-  //   min () {
-  //     this.count = this.count - 1
-  //   }
   }
 }
 </script>

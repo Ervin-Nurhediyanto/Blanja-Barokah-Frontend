@@ -162,12 +162,15 @@ export default {
       viewProduct: '',
       countSize: 0,
       count: 0,
-      size: ''
+      size: '',
+      totalPrice: 0
     }
   },
   computed: {
     ...mapGetters({
-      selectProduct: 'selectProduct'
+      selectProduct: 'selectProduct',
+      userRoleId: 'userRoleId',
+      myBag: 'myBag'
     })
   },
   mounted () {
@@ -199,31 +202,58 @@ export default {
       this.$router.push('/chat')
     },
     mybag () {
-      if (this.count !== 0) {
-        const data = {
-          id: this.selectProduct.id,
-          name: this.selectProduct.name,
-          brand: this.selectProduct.brand,
-          image: this.viewProduct,
-          stock: this.selectProduct.stock,
-          count: this.count,
-          price: this.selectProduct.price,
-          idSeller: this.selectProduct.idSeller,
-          size: this.size
-        }
-        this.addToMyBag(data)
-        this.$router.push('/mybag')
-      } else {
+      if (this.userRoleId === 'Seller') {
         this.$swal({
           icon: 'error',
-          title: 'Silahkan masukan jumlah barangnya',
+          title: 'Customer Only',
           showConfirmButton: false,
           timer: 1500
         })
+      } else {
+        if (this.count !== 0) {
+          const data = {
+            id: this.selectProduct.id,
+            name: this.selectProduct.name,
+            brand: this.selectProduct.brand,
+            image: this.viewProduct,
+            stock: this.selectProduct.stock,
+            count: this.count,
+            price: this.selectProduct.price,
+            idSeller: this.selectProduct.idSeller,
+            size: this.size
+          }
+          this.addToMyBag(data)
+          this.$router.push('/mybag')
+        } else {
+          this.$swal({
+            icon: 'error',
+            title: 'Silahkan masukan jumlah barangnya',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
       }
     },
     checkout () {
-      this.$router.push('/checkout')
+      if (this.userRoleId === 'Seller') {
+        this.$swal({
+          icon: 'error',
+          title: 'Customer Only',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else {
+        if (this.count !== 0) {
+          this.$router.push('/checkout')
+        } else {
+          this.$swal({
+            icon: 'error',
+            title: 'Silahkan masukan jumlah barangnya',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+      }
     }
   }
 }
