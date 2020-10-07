@@ -18,7 +18,7 @@
             <p class="mx-auto text-danger">You need to change your password to active your account</p>
             <form role="form" id="login-form">
               <div class="form-group">
-                <input type="password" v-model="password" class="form-control-lg w-100" name="password" placeholder="Password, min 6 character">
+                <input type="password" v-model="password" class="form-control-lg w-100" name="password" placeholder="Password, min 8 character">
               </div>
               <div class="form-group">
                 <input type="password" v-model="confirmPassword" class="form-control-lg w-100" name="confirm_password" placeholder="Confirm Password">
@@ -52,20 +52,36 @@ export default {
   methods: {
     ...mapActions(['resetPassword']),
     handleResetPass (e) {
-      e.preventDefault()
-      const data = {
-        password: this.password
-      }
-      this.resetPassword(data)
-        .then((res) => {
-          this.$swal({
-            icon: 'success',
-            title: 'Change password success',
-            showConfirmButton: false,
-            timer: 1500
-          })
-          this.$router.push('/login')
+      if (this.password.length < 8) {
+        this.$swal({
+          icon: 'error',
+          title: 'Min password 8 char',
+          showConfirmButton: false,
+          timer: 1500
         })
+      } else if (this.password !== this.confirmPassword) {
+        this.$swal({
+          icon: 'error',
+          title: 'Confirm Password Wrong!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      } else {
+        e.preventDefault()
+        const data = {
+          password: this.password
+        }
+        this.resetPassword(data)
+          .then((res) => {
+            this.$swal({
+              icon: 'success',
+              title: 'Change password success',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            this.$router.push('/login')
+          })
+      }
     }
   }
 }

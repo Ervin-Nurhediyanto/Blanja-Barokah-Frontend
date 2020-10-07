@@ -517,7 +517,12 @@ export default {
         .then((res) => {
           this.getProductSeller(this.userId)
             .then((res) => {
-              alert('update success')
+              this.$swal({
+                icon: 'success',
+                title: 'upload image success',
+                showConfirmButton: false,
+                timer: 1500
+              })
             })
         })
     },
@@ -551,7 +556,12 @@ export default {
           this.changeCondition = ''
           this.changeStock = ''
           this.changeDescription = ''
-          alert('update sukses')
+          this.$swal({
+            icon: 'success',
+            title: 'update sukses',
+            showConfirmButton: false,
+            timer: 1500
+          })
         })
     },
 

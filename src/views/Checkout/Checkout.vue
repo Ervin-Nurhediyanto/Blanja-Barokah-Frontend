@@ -113,11 +113,19 @@ export default {
       this.modalActive = !this.modalActive
     },
     togglePayment () {
-      this.selectPay = !this.selectPay
-      if (!this.selectPay) {
-        this.clearModal()
+      if (this.checkout) {
+        this.selectPay = !this.selectPay
+        if (!this.selectPay) {
+          this.clearModal()
+        }
+      } else {
+        this.$swal({
+          icon: 'error',
+          title: 'Your Bag is Empty',
+          showConfirmButton: false,
+          timer: 1500
+        })
       }
-      // this.selectPay = !this.selectPay
     },
     clearModal () {
       this.modalActive = false

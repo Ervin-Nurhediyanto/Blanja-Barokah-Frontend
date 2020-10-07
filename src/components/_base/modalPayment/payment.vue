@@ -150,7 +150,6 @@ export default {
           }
           this.addHistory(data)
             .then((res) => {
-              // alert('Successs')
               this.$swal({
                 icon: 'success',
                 title: 'Silahkan kirim bukti transfer',

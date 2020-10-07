@@ -36,7 +36,7 @@
         <div v-for="product in popularProduct" :key="product.id">
           <Card
           :name='product.name'
-          :image="product.image.split(', ')[0]"
+          :image="product.image"
           :price='product.price'
           :brand='product.brand'
           :id='product.id'
