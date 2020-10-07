@@ -127,6 +127,51 @@ export default {
 </script>
 
 <style scoped>
+
+@media only screen and (max-width: 576px) {
+  .content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .address-box {
+    width: 320px !important;
+  }
+   .card {
+    align-items: center;
+    align-content: center !important;
+    align-self: center !important;
+    min-width: 120px !important;
+    justify-items: center !important;
+  }
+  .box-summary {
+    align-self: center;
+    min-width: auto !important;
+  }
+ }
+
+@media only screen and (max-width: 768px) {
+  .content-box {
+    min-height: 830px;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: space-between;
+  }
+  .address-box {
+    width: 520px !important;
+  }
+  .card {
+    align-items: center;
+    align-content: center !important;
+    align-self: center !important;
+    max-width: 520px !important;
+  }
+  .box-summary {
+    align-self: center;
+    min-width: 520px !important;
+  }
+}
+
 .title {
   margin: 10px 0px 10px 0px;
   text-align: left;
