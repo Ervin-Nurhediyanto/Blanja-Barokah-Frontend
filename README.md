@@ -18,16 +18,19 @@
 
 ## Table of Contents
 
-- [About the Project](#about-the-project)
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
   - [Built With](#built-with)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Roadmap](#roadmap)
-- [Screenshoots](#screenshoot)
+- [screenshoot](#screenshoot)
 - [Contributing](#contributing)
-- [Related Project](#Related-Project)
+- [Related-Project](#related-project)
 - [Acknowledgements](#acknowledgements)
+- [Team](#team)
+- [| <a href="https://github.com/Ervin-Nurhediyanto" target="_blank">`https://github.com/Ervin-Nurhediyanto`</a> | <a href="https://github.com/reginaputri01" target="_blank">`hhttps://github.com/reginaputri01`</a> | <a href="https://github.com/Anka199" target="_blank">`https://github.com/Anka199`</a> | <a href="https://github.com/kemalreza12" target="_blank">`https://github.com/kemalreza12`</a> |](#-httpsgithubcomervin-nurhediyanto--hhttpsgithubcomreginaputri01--httpsgithubcomanka199--httpsgithubcomkemalreza12-)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -155,7 +158,7 @@ Contributions are what make the open source community such an amazing place to b
 
 > All Members of Barokah Team
 
-| <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Back-End Developer & Team Leader**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Back-End Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a> | 
+| <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Full-Stack Developer & Team Leader**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Back-End Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a> | <a href="https://blog.udacity.com/2014/12/front-end-vs-back-end-vs-full-stack-web-developers.html" target="_blank">**Front-End Developer**</a> | 
 | :---: |:---:| :---:|:---:| 
 | [![Back-End Developer](https://avatars3.githubusercontent.com/u/68485982?s=400&u=6df63039fd28fdc036e50ddecacab751aabf79f4&v=4)](http://fvcproductions.com)    | [![FVCproductions](https://avatars3.githubusercontent.com/u/42507417?s=400&u=9e00e2d0af95e7d55d241d710bc1c0b4318efc5c&v=4)](http://fvcproductions.com) | [![Back-End Developer](https://avatars2.githubusercontent.com/u/61878254?s=400&v=4)](http://fvcproductions.com)  |[![Front-End Developer](https://avatars3.githubusercontent.com/u/59290848?s=460&u=8561497e5548c0a7fb1f6a83b6885fb9ab9b3a69&v=4)](http://fvcproductions.com)    | 
 | <a href="https://github.com/Ervin-Nurhediyanto" target="_blank">`https://github.com/Ervin-Nurhediyanto`</a> | <a href="https://github.com/reginaputri01" target="_blank">`hhttps://github.com/reginaputri01`</a> | <a href="https://github.com/Anka199" target="_blank">`https://github.com/Anka199`</a> | <a href="https://github.com/kemalreza12" target="_blank">`https://github.com/kemalreza12`</a> | 
