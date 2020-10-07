@@ -28,6 +28,7 @@
 - [screenshoot](#screenshoot)
 - [Contributing](#contributing)
 - [Related-Project](#related-project)
+- [Demo Project](#demo-project)
 - [Acknowledgements](#acknowledgements)
 - [Team](#team)
 - [| <a href="https://github.com/Ervin-Nurhediyanto" target="_blank">`https://github.com/Ervin-Nurhediyanto`</a> | <a href="https://github.com/reginaputri01" target="_blank">`hhttps://github.com/reginaputri01`</a> | <a href="https://github.com/Anka199" target="_blank">`https://github.com/Anka199`</a> | <a href="https://github.com/kemalreza12" target="_blank">`https://github.com/kemalreza12`</a> |](#-httpsgithubcomervin-nurhediyanto--hhttpsgithubcomreginaputri01--httpsgithubcomanka199--httpsgithubcomkemalreza12-)
@@ -139,6 +140,12 @@ Contributions are what make the open source community such an amazing place to b
 ## Related-Project
 
 * [`Blanja-Barokah-Backend`](https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Backend)
+
+<!-- DEMO PROJECT -->
+
+## Demo Project
+
+* Project demo is available at [`cafein-barokah.fwdev.online`](http://cafein-barokah.fwdev.online/)
 
 <!-- ACKNOWLEDGEMENTS -->
 
