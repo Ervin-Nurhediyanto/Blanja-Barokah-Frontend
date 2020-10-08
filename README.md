@@ -1,13 +1,13 @@
 <br />
 <p align="center">
   <a href="https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Frontend.git">
-    <img src="./src/assets/screenshoot/Capture 043.png" alt="Logo">
+    <img src="./src/assets/screenshoot/Capture 043-rmbg.png" alt="Logo">
   </a>
 
   <h1 align="center">Blanja-Barokah-Frontend</h1>
 
   <p align="center">
-    <a href="https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Frontend.git">View Demo</a>
+    <a href="http://cafein-barokah.fwdev.online/">View Demo</a>
     ·
     <a href="https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Frontend/issues">Report Bug</a>
     ·
@@ -38,7 +38,7 @@
 ## About The Project
 
 Blanja Barokah is an online shop website that is made specifically for e-commerce purposes, with an elegant and attractive appearance, and has many features that can support both sellers and costumers
-[Demo Click Here](https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Frontend.git)
+[Demo Click Here](http://cafein-barokah.fwdev.online/)
 
 
 ### Built With
@@ -104,7 +104,6 @@ See the [open issues](https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Front
       <image width="200" src='./src/assets/screenshoot/Capture 048.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 046-1.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 041.png' />
-      <image width="200" src='./src/assets/screenshoot/Capture 043.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 044.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 049.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 050.png' />
@@ -113,6 +112,7 @@ See the [open issues](https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Front
       <image width="200" src='./src/assets/screenshoot/Capture 055.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 056.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 057.png' />
+      <image width="200" src='./src/assets/screenshoot/Capture 045-1.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 059.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 060.png' />
       <image width="200" src='./src/assets/screenshoot/Capture 061.png' />
