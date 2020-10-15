@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Frontend.git">
-    <img src="./src/assets/screenshoot/Capture 043.png" alt="Logo">
+    <img src="./src/assets/screenshoot/Capture%20043-rmbg.png" alt="Logo">
   </a>
 
   <h1 align="center">Blanja-Barokah-Frontend</h1>
@@ -31,13 +31,14 @@
 - [Demo Project](#demo-project)
 - [Acknowledgements](#acknowledgements)
 - [Team](#team)
+- [| <a href="https://github.com/Ervin-Nurhediyanto" target="_blank">`https://github.com/Ervin-Nurhediyanto`</a> | <a href="https://github.com/reginaputri01" target="_blank">`hhttps://github.com/reginaputri01`</a> | <a href="https://github.com/Anka199" target="_blank">`https://github.com/Anka199`</a> | <a href="https://github.com/kemalreza12" target="_blank">`https://github.com/kemalreza12`</a> |](#-httpsgithubcomervin-nurhediyanto--hhttpsgithubcomreginaputri01--httpsgithubcomanka199--httpsgithubcomkemalreza12-)
 
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
 Blanja Barokah is an online shop website that is made specifically for e-commerce purposes, with an elegant and attractive appearance, and has many features that can support both sellers and costumers
-[Demo Click Here](https://github.com/Ervin-Nurhediyanto/Blanja-Barokah-Frontend.git)
+[Demo Click Here](http://cafein-barokah.fwdev.online/)
 
 
 ### Built With
